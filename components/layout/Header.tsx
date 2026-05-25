@@ -53,7 +53,7 @@ export default function Header() {
             href="/outils/audit-acquisition"
             className="inline-flex items-center gap-2 bg-accent text-white font-sans font-medium text-sm px-[18px] py-2.5 rounded-full border border-transparent hover:bg-accent-deep hover:-translate-y-px transition-all duration-200 group"
           >
-            Obtenir mon audit offert
+            Obtenir mon audit de croissance
             <span className="inline-block transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
           </Link>
         </div>

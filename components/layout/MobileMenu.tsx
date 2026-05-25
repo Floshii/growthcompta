@@ -41,7 +41,7 @@ export default function MobileMenu({ links }: MobileMenuProps) {
             onClick={() => setOpen(false)}
             className="mt-8 inline-flex items-center justify-center gap-2 bg-accent text-white font-medium py-4 rounded-full hover:bg-accent-deep transition-colors"
           >
-            Obtenir mon audit offert ↗
+            Obtenir mon audit de croissance ↗
           </Link>
         </div>
       )}
