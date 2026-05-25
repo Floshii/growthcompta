@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import DashboardMock from './DashboardMock'
 
-export const CTA_HREF = '/outils/audit-acquisition'
+export const CTA_HREF = '/cabinet-growth-score'
 export const CTA_LABEL = 'Obtenir mon audit de croissance'
 
 export default function HeroSection() {

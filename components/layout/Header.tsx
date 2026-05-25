@@ -50,7 +50,7 @@ export default function Header() {
             2 slots Q1
           </span>
           <Link
-            href="/outils/audit-acquisition"
+            href="/cabinet-growth-score"
             className="inline-flex items-center gap-2 bg-accent text-white font-sans font-medium text-sm px-[18px] py-2.5 rounded-full border border-transparent hover:bg-accent-deep hover:-translate-y-px transition-all duration-200 group"
           >
             Obtenir mon audit de croissance

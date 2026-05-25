@@ -37,7 +37,7 @@ export default function MobileMenu({ links }: MobileMenuProps) {
             ))}
           </nav>
           <Link
-            href="/outils/audit-acquisition"
+            href="/cabinet-growth-score"
             onClick={() => setOpen(false)}
             className="mt-8 inline-flex items-center justify-center gap-2 bg-accent text-white font-medium py-4 rounded-full hover:bg-accent-deep transition-colors"
           >
