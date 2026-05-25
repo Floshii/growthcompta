@@ -59,8 +59,12 @@ export default function QuizEngine() {
       if (currentIdx + 1 < QUESTIONS.length) {
         setCurrentIdx(i => i + 1)
       } else {
-        setStage('capture')
+        setStage('loading')
         window.scrollTo(0, 0)
+        setTimeout(() => {
+          setStage('capture')
+          window.scrollTo(0, 0)
+        }, 2000)
       }
     }, 340)
   }, [currentIdx, answers])
@@ -80,21 +84,15 @@ export default function QuizEngine() {
 
     const diagnostic = buildDiagnosticResult(answers, qualification)
 
-    setLead(leadData)
-    setResult(diagnostic)
-    setStage('loading')
-    window.scrollTo(0, 0)
-
-    await Promise.all([
-      new Promise(resolve => setTimeout(resolve, 2000)),
-      fetch('/api/submit-lead', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ lead: leadData, result: diagnostic }),
-      }).catch(err => console.warn('[QuizEngine] submit-lead failed:', err)),
-    ])
+    fetch('/api/submit-lead', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ lead: leadData, result: diagnostic }),
+    }).catch(err => console.warn('[QuizEngine] submit-lead failed:', err))
 
     clearSession()
+    setLead(leadData)
+    setResult(diagnostic)
     setStage('results')
     window.scrollTo(0, 0)
   }, [answers])

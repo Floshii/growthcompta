@@ -182,7 +182,7 @@ export default function ResultsPage({ result, lead, onReset }: Props) {
       {/* ROADMAP */}
       <section className="py-14 md:py-16 bg-white border-y border-line">
         <div className="max-w-[1280px] mx-auto px-5 md:px-8">
-          {globalScore >= 97 ? (
+          {globalScore > 93 ? (
             /* Easter egg — perfect score */
             <div className="text-center max-w-[600px] mx-auto py-8">
               <div className="text-[48px] mb-6">🏆</div>
