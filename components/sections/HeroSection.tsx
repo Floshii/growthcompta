@@ -1,23 +1,28 @@
 import Link from 'next/link'
 import DashboardMock from './DashboardMock'
 
+export const CTA_HREF = '/outils/audit-acquisition'
+export const CTA_LABEL = 'Obtenir mon audit offert'
+
 export default function HeroSection() {
   return (
-    <section className="py-[70px]">
-      <div className="max-w-[1280px] mx-auto px-8">
-        <div className="grid gap-16 items-center" style={{ gridTemplateColumns: '1.05fr 1fr' }}>
+    <section className="py-14 md:py-[70px]">
+      <div className="max-w-[1280px] mx-auto px-5 md:px-8">
+        <div className="grid gap-10 lg:gap-16 items-center lg:grid-cols-[1.05fr_1fr]">
+
           {/* Left */}
           <div>
-            <p className="font-mono text-[12px] uppercase tracking-[0.14em] text-muted mb-7 flex items-center gap-2">
+            <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted mb-6 flex items-center gap-2">
               <span className="inline-block w-1.5 h-1.5 rounded-full bg-accent" />
-              Cabinet growth · 100% experts-comptables
+              100% experts comptables &amp; fiscaux
             </p>
 
             <h1
               className="font-display font-bold text-ink m-0"
-              style={{ fontSize: 'clamp(48px, 5.4vw, 88px)', letterSpacing: '-0.04em', lineHeight: 0.92 }}
+              style={{ fontSize: 'clamp(36px, 4.8vw, 80px)', letterSpacing: '-0.04em', lineHeight: 0.94 }}
             >
-              Plus de{' '}
+              Le système d&apos;acquisition moderne<br />
+              pour cabinets comptables{' '}
               <span
                 className="inline"
                 style={{
@@ -25,49 +30,45 @@ export default function HeroSection() {
                   padding: '0 4px',
                 }}
               >
-                clients
+                ambitieux
               </span>
-              .<br />
-              Moins de prospection.<br />
-              Zéro discours.
+              .
             </h1>
 
-            <p className="text-[20px] leading-[1.45] text-ink-2 max-w-[540px] mt-8 mb-10">
-              On installe un moteur d&apos;acquisition complet pour votre cabinet — SEO programmatique, paid, content &amp; sales ops — et on l&apos;opère avec vous.
+            <p className="text-[17px] md:text-[19px] leading-[1.5] text-ink-2 max-w-[520px] mt-7 mb-8">
+              On installe un moteur d&apos;acquisition complet pour votre cabinet — et on l&apos;opère avec vous.
             </p>
 
-            <div className="flex items-center gap-3.5 flex-wrap">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
               <Link
-                href="#contact"
-                className="inline-flex items-center gap-2.5 bg-ink text-white font-medium text-[15px] px-[22px] py-[14px] rounded-full border border-transparent hover:-translate-y-px transition-transform duration-200 group"
+                href={CTA_HREF}
+                className="inline-flex items-center gap-2.5 bg-accent text-white font-medium text-[15px] px-[24px] py-[15px] rounded-full border border-transparent hover:bg-accent-deep hover:-translate-y-px transition-all duration-200 group"
               >
-                Réserver un audit
+                {CTA_LABEL}
                 <span className="inline-block transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
               </Link>
-              <Link
-                href="/pricing"
-                className="inline-flex items-center gap-2.5 bg-transparent text-ink font-medium text-[15px] px-[22px] py-[14px] rounded-full border border-line hover:border-ink hover:bg-paper transition-all duration-200"
-              >
-                Voir le pricing
-              </Link>
+              <span className="font-mono text-[11px] text-muted tracking-[0.08em]">
+                Gratuit · Sans engagement
+              </span>
             </div>
 
-            <div className="flex gap-8 mt-14 flex-wrap">
+            <div className="flex gap-8 mt-10 md:mt-14 flex-wrap">
               <div>
-                <div className="font-display font-bold text-[36px] tracking-display leading-none">27</div>
+                <div className="font-display font-bold text-[32px] md:text-[36px] tracking-display leading-none">17</div>
                 <div className="font-mono text-[11px] uppercase tracking-[0.12em] text-muted mt-1">Cabinets · 4 régions</div>
               </div>
               <div>
-                <div className="font-display font-bold text-[36px] tracking-display leading-none">+180k€</div>
+                <div className="font-display font-bold text-[32px] md:text-[36px] tracking-display leading-none">+120k€</div>
                 <div className="font-mono text-[11px] uppercase tracking-[0.12em] text-muted mt-1">CA additionnel / 6 mois</div>
               </div>
             </div>
           </div>
 
-          {/* Right — Dashboard */}
-          <div>
+          {/* Right — Dashboard (desktop only) */}
+          <div className="hidden lg:block">
             <DashboardMock />
           </div>
+
         </div>
       </div>
     </section>

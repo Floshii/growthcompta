@@ -40,7 +40,7 @@ export default function HomePage() {
       <StatsSection />
       <ServicesSection />
       <MethodSection />
-      <CasesSection />
+      {/* <CasesSection /> — masqué jusqu'à avoir des chiffres clients confirmés */}
       <TestimonialsSection />
       <FAQSection />
       <CTABanner />

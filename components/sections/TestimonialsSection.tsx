@@ -15,17 +15,17 @@ const testis = [
 
 export default function TestimonialsSection() {
   return (
-    <section className="py-[100px] bg-white">
-      <div className="max-w-[1280px] mx-auto px-8">
-        <div className="flex items-end justify-between gap-12 mb-14 flex-wrap">
+    <section className="py-16 md:py-[100px] bg-white">
+      <div className="max-w-[1280px] mx-auto px-5 md:px-8">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 md:gap-12 mb-10 md:mb-14">
           <div>
-            <p className="font-mono text-[12px] uppercase tracking-[0.14em] text-muted mb-3 flex items-center gap-2">
+            <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted mb-3 flex items-center gap-2">
               <span className="inline-block w-1.5 h-1.5 rounded-full bg-accent" />
               Témoignages · associés & dirigeants
             </p>
             <h2
               className="font-display font-bold text-ink m-0"
-              style={{ fontSize: 'clamp(40px, 4.4vw, 64px)', letterSpacing: '-0.035em', lineHeight: 0.95 }}
+              style={{ fontSize: 'clamp(36px, 4.4vw, 60px)', letterSpacing: '-0.035em', lineHeight: 0.95 }}
             >
               Ce qu&apos;ils{' '}
               <span style={{ background: 'linear-gradient(180deg, transparent 70%, var(--color-accent) 70%)', padding: '0 2px' }}>
@@ -34,8 +34,8 @@ export default function TestimonialsSection() {
               .
             </h2>
           </div>
-          <p className="text-[15px] text-ink-2 max-w-[360px] leading-relaxed">
-            27 cabinets nous ont fait confiance depuis 2023. Réfs disponibles sur demande après le premier call.
+          <p className="text-[15px] text-ink-2 md:max-w-[360px] leading-relaxed">
+            17 cabinets nous ont fait confiance depuis 2023. Réfs disponibles sur demande après le premier call.
           </p>
         </div>
 

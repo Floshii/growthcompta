@@ -40,7 +40,7 @@ export default function Footer() {
               <span className="inline-block w-[7px] h-[7px] rounded-full bg-accent" style={{ transform: 'translateY(-2px)' }} />
             </Link>
             <p className="text-[#d6d4cf] text-sm leading-relaxed max-w-[320px] mt-4">
-              Cabinet de growth marketing 100% dédié aux experts-comptables. Paris · Lyon · remote.
+              Le système d&apos;acquisition moderne pour cabinets comptables ambitieux.
             </p>
           </div>
 
