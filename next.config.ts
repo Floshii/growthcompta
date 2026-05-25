@@ -2,6 +2,7 @@ import type { NextConfig } from 'next'
 
 const config: NextConfig = {
   pageExtensions: ['ts', 'tsx', 'mdx'],
+  serverExternalPackages: ['pdfkit'],
   async headers() {
     return [
       {
