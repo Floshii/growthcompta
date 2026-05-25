@@ -4,7 +4,18 @@ import matter from 'gray-matter'
 
 const contentDir = path.join(process.cwd(), 'content/blog')
 
-export type ArticleCategory = 'acquisition' | 'seo' | 'ia' | 'specialisation' | 'rentabilite' | 'outils'
+export type ArticleCategory =
+  | 'acquisition'
+  | 'seo'
+  | 'ia'
+  | 'specialisation'
+  | 'rentabilite'
+  | 'outils'
+  | 'scale'
+  | 'pennylane'
+  | 'benchmarks'
+  | 'recrutement'
+  | 'personal-brand'
 
 export interface ArticleFrontmatter {
   title: string
