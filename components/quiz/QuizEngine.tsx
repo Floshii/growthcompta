@@ -70,7 +70,6 @@ export default function QuizEngine() {
   }, [currentIdx])
 
   const handleSubmitLead = useCallback(async (leadData: LeadData) => {
-    // Build qualification from answers
     const qualification: Record<string, string> = {}
     QUESTIONS.filter(q => q.isQualification && q.qualificationKey).forEach(q => {
       const val = answers[q.id]
@@ -81,20 +80,21 @@ export default function QuizEngine() {
 
     const diagnostic = buildDiagnosticResult(answers, qualification)
 
-    // Call API (fire-and-forget with graceful failure)
-    try {
-      await fetch('/api/submit-lead', {
+    setLead(leadData)
+    setResult(diagnostic)
+    setStage('loading')
+    window.scrollTo(0, 0)
+
+    await Promise.all([
+      new Promise(resolve => setTimeout(resolve, 2000)),
+      fetch('/api/submit-lead', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ lead: leadData, result: diagnostic }),
-      })
-    } catch (err) {
-      console.warn('[QuizEngine] submit-lead failed:', err)
-    }
+      }).catch(err => console.warn('[QuizEngine] submit-lead failed:', err)),
+    ])
 
     clearSession()
-    setResult(diagnostic)
-    setLead(leadData)
     setStage('results')
     window.scrollTo(0, 0)
   }, [answers])
@@ -108,6 +108,31 @@ export default function QuizEngine() {
     setLead(null)
     window.scrollTo(0, 0)
   }, [])
+
+  if (stage === 'loading') {
+    return (
+      <div className="min-h-screen bg-paper flex flex-col items-center justify-center gap-8 px-5">
+        <div className="flex gap-2">
+          {[0, 1, 2].map(i => (
+            <span
+              key={i}
+              className="w-2.5 h-2.5 rounded-full bg-accent"
+              style={{ animation: `bounce 1.2s ease-in-out ${i * 0.2}s infinite` }}
+            />
+          ))}
+        </div>
+        <div className="text-center max-w-[380px]">
+          <p className="font-display font-bold text-ink text-[22px] tracking-display leading-tight mb-2">
+            Analyse en cours…
+          </p>
+          <p className="text-muted text-[14px] leading-relaxed">
+            On calcule votre score sur 8 dimensions et on prépare vos recommandations personnalisées.
+          </p>
+        </div>
+        <style>{`@keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }`}</style>
+      </div>
+    )
+  }
 
   if (stage === 'results' && result && lead) {
     return <ResultsPage result={result} lead={lead} onReset={handleReset} />

@@ -59,11 +59,11 @@ export default function QuizStep({
 
         <div className="flex flex-col gap-3">
           {question.options.map((opt, i) => {
-            const selected = selectedValue === opt.value && selectedValue !== undefined
+            const selected = selectedValue === i
             return (
               <button
                 key={i}
-                onClick={() => onAnswer(opt.value)}
+                onClick={() => onAnswer(i)}
                 className="flex items-center gap-4 w-full px-5 py-5 rounded-xl border text-left transition-all duration-150 group"
                 style={{
                   background: selected ? 'var(--color-accent-soft, #fbe8de)' : '#fff',

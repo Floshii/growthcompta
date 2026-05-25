@@ -139,8 +139,9 @@ export default function LeadCaptureModal({ score, onSubmit }: Props) {
               )}
             </button>
 
-            <p className="text-center font-mono text-[11px] text-muted mt-1">
-              🔒 Résultats envoyés par email. Aucun spam, jamais.
+            <p className="text-center font-mono text-[11px] text-muted mt-1 leading-relaxed">
+              🔒 Résultats envoyés par email. Aucun spam promis !<br />
+              On ne vous recontacte que si on est pertinent pour vous.
             </p>
           </form>
         </div>

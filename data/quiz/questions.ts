@@ -66,14 +66,14 @@ export const QUESTIONS: Question[] = [
     isQualification: true,
     qualificationKey: 'averageBasket',
     options: [
-      { label: 'Plus de 2 000 €/mois', value: 3 },
-      { label: 'Entre 1 000 et 2 000 €/mois', value: 2 },
-      { label: 'Entre 500 et 1 000 €/mois', value: 1 },
-      { label: 'Moins de 500 €/mois', value: 0 },
+      { label: 'Plus de 1 000 €/mois', value: 3 },
+      { label: 'Entre 500 et 1 000 €/mois', value: 2 },
+      { label: 'Entre 100 et 500 €/mois', value: 1 },
+      { label: 'Moins de 100 €/mois', value: 0 },
     ],
   },
 
-  // ── SITE WEB & CONVERSION (3 questions) ─────────────────────
+  // ── SITE WEB & CONVERSION (2 questions) ─────────────────────
   {
     id: 'conv_1',
     category: 'conversion',
@@ -83,17 +83,6 @@ export const QUESTIONS: Question[] = [
       { label: 'Oui, un formulaire de contact', value: 1 },
       { label: "Juste un numéro de téléphone", value: 0 },
       { label: "On n'a pas de site à jour", value: 0 },
-    ],
-  },
-  {
-    id: 'conv_2',
-    category: 'conversion',
-    text: 'Votre site se charge en moins de 3 secondes sur mobile ?',
-    options: [
-      { label: 'Oui, il est rapide et optimisé', value: 3 },
-      { label: 'Je ne sais pas', value: 1 },
-      { label: 'Il est plutôt lent', value: 0 },
-      { label: 'Mon site date de plus de 3 ans', value: 0 },
     ],
   },
   {
@@ -108,13 +97,13 @@ export const QUESTIONS: Question[] = [
     ],
   },
 
-  // ── ACQUISITION & LEADS (3 questions) ───────────────────────
+  // ── ACQUISITION & LEADS (4 questions) ───────────────────────
   {
     id: 'acq_1',
     category: 'acquisition',
     text: 'Comment vos nouveaux clients vous trouvent-ils actuellement ?',
     options: [
-      { label: 'Mix diversifié : SEO, Ads, LinkedIn, bouche-à-oreille', value: 3 },
+      { label: 'Mix diversifié et équilibré — ads, SEO, LinkedIn, referral', value: 3 },
       { label: 'Surtout bouche-à-oreille + un peu de Google', value: 1 },
       { label: 'Quasi-exclusivement le bouche-à-oreille', value: 0 },
       { label: 'On fait un peu de tout mais sans vraie stratégie', value: 1 },
@@ -142,6 +131,17 @@ export const QUESTIONS: Question[] = [
       { label: 'De temps en temps, sans système', value: 1 },
       { label: 'Rarement, on attend que les clients viennent', value: 0 },
       { label: 'Jamais — on est contre cette approche', value: 0 },
+    ],
+  },
+  {
+    id: 'acq_4',
+    category: 'acquisition',
+    text: 'Avez-vous déjà fait de la publicité pour votre cabinet ?',
+    options: [
+      { label: 'Oui, Facebook et/ou Google Ads — et ça a bien fonctionné', value: 3 },
+      { label: "J'ai essayé les Ads mais sans succès", value: 1 },
+      { label: "J'ai fait de la pub, mais pas en ligne", value: 1 },
+      { label: 'Non, jamais', value: 0 },
     ],
   },
 
@@ -284,8 +284,8 @@ export const CATEGORY_LABELS: Record<string, string> = {
 export const CATEGORY_MAX: Record<string, number> = {
   visibility:  15,
   positioning: 15,
-  conversion:  15,
-  acquisition: 15,
+  conversion:  10,
+  acquisition: 20,
   content:     10,
   crm:         10,
   automation:  10,

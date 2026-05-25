@@ -99,7 +99,7 @@ export default function LandingPage({ onStart }: Props) {
               { n: '03', icon: '⬡', title: 'Votre radar growth', desc: 'Un visuel clair de vos points forts et de vos angles morts.' },
               { n: '04', icon: '📅', title: 'Roadmap 30 / 60 / 90 jours', desc: "Un plan d'action séquencé pour transformer le diagnostic en résultats." },
             ].map(c => (
-              <div key={c.n} className="bg-white rounded-xl p-6 border border-line">
+              <div key={c.n} className="bg-white rounded-xl p-6 border border-line hover:-translate-y-1 hover:shadow-[0_8px_24px_-8px_rgba(26,26,26,0.12)] transition-all duration-200 cursor-default">
                 <div className="flex items-center gap-3 mb-4">
                   <span className="font-mono text-[10px] text-muted">{c.n}</span>
                   <span className="text-accent text-[18px]">{c.icon}</span>

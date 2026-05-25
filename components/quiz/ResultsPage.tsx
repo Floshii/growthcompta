@@ -182,40 +182,69 @@ export default function ResultsPage({ result, lead, onReset }: Props) {
       {/* ROADMAP */}
       <section className="py-14 md:py-16 bg-white border-y border-line">
         <div className="max-w-[1280px] mx-auto px-5 md:px-8">
-          <div className="mb-10">
-            <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted mb-3 flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-accent" />Plan d&apos;action
-            </p>
-            <h2 className="font-display font-bold text-ink text-[32px] md:text-[40px] tracking-display leading-none">
-              Votre roadmap 30 / 60 / 90 jours.
-            </h2>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8 relative">
-            {['30', '60', '90'].map((period, pi) => {
-              const actions = roadmap.filter(r => r.period === period)
-              const colors = ['#dc4a2b', '#e85d2b', '#0a8f4a']
-              const labels = ['Stop the bleeding', 'Build the engine', 'Scale & compound']
-              return (
-                <div key={period} className="relative">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-3 h-3 rounded-full shrink-0" style={{ background: colors[pi] }} />
-                    <div>
-                      <div className="font-display font-bold text-[17px] text-ink">{period} jours</div>
-                      <div className="font-mono text-[10px] text-muted uppercase tracking-wider">{labels[pi]}</div>
+          {globalScore >= 97 ? (
+            /* Easter egg — perfect score */
+            <div className="text-center max-w-[600px] mx-auto py-8">
+              <div className="text-[48px] mb-6">🏆</div>
+              <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted mb-4 flex items-center justify-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-accent" />Score parfait
+              </p>
+              <h2 className="font-display font-bold text-ink text-[32px] md:text-[40px] tracking-display leading-none mb-4">
+                Vous êtes des boss.
+              </h2>
+              <p className="text-[17px] text-ink-2 leading-relaxed mb-3">
+                Honnêtement ? On ne va pas pouvoir vous apprendre grand-chose.
+              </p>
+              <p className="text-[15px] text-muted leading-relaxed mb-8">
+                Mais si vous êtes chauds pour comparer vos pratiques, challenger votre stratégie ou juste curiosité — on est dispo pour un appel entre gens qui savent ce qu&apos;ils font.
+              </p>
+              <Link
+                href={CALENDLY_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2.5 bg-accent text-white font-medium text-[15px] px-7 py-4 rounded-full hover:bg-accent-deep hover:-translate-y-px transition-all duration-200 group"
+              >
+                Appel entre experts ↗
+              </Link>
+            </div>
+          ) : (
+            <>
+              <div className="mb-10">
+                <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted mb-3 flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent" />Plan d&apos;action
+                </p>
+                <h2 className="font-display font-bold text-ink text-[32px] md:text-[40px] tracking-display leading-none">
+                  Votre roadmap 30 / 60 / 90 jours.
+                </h2>
+              </div>
+              <div className="grid md:grid-cols-3 gap-8 relative">
+                {['30', '60', '90'].map((period, pi) => {
+                  const actions = roadmap.filter(r => r.period === period)
+                  const colors = ['#dc4a2b', '#e85d2b', '#0a8f4a']
+                  const labels = ['Stop the bleeding', 'Build the engine', 'Scale & compound']
+                  return (
+                    <div key={period} className="relative">
+                      <div className="flex items-center gap-3 mb-4">
+                        <div className="w-3 h-3 rounded-full shrink-0" style={{ background: colors[pi] }} />
+                        <div>
+                          <div className="font-display font-bold text-[17px] text-ink">{period} jours</div>
+                          <div className="font-mono text-[10px] text-muted uppercase tracking-wider">{labels[pi]}</div>
+                        </div>
+                      </div>
+                      <ul className="flex flex-col gap-2.5 pl-6 border-l-2 border-line">
+                        {actions.map((a, ai) => (
+                          <li key={ai} className="text-[14px] text-ink-2 flex items-start gap-2">
+                            <span className="text-accent mt-0.5 shrink-0 text-[12px]">✓</span>
+                            {a.title}
+                          </li>
+                        ))}
+                      </ul>
                     </div>
-                  </div>
-                  <ul className="flex flex-col gap-2.5 pl-6 border-l-2 border-line">
-                    {actions.map((a, ai) => (
-                      <li key={ai} className="text-[14px] text-ink-2 flex items-start gap-2">
-                        <span className="text-accent mt-0.5 shrink-0 text-[12px]">✓</span>
-                        {a.title}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )
-            })}
-          </div>
+                  )
+                })}
+              </div>
+            </>
+          )}
         </div>
       </section>
 

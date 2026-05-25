@@ -10,7 +10,10 @@ export function calculateCategoryScore(
   const qs = QUESTIONS.filter(q => q.category === category && !q.isQualification)
   if (qs.length === 0) return 0
 
-  const answered = qs.reduce((sum, q) => sum + (answers[q.id] ?? 0), 0)
+  const answered = qs.reduce((sum, q) => {
+    const idx = answers[q.id]
+    return sum + (idx !== undefined ? (q.options[idx]?.value ?? 0) : 0)
+  }, 0)
   const maxPossible = qs.length * 3
   const max = CATEGORY_MAX[category] ?? 10
   return Math.round((answered / maxPossible) * max)
@@ -48,7 +51,10 @@ export function getSimulatedScore(answers: Record<string, number>): number | nul
   const answeredScored = scoredQuestions.filter(q => answers[q.id] !== undefined)
   if (answeredScored.length === 0) return null
 
-  const total = answeredScored.reduce((sum, q) => sum + (answers[q.id] ?? 0), 0)
+  const total = answeredScored.reduce((sum, q) => {
+    const idx = answers[q.id]
+    return sum + (idx !== undefined ? (q.options[idx]?.value ?? 0) : 0)
+  }, 0)
   const max = answeredScored.length * 3
   return Math.round((total / max) * 100)
 }

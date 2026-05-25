@@ -93,4 +93,4 @@ export interface LeadData {
   city: string
 }
 
-export type QuizStage = 'landing' | 'quiz' | 'capture' | 'results'
+export type QuizStage = 'landing' | 'quiz' | 'capture' | 'loading' | 'results'
