@@ -5,9 +5,14 @@ import StructuredData from '@/components/seo/StructuredData'
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
 import CTABanner from '@/components/sections/CTABanner'
 import Badge from '@/components/ui/Badge'
+import TLDRBox from '@/components/blog/TLDRBox'
+import Callout from '@/components/blog/Callout'
+import KeyInsight from '@/components/blog/KeyInsight'
 import { getAllArticleSlugs, getArticleBySlug } from '@/lib/mdx'
 import { formatDate } from '@/lib/utils'
 import type { Metadata } from 'next'
+
+const mdxComponents = { TLDRBox, Callout, KeyInsight }
 
 interface PageProps {
   params: Promise<{ slug: string }>
@@ -51,7 +56,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
     description: article.frontmatter.description,
     datePublished: article.frontmatter.date,
     author: { '@type': 'Person', name: article.frontmatter.author },
-    publisher: { '@type': 'Organization', name: 'GrowthCompta', url: 'https://growthcompta.fr' },
+    publisher: { '@type': 'Organization', name: 'GrowthCompta', url: 'https://growthcompta.com' },
   }
 
   return (
@@ -80,9 +85,10 @@ export default async function BlogArticlePage({ params }: PageProps) {
             </div>
           </header>
 
-          <div className="prose prose-lg prose-blue max-w-none">
+          <div className="prose prose-lg max-w-none">
             <MDXRemote
               source={article.content}
+              components={mdxComponents}
               options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
             />
           </div>

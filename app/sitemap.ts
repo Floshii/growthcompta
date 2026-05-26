@@ -4,7 +4,7 @@ import { niches } from '@/data/niches'
 import { leadMagnets } from '@/data/lead-magnets'
 import { getAllArticleSlugs } from '@/lib/mdx'
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://growthcompta.fr'
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://growthcompta.com'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [

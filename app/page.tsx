@@ -20,7 +20,7 @@ const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   name: 'GrowthCompta',
-  url: 'https://growthcompta.fr',
+  url: 'https://growthcompta.com',
   description: "Agence growth B2B spécialisée dans l'acquisition pour cabinets comptables français.",
 }
 
@@ -28,7 +28,7 @@ const websiteSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
   name: 'GrowthCompta',
-  url: 'https://growthcompta.fr',
+  url: 'https://growthcompta.com',
 }
 
 export default function HomePage() {

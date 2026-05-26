@@ -35,7 +35,7 @@ export default async function ServicePage({ params }: PageProps) {
     '@type': 'Service',
     name: service.title,
     description: service.description,
-    provider: { '@type': 'Organization', name: 'GrowthCompta', url: 'https://growthcompta.fr' },
+    provider: { '@type': 'Organization', name: 'GrowthCompta', url: 'https://growthcompta.com' },
   }
 
   const faqSchema = service.faqs.length > 0 ? {
