@@ -5,6 +5,7 @@ import ServicesSection from '@/components/sections/ServicesSection'
 import MethodSection from '@/components/sections/MethodSection'
 import CasesSection from '@/components/sections/CasesSection'
 import TestimonialsSection from '@/components/sections/TestimonialsSection'
+import FitSection from '@/components/sections/FitSection'
 import FAQSection from '@/components/sections/FAQSection'
 import CTABanner from '@/components/sections/CTABanner'
 import StructuredData from '@/components/seo/StructuredData'
@@ -42,6 +43,7 @@ export default function HomePage() {
       <MethodSection />
       {/* <CasesSection /> — masqué jusqu'à avoir des chiffres clients confirmés */}
       <TestimonialsSection />
+      <FitSection />
       <FAQSection />
       <CTABanner />
     </>
