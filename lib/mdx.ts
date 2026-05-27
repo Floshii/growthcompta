@@ -17,6 +17,11 @@ export type ArticleCategory =
   | 'recrutement'
   | 'personal-brand'
 
+export interface ArticleFAQItem {
+  question: string
+  answer: string
+}
+
 export interface ArticleFrontmatter {
   title: string
   description: string
@@ -26,6 +31,7 @@ export interface ArticleFrontmatter {
   author: string
   featured: boolean
   ogImage: string
+  faq?: ArticleFAQItem[]
 }
 
 export interface Article {

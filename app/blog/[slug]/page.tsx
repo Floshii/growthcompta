@@ -55,13 +55,26 @@ export default async function BlogArticlePage({ params }: PageProps) {
     headline: article.frontmatter.title,
     description: article.frontmatter.description,
     datePublished: article.frontmatter.date,
-    author: { '@type': 'Person', name: article.frontmatter.author },
+    author: { '@type': 'Organization', name: 'L\'équipe GrowthCompta', url: 'https://growthcompta.com' },
     publisher: { '@type': 'Organization', name: 'GrowthCompta', url: 'https://growthcompta.com' },
   }
+
+  const faqSchema = article.frontmatter.faq && article.frontmatter.faq.length > 0
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: article.frontmatter.faq.map((item) => ({
+          '@type': 'Question',
+          name: item.question,
+          acceptedAnswer: { '@type': 'Answer', text: item.answer },
+        })),
+      }
+    : null
 
   return (
     <>
       <StructuredData data={articleSchema} />
+      {faqSchema && <StructuredData data={faqSchema} />
       <BreadcrumbSchema items={[
         { name: 'Accueil', href: '/' },
         { name: 'Blog', href: '/blog' },
