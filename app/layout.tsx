@@ -39,8 +39,18 @@ export const metadata: Metadata = {
   },
   description:
     "GrowthCompta installe votre moteur d'acquisition complet — SEO programmatique, paid ads, content & sales ops. Dédié aux cabinets d'expertise comptable.",
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://growthcompta.fr'),
-  openGraph: { type: 'website', locale: 'fr_FR', siteName: 'GrowthCompta' },
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://growthcompta.com'),
+  openGraph: {
+    type: 'website',
+    locale: 'fr_FR',
+    siteName: 'GrowthCompta',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'GrowthCompta' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@GrowthCompta',
+    images: ['/og-image.png'],
+  },
   robots: { index: true, follow: true },
 }
 

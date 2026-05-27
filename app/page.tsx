@@ -30,6 +30,14 @@ const websiteSchema = {
   '@type': 'WebSite',
   name: 'GrowthCompta',
   url: 'https://growthcompta.com',
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: {
+      '@type': 'EntryPoint',
+      urlTemplate: 'https://growthcompta.com/blog?q={search_term_string}',
+    },
+    'query-input': 'required name=search_term_string',
+  },
 }
 
 export default function HomePage() {
