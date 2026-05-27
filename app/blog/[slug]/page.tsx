@@ -74,7 +74,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
   return (
     <>
       <StructuredData data={articleSchema} />
-      {faqSchema && <StructuredData data={faqSchema} />
+      {faqSchema && <StructuredData data={faqSchema} />}
       <BreadcrumbSchema items={[
         { name: 'Accueil', href: '/' },
         { name: 'Blog', href: '/blog' },
