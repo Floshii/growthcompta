@@ -208,10 +208,10 @@ async function generatePdfBase64({
     })
     doc.roundedRect(M, 380, 280, 50, 8).fill(ACCENT)
     doc.fillColor('#fff').font('Helvetica-Bold').fontSize(13).text('Reserver mon audit strategique', M, 400, { width: 280, align: 'center' })
-    const url = process.env.NEXT_PUBLIC_CALENDLY_URL ?? 'growthcompta.fr/audit'
+    const url = process.env.NEXT_PUBLIC_CALENDLY_URL ?? 'growthcompta.com/audit'
     doc.fillColor('#ffffff55').font('Helvetica').fontSize(11).text(url, M, 448)
     doc.fillColor(ACCENT).rect(M, 760, CW, 1.5).fill()
-    doc.fillColor('#ffffff33').font('Helvetica').fontSize(9).text('GrowthCompta · diagnostic@growthcompta.fr · growthcompta.fr', M, 774, { align: 'center', width: CW })
+    doc.fillColor('#ffffff33').font('Helvetica').fontSize(9).text('GrowthCompta · diagnostic@growthcompta.com · growthcompta.com', M, 774, { align: 'center', width: CW })
 
     doc.end()
   })
