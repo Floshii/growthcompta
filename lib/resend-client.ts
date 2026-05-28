@@ -26,22 +26,26 @@ export async function sendLeadEmails(
     : []
 
   // Email to prospect
-  await resend.emails.send({
-    from: 'GrowthCompta <diagnostic@growthcompta.fr>',
+  const r1 = await resend.emails.send({
+    from: 'GrowthCompta <diagnostic@growthcompta.com>',
     to: lead.email,
     subject: `Votre Cabinet Growth Score — ${globalScore}/100`,
     html: buildProspectEmail({ lead, globalScore, levelConfig, calendlyUrl }),
     attachments,
   })
+  if (r1.error) console.error('[resend] prospect email error:', r1.error)
+  else console.log('[resend] prospect email sent:', r1.data?.id)
 
   // Internal notification
-  const notifTo = process.env.NOTIFICATION_EMAIL ?? 'florent@growthcompta.fr'
-  await resend.emails.send({
-    from: 'GrowthCompta <noreply@growthcompta.fr>',
+  const notifTo = process.env.NOTIFICATION_EMAIL ?? 'florent@growthcompta.com'
+  const r2 = await resend.emails.send({
+    from: 'GrowthCompta <noreply@growthcompta.com>',
     to: notifTo,
     subject: `[Nouveau lead] ${lead.cabinetName || lead.firstName} — ${globalScore}/100`,
     html: buildInternalEmail({ lead, result }),
   })
+  if (r2.error) console.error('[resend] internal email error:', r2.error)
+  else console.log('[resend] internal email sent:', r2.data?.id)
 }
 
 function esc(s: string): string {
