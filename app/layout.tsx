@@ -3,6 +3,9 @@ import { Bricolage_Grotesque, Geist, Geist_Mono, Instrument_Serif } from 'next/f
 import { Analytics } from '@vercel/analytics/react'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
+import GoogleAnalytics from '@/components/analytics/GoogleAnalytics'
+import MetaPixel from '@/components/analytics/MetaPixel'
+import GeoReferral from '@/components/analytics/GeoReferral'
 import './globals.css'
 
 const bricolage = Bricolage_Grotesque({
@@ -65,6 +68,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main id="main-content">{children}</main>
         <Footer />
         <Analytics />
+        <GoogleAnalytics />
+        <MetaPixel />
+        <GeoReferral />
       </body>
     </html>
   )

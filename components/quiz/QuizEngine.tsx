@@ -1,9 +1,10 @@
 'use client'
 
-import { useState, useCallback, useEffect, useMemo } from 'react'
+import { useState, useCallback, useEffect, useMemo, useRef } from 'react'
 import type { LeadData, DiagnosticResult, QuizStage } from '@/types/quiz'
 import { QUESTIONS } from '@/data/quiz/questions'
 import { buildDiagnosticResult, getSimulatedScore } from '@/data/quiz/scoring'
+import { trackEvent, trackPixelEvent } from '@/lib/analytics'
 import LandingPage from './LandingPage'
 import QuizStep from './QuizStep'
 import LeadCaptureModal from './LeadCaptureModal'
@@ -33,6 +34,7 @@ export default function QuizEngine() {
   const [currentIdx, setCurrentIdx] = useState(0)
   const [result, setResult] = useState<DiagnosticResult | null>(null)
   const [lead, setLead] = useState<LeadData | null>(null)
+  const captureTracked = useRef(false)
 
   // Restore from sessionStorage on mount
   useEffect(() => {
@@ -40,11 +42,26 @@ export default function QuizEngine() {
     if (Object.keys(saved).length > 0) {
       setAnswers(saved)
     }
+    trackEvent('quiz_landing_view')
   }, [])
+
+  // Track stage transitions (capture + results — only once per session)
+  useEffect(() => {
+    if (stage === 'capture' && !captureTracked.current) {
+      captureTracked.current = true
+      trackEvent('lead_capture_shown')
+    }
+    if (stage === 'results' && result) {
+      trackEvent('results_viewed', { score: result.globalScore })
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [stage])
 
   const simulatedScore = useMemo(() => getSimulatedScore(answers), [answers])
 
   const handleStart = useCallback(() => {
+    trackEvent('quiz_started')
+    trackPixelEvent('InitiateCheckout')
     setStage('quiz')
     window.scrollTo(0, 0)
   }, [])
@@ -55,10 +72,14 @@ export default function QuizEngine() {
     setAnswers(next)
     saveToSession(next)
 
+    const nextIdx = currentIdx + 1
+    trackEvent('quiz_question_answered', { question_index: currentIdx + 1, total: QUESTIONS.length })
+
     setTimeout(() => {
-      if (currentIdx + 1 < QUESTIONS.length) {
-        setCurrentIdx(i => i + 1)
+      if (nextIdx < QUESTIONS.length) {
+        setCurrentIdx(nextIdx)
       } else {
+        trackEvent('quiz_completed', { answers_count: nextIdx })
         setStage('loading')
         window.scrollTo(0, 0)
         setTimeout(() => {
@@ -83,6 +104,9 @@ export default function QuizEngine() {
     })
 
     const diagnostic = buildDiagnosticResult(answers, qualification)
+
+    trackEvent('lead_submitted', { score: diagnostic.globalScore })
+    trackPixelEvent('Lead', { value: 1, currency: 'EUR' })
 
     fetch('/api/submit-lead', {
       method: 'POST',
