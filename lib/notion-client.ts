@@ -37,7 +37,14 @@ export async function insertLeadToNotion(
   }
 
   const notion = new Client({ auth: token })
-  const { globalScore, categoryScores, levelConfig, quickWins, roadmap, qualification } = result
+  const { globalScore, demandScore, supplyScore, quadrant, categoryScores, levelConfig, quickWins, roadmap, qualification } = result
+
+  const QUADRANT_LABELS: Record<string, string> = {
+    'scale-ready':        'Scale Ready',
+    'supply-constrained': 'Moteur en surchauffe',
+    'demand-constrained': 'Capacité sous-exploitée',
+    'restructure':        "Restructurer d'abord",
+  }
 
   // Format Quick Wins as readable text
   const quickWinsText = quickWins.slice(0, 3).map((qw, i) =>
@@ -70,6 +77,11 @@ export async function insertLeadToNotion(
     'Source':             { select: { name: 'Cabinet Growth Score' } },
     'Statut':             { select: { name: 'Nouveau' } },
 
+    // ── Supply vs Demand ─────────────────────────────────────
+    'Score Demand':   { number: demandScore },
+    'Score Supply':   { number: supplyScore },
+    'Quadrant':       { select: { name: QUADRANT_LABELS[quadrant] ?? quadrant } },
+
     // ── Scores par dimension ──────────────────────────────────
     'Score Visibilité':     { number: categoryScores.visibility },
     'Score Positionnement': { number: categoryScores.positioning },
@@ -79,6 +91,7 @@ export async function insertLeadToNotion(
     'Score CRM':            { number: categoryScores.crm },
     'Score Automation':     { number: categoryScores.automation },
     'Score Réputation':     { number: categoryScores.reputation },
+    'Score Supply (dim)':   { number: categoryScores.supply },
 
     // ── Qualification ─────────────────────────────────────────
     'Quick Wins': rt(quickWinsText),

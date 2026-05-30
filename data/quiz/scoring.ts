@@ -2,6 +2,7 @@ import type { CategoryScores, DiagnosticResult, LeadQualification } from '@/type
 import { QUESTIONS, CATEGORY_MAX } from './questions'
 import { getLevelConfig, getLevelId } from './levels'
 import { generateRecommendations } from './recommendations'
+import { getQuadrantId } from './quadrants'
 
 export function calculateCategoryScore(
   category: string,
@@ -36,14 +37,23 @@ export function buildDiagnosticResult(
     crm:         calculateCategoryScore('crm', answers),
     automation:  calculateCategoryScore('automation', answers),
     reputation:  calculateCategoryScore('reputation', answers),
+    supply:      calculateCategoryScore('supply', answers),
   }
 
   const globalScore = calculateGlobalScore(categoryScores)
-  const level = getLevelId(globalScore)
-  const levelConfig = getLevelConfig(globalScore)
-  const { quickWins, roadmap } = generateRecommendations(categoryScores, qualification)
 
-  return { globalScore, categoryScores, level, levelConfig, quickWins, roadmap, qualification }
+  // Supply = 20pts, demand = 80pts out of 100 total
+  const SUPPLY_MAX = CATEGORY_MAX.supply ?? 20
+  const DEMAND_MAX  = 100 - SUPPLY_MAX
+  const supplyScore = Math.round((categoryScores.supply / SUPPLY_MAX) * 100)
+  const demandScore = Math.round(((globalScore - categoryScores.supply) / DEMAND_MAX) * 100)
+
+  const quadrant    = getQuadrantId(demandScore, supplyScore)
+  const level       = getLevelId(globalScore)
+  const levelConfig = getLevelConfig(globalScore)
+  const { quickWins, roadmap } = generateRecommendations(categoryScores, qualification, quadrant)
+
+  return { globalScore, demandScore, supplyScore, quadrant, categoryScores, level, levelConfig, quickWins, roadmap, qualification }
 }
 
 export function getSimulatedScore(answers: Record<string, number>): number | null {

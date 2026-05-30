@@ -1,7 +1,7 @@
 import type { Question } from '@/types/quiz'
 
 export const QUESTIONS: Question[] = [
-  // ── VISIBILITÉ GOOGLE (3 questions × 5pts max) ──────────────
+  // ── VISIBILITÉ GOOGLE (2 questions) ──────────────────────────
   {
     id: 'vis_1',
     category: 'visibility',
@@ -11,17 +11,6 @@ export const QUESTIONS: Question[] = [
       { label: 'En première page, mais pas en tête', value: 2 },
       { label: 'En deuxième page ou après', value: 1 },
       { label: "Je ne sais pas / on n'apparaît pas", value: 0 },
-    ],
-  },
-  {
-    id: 'vis_2',
-    category: 'visibility',
-    text: 'Votre fiche Google Business Profile (Google Maps) est…',
-    options: [
-      { label: "Complète, à jour et avec des avis récents", value: 3 },
-      { label: 'Existante mais peu remplie', value: 1 },
-      { label: 'Non revendiquée ou inexistante', value: 0 },
-      { label: "Créée mais jamais vraiment travaillée", value: 1 },
     ],
   },
   {
@@ -36,7 +25,7 @@ export const QUESTIONS: Question[] = [
     ],
   },
 
-  // ── POSITIONNEMENT & SPÉCIALISATION (3 questions) ───────────
+  // ── POSITIONNEMENT & SPÉCIALISATION (3 questions) ────────────
   {
     id: 'pos_1',
     category: 'positioning',
@@ -73,18 +62,7 @@ export const QUESTIONS: Question[] = [
     ],
   },
 
-  // ── SITE WEB & CONVERSION (2 questions) ─────────────────────
-  {
-    id: 'conv_1',
-    category: 'conversion',
-    text: "Votre site web a-t-il un appel à l'action clair pour prendre rendez-vous ?",
-    options: [
-      { label: 'Oui, un bouton de prise de RDV en ligne visible partout', value: 3 },
-      { label: 'Oui, un formulaire de contact', value: 1 },
-      { label: "Juste un numéro de téléphone", value: 0 },
-      { label: "On n'a pas de site à jour", value: 0 },
-    ],
-  },
+  // ── SITE WEB & CONVERSION (1 question) ───────────────────────
   {
     id: 'conv_3',
     category: 'conversion',
@@ -97,7 +75,7 @@ export const QUESTIONS: Question[] = [
     ],
   },
 
-  // ── ACQUISITION & LEADS (4 questions) ───────────────────────
+  // ── ACQUISITION & LEADS (4 questions) ────────────────────────
   {
     id: 'acq_1',
     category: 'acquisition',
@@ -145,7 +123,7 @@ export const QUESTIONS: Question[] = [
     ],
   },
 
-  // ── CONTENU & AUTORITÉ (2 questions) ────────────────────────
+  // ── CONTENU & AUTORITÉ (1 question) ──────────────────────────
   {
     id: 'cont_1',
     category: 'content',
@@ -157,19 +135,8 @@ export const QUESTIONS: Question[] = [
       { label: 'Non, aucun contenu', value: 0 },
     ],
   },
-  {
-    id: 'cont_2',
-    category: 'content',
-    text: 'Votre présence LinkedIn professionnelle est…',
-    options: [
-      { label: 'Active : profil optimisé + publications régulières', value: 3 },
-      { label: 'Existante mais pas vraiment entretenue', value: 1 },
-      { label: 'Un profil créé mais vide', value: 0 },
-      { label: 'Inexistante', value: 0 },
-    ],
-  },
 
-  // ── CRM & RELANCE (2 questions) ──────────────────────────────
+  // ── CRM & RELANCE (1 question) ────────────────────────────────
   {
     id: 'crm_1',
     category: 'crm',
@@ -181,19 +148,8 @@ export const QUESTIONS: Question[] = [
       { label: "Je ne sais pas ce qu'est un CRM", value: 0 },
     ],
   },
-  {
-    id: 'crm_2',
-    category: 'crm',
-    text: 'Quand un prospect vous contacte et ne répond plus, vous…',
-    options: [
-      { label: 'Relancez avec une séquence automatisée', value: 3 },
-      { label: 'Relancez manuellement 1-2 fois', value: 1 },
-      { label: "Attendez qu'il revienne", value: 0 },
-      { label: "Il n'y a pas vraiment de processus", value: 0 },
-    ],
-  },
 
-  // ── AUTOMATION & IA (2 questions) ───────────────────────────
+  // ── AUTOMATION & IA (2 questions) ─────────────────────────────
   {
     id: 'auto_1',
     category: 'automation',
@@ -217,7 +173,7 @@ export const QUESTIONS: Question[] = [
     ],
   },
 
-  // ── RÉPUTATION & PREUVE SOCIALE (2 questions) ───────────────
+  // ── RÉPUTATION & PREUVE SOCIALE (2 questions) ─────────────────
   {
     id: 'rep_1',
     category: 'reputation',
@@ -241,7 +197,53 @@ export const QUESTIONS: Question[] = [
     ],
   },
 
-  // ── QUALIFICATION (2 questions non scorées) ──────────────────
+  // ── CAPACITÉ & SUPPLY (4 questions) ───────────────────────────
+  {
+    id: 'sup_1',
+    category: 'supply',
+    text: 'Si 10 nouveaux clients signaient demain, vous pourriez les absorber ?',
+    options: [
+      { label: 'Oui, sans friction — on a la capacité et les process', value: 3 },
+      { label: 'Oui, avec effort et quelques arbitrages', value: 2 },
+      { label: "Difficilement — on serait à l'os", value: 1 },
+      { label: 'Impossible en l\'état — on est déjà à fond', value: 0 },
+    ],
+  },
+  {
+    id: 'sup_2',
+    category: 'supply',
+    text: 'Votre taux de perte de clients sur les 12 derniers mois est…',
+    options: [
+      { label: 'Moins de 5% — je les garde presque tous', value: 3 },
+      { label: 'Entre 5 et 15% — quelques départs normaux', value: 2 },
+      { label: "Plus de 15% — c'est un vrai sujet", value: 0 },
+      { label: 'Je ne suis pas ce chiffre', value: 1 },
+    ],
+  },
+  {
+    id: 'sup_3',
+    category: 'supply',
+    text: "Ce qui freine le plus votre croissance aujourd'hui…",
+    options: [
+      { label: 'Pas assez de clients entrants', value: 3 },
+      { label: 'Manque de process et de systèmes', value: 2 },
+      { label: 'Pas assez de collaborateurs qualifiés', value: 1 },
+      { label: 'Manque de temps personnel — je suis débordé', value: 0 },
+    ],
+  },
+  {
+    id: 'sup_4',
+    category: 'supply',
+    text: 'La stabilité de votre équipe est…',
+    options: [
+      { label: 'Solide — turnover très faible', value: 3 },
+      { label: 'Plutôt stable — quelques départs gérables', value: 2 },
+      { label: "Fort turnover — c'est un vrai sujet", value: 0 },
+      { label: 'Je travaille seul', value: 1 },
+    ],
+  },
+
+  // ── QUALIFICATION (3 questions non scorées) ───────────────────
   {
     id: 'qual_size',
     category: 'acquisition',
@@ -279,15 +281,18 @@ export const CATEGORY_LABELS: Record<string, string> = {
   crm:         'CRM & Relance',
   automation:  'Automation & IA',
   reputation:  'Réputation & Preuves',
+  supply:      'Capacité & Supply',
 }
 
+// Total must equal 100 — demand = 80pts, supply = 20pts
 export const CATEGORY_MAX: Record<string, number> = {
-  visibility:  15,
+  visibility:  10,
   positioning: 15,
-  conversion:  10,
+  conversion:   5,
   acquisition: 20,
-  content:     10,
-  crm:         10,
+  content:      5,
+  crm:          5,
   automation:  10,
   reputation:  10,
+  supply:      20,
 }

@@ -15,6 +15,7 @@ export type QuizCategory =
   | 'crm'
   | 'automation'
   | 'reputation'
+  | 'supply'
 
 export interface Question {
   id: string
@@ -45,6 +46,7 @@ export interface CategoryScores {
   crm: number
   automation: number
   reputation: number
+  supply: number
 }
 
 export type GrowthLevel =
@@ -63,6 +65,20 @@ export interface LevelConfig {
   tone: 'red' | 'orange' | 'green' | 'blue'
 }
 
+export type Quadrant =
+  | 'scale-ready'
+  | 'supply-constrained'
+  | 'demand-constrained'
+  | 'restructure'
+
+export interface QuadrantConfig {
+  id: Quadrant
+  label: string
+  tagline: string
+  description: string
+  color: string
+}
+
 export interface QuickWin {
   title: string
   description: string
@@ -77,6 +93,9 @@ export interface RoadmapAction {
 
 export interface DiagnosticResult {
   globalScore: number
+  demandScore: number
+  supplyScore: number
+  quadrant: Quadrant
   categoryScores: CategoryScores
   level: GrowthLevel
   levelConfig: LevelConfig

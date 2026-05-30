@@ -21,10 +21,14 @@ const CategoryScoresSchema = z.object({
   crm:         z.number(),
   automation:  z.number(),
   reputation:  z.number(),
+  supply:      z.number(),
 })
 
 const ResultSchema = z.object({
-  globalScore: z.number().min(0).max(100),
+  globalScore:  z.number().min(0).max(100),
+  demandScore:  z.number().min(0).max(100),
+  supplyScore:  z.number().min(0).max(100),
+  quadrant:     z.enum(['scale-ready', 'supply-constrained', 'demand-constrained', 'restructure']),
   categoryScores: CategoryScoresSchema,
   level: z.enum(['invisible', 'traditional', 'growing', 'structured', 'dominant']),
   levelConfig: z.object({
