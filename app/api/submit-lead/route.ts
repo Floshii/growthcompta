@@ -75,8 +75,9 @@ export async function POST(request: NextRequest) {
   const errors: string[] = []
 
   // 1. Notion insert
+  let notionPageId: string | null = null
   try {
-    await insertLeadToNotion(lead, result)
+    notionPageId = await insertLeadToNotion(lead, result)
   } catch (err) {
     console.error('[submit-lead] Notion:', err)
     errors.push('notion')
@@ -114,6 +115,7 @@ export async function POST(request: NextRequest) {
         phone: lead.phone,
         name: lead.firstName,
         delay_ms: 30000,
+        notion_page_id: notionPageId,
       }),
     }).catch(err => console.error('[submit-lead] Railway call:', err))
   } else {

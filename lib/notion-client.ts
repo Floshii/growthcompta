@@ -27,13 +27,13 @@ function sel(name: string | undefined) {
 export async function insertLeadToNotion(
   lead: LeadData,
   result: DiagnosticResult
-): Promise<void> {
+): Promise<string | null> {
   const token = process.env.NOTION_TOKEN
   const dbId  = process.env.NOTION_LEADS_DATABASE_ID
 
   if (!token || !dbId) {
     console.warn('[notion] NOTION_TOKEN or NOTION_LEADS_DATABASE_ID not set — skipping')
-    return
+    return null
   }
 
   const notion = new Client({ auth: token })
@@ -111,8 +111,9 @@ export async function insertLeadToNotion(
   const ambitionMapped = ambitionRaw ? (AMBITION_MAP[ambitionRaw] ?? ambitionRaw) : undefined
   if (ambitionMapped) properties['Ambition'] = { select: { name: ambitionMapped } }
 
-  await notion.pages.create({
+  const page = await notion.pages.create({
     parent: { database_id: dbId },
     properties: properties as Parameters<typeof notion.pages.create>[0]['properties'],
   })
+  return page.id
 }
