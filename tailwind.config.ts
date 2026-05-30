@@ -37,10 +37,6 @@ const config: Config = {
           900: '#111827',
         },
       },
-      fontFamily: {
-        display: ['var(--font-jakarta)', 'sans-serif'],
-        body: ['var(--font-inter)', 'sans-serif'],
-      },
     },
   },
   plugins: [],
