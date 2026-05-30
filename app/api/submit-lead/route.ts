@@ -98,6 +98,28 @@ export async function POST(request: NextRequest) {
     errors.push('email')
   }
 
+  // 3. Trigger AI call via Railway (fire-and-forget — delay handled server-side)
+  const railwayUrl = process.env.RAILWAY_CALL_SERVER_URL
+  if (railwayUrl) {
+    const webhookSecret = process.env.WEBHOOK_SECRET
+    fetch(`${railwayUrl}/webhook/lead`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...(webhookSecret ? { 'x-webhook-secret': webhookSecret } : {}),
+      },
+      body: JSON.stringify({
+        firstName: lead.firstName,
+        email: lead.email,
+        phone: lead.phone,
+        name: lead.firstName,
+        delay_ms: 30000,
+      }),
+    }).catch(err => console.error('[submit-lead] Railway call:', err))
+  } else {
+    console.warn('[submit-lead] RAILWAY_CALL_SERVER_URL not set — skipping AI call')
+  }
+
   return NextResponse.json({ success: true, errors })
 }
 
