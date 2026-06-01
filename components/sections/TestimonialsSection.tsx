@@ -35,7 +35,7 @@ export default function TestimonialsSection() {
             </h2>
           </div>
           <p className="text-[15px] text-ink-2 md:max-w-[360px] leading-relaxed">
-            17 cabinets nous ont fait confiance depuis 2023. Réfs disponibles sur demande après le premier call.
+            17 cabinets nous ont fait confiance. Références disponibles sur demande après le premier call.
           </p>
         </div>
 

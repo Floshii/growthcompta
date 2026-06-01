@@ -18,7 +18,7 @@ export default function BlogPage() {
         <div className="text-center mb-12">
           <h1 className="font-display text-4xl md:text-5xl font-bold text-gray-900 mb-4">Blog GrowthCompta</h1>
           <p className="text-gray-600 text-xl max-w-2xl mx-auto">
-            Stratégies, guides et ressources pour développer l&apos;acquisition de votre cabinet comptable.
+            Stratégies, guides et ressources pour développer la croissance de votre cabinet comptable.
           </p>
         </div>
 

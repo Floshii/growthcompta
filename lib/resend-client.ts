@@ -15,7 +15,7 @@ export async function sendLeadEmails(
 
   const resend = new Resend(apiKey)
   const { globalScore, levelConfig } = result
-  const calendlyUrl = process.env.NEXT_PUBLIC_CALENDLY_URL ?? 'https://growthcompta.fr/audit'
+  const calendlyUrl = process.env.NEXT_PUBLIC_CALENDLY_URL ?? 'https://growthcompta.com/cabinet-growth-score'
 
   const attachments = pdfBase64
     ? [{

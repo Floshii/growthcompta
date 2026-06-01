@@ -3,7 +3,7 @@ const phases = [
     id: '01',
     tag: 'FIRE',
     tagColor: 'bg-accent',
-    t: 'FIRE',
+    t: 'Allumer l\'acquisition',
     sub: 'Sprint de lancement · 30 jours',
     d: "Allumer l'acquisition rapidement. Prouver la valeur. Payé à la performance — zéro risque pour le cabinet.",
     items: [
@@ -20,8 +20,8 @@ const phases = [
     id: '02',
     tag: 'ENGINE',
     tagColor: 'bg-white/15',
-    t: 'ENGINE',
-    sub: 'Construction machine · 3 mois',
+    t: 'Construire le moteur',
+    sub: 'Construction d\'un moteur scalable · 3 mois',
     d: "Construire les bases : tunnel, autorité, SEO, automatisation. Le setup FIRE est déduit si upsell sous 30 j.",
     items: [
       'Tunnel de vente optimisé',
@@ -38,7 +38,7 @@ const phases = [
     id: '03',
     tag: 'FUEL',
     tagColor: 'bg-white/15',
-    t: 'FUEL',
+    t: 'Alimenter en continu',
     sub: 'Retainer mensuel · ∞',
     d: "Alimenter la machine en continu. Contenus, campagnes, croissance compoundée — −32 % vs. à la carte.",
     items: [
@@ -64,7 +64,7 @@ export default function MethodSection() {
           <div>
             <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted-2 mb-3 flex items-center gap-2">
               <span className="inline-block w-1.5 h-1.5 rounded-full bg-accent" />
-              Méthode GC™ · FIRE · ENGINE · FUEL
+              Méthode GC · FIRE · ENGINE · FUEL
             </p>
             <h2
               className="font-display font-bold text-white m-0"

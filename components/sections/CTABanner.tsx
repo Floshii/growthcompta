@@ -18,7 +18,7 @@ export default function CTABanner() {
       <div className="max-w-[1280px] mx-auto px-5 md:px-8 text-center relative">
         <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted-2 mb-8 flex items-center justify-center gap-2">
           <span className="inline-block w-1.5 h-1.5 rounded-full bg-accent" />
-          2 slots disponibles · Q1 2026
+          2 spots disponibles · ce mois
         </p>
         <h2
           className="font-display font-bold text-white"
@@ -41,7 +41,7 @@ export default function CTABanner() {
           </Link>
         </div>
         <p className="font-mono text-[11px] text-muted-2 tracking-[0.08em] mt-4">
-          Gratuit · Sans engagement · Livré en 14 jours
+          Gratuit · 5 min · Résultats immédiats
         </p>
       </div>
     </section>

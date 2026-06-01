@@ -1,13 +1,13 @@
 const forYou = [
   "Vous avez de l'ambition pour votre croissance",
   "Vous n'avez pas peur de vous nicher",
-  "Vous utilisez Pennylane ou équivalent",
+  "Vous êtes ouvert à moderniser vos outils et process",
 ]
 
 const notForYou = [
-  "Pas de volonté de croissance",
-  "Pas de volonté de vous nicher",
-  "Pas ouvert à évoluer avec son temps",
+  "Votre cabinet est à sa taille idéale — vous cherchez à stabiliser, pas à grandir",
+  "Vous préférez un positionnement généraliste tous secteurs",
+  "Vous n'êtes pas à l'aise avec le digital et le marketing",
 ]
 
 export default function FitSection() {

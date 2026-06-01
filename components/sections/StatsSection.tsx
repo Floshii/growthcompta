@@ -10,7 +10,7 @@ const stats: Stat[] = [
   { num: '17', unit: '', label: 'cabinets accompagnés', idx: '/01' },
   { prefix: '<', num: '15', unit: 'j', label: 'pour les premiers leads', idx: '/02' },
   { num: '+120', unit: 'k€', label: 'CA additionnel moyen', idx: '/03' },
-  { num: '87', unit: '€', label: "coût d'acquisition client moyen", idx: '/04' },
+  { num: '187', unit: '€', label: "coût d'acquisition client moyen", idx: '/04' },
 ]
 
 export default function StatsSection() {

@@ -6,7 +6,7 @@ export interface FAQ {
 export const homepageFaqs: FAQ[] = [
   {
     question: "GrowthCompta s’adresse-t-il aux petits cabinets ?",
-    answer: "Oui. Nous accompagnons des cabinets de 1 à 30 collaborateurs. Notre approche est calibrée selon la taille et les objectifs de chaque structure.",
+    answer: "Oui. Nous accompagnons des cabinets de 1 à 50 collaborateurs. Notre approche est calibrée selon la taille et les objectifs de chaque structure.",
   },
   {
     question: "Combien de temps avant de voir des résultats concrets ?",

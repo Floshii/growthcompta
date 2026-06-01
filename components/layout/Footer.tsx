@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import LogoMark from '@/components/ui/LogoMark'
 
+const calendlyUrl = process.env.NEXT_PUBLIC_CALENDLY_URL ?? 'https://growthcompta.com/cabinet-growth-score'
+
 const cols = {
   Services: [
     { href: '/services/seo-programmatique', label: 'SEO programmatique' },
@@ -11,16 +13,14 @@ const cols = {
   ],
   Cabinet: [
     { href: '/a-propos', label: 'À propos' },
-    { href: '#cases', label: 'Études de cas' },
-    { href: '#method', label: 'Méthode' },
+    { href: '/blog', label: 'Blog' },
+    { href: '/#method', label: 'Méthode' },
     { href: '/pricing', label: 'Pricing' },
     { href: '/carrieres', label: 'Carrières' },
   ],
   Contact: [
-    { href: 'mailto:hello@growthcompta.fr', label: 'hello@growthcompta.fr' },
-    { href: 'tel:+33180000000', label: '+33 1 80 00 00 00' },
-    { href: 'https://linkedin.com', label: 'LinkedIn', external: true },
-    { href: 'https://calendly.com', label: 'Calendly', external: true },
+    { href: 'mailto:hello@growthcompta.com', label: 'hello@growthcompta.com' },
+    { href: calendlyUrl, label: 'Prendre rendez-vous', external: true },
   ],
 }
 

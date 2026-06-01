@@ -3,10 +3,10 @@ import LogoMark from '@/components/ui/LogoMark'
 import MobileMenu from './MobileMenu'
 
 const navLinks = [
-  { href: '#services', label: 'Services' },
-  { href: '#method', label: 'Méthode' },
-  { href: '#cases', label: 'Études de cas' },
-  { href: '#faq', label: 'FAQ' },
+  { href: '/#services', label: 'Services' },
+  { href: '/#method', label: 'Méthode' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/#faq', label: 'FAQ' },
 ]
 
 export default function Header() {
@@ -47,7 +47,7 @@ export default function Header() {
               className="w-1.5 h-1.5 rounded-full bg-accent"
               style={{ animation: 'pulse-dot 2.4s ease-in-out infinite' }}
             />
-            2 slots Q1
+            2 spots · ce mois
           </span>
           <Link
             href="/cabinet-growth-score"

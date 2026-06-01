@@ -7,7 +7,7 @@ import { CTA_HREF, CTA_LABEL } from './HeroSection'
 const items = [
   {
     q: "Quel budget prévoir ?",
-    a: "Ça dépend de votre volonté de croissance. On commence toujours par le résultat — des leads qualifiés rapidement — avant de travailler sur vos actifs long terme (SEO, brand, contenu). L'audit initial est gratuit et sans engagement.",
+    a: "Ça dépend de votre volonté de croissance. On commence toujours par le résultat — des leads qualifiés rapidement — avant de travailler sur vos actifs long terme (SEO, brand, contenu). Le Cabinet Growth Score est gratuit et sans engagement — faites-le en 5 min.",
   },
   {
     q: "Combien de temps avant les premiers leads ?",
@@ -19,7 +19,7 @@ const items = [
   },
   {
     q: "Et la concurrence avec mes confrères ?",
-    a: "On est exclusif par zone géographique × verticale. Vous êtes le seul cabinet sur 'expert-comptable e-commerce Lyon' dans notre portefeuille. C'est pour ça qu'on n'a que 17 clients après 2 ans.",
+    a: "On est exclusif par zone géographique × verticale. Vous êtes le seul cabinet sur 'expert-comptable e-commerce Lyon' dans notre portefeuille. C'est pour ça qu'on reste volontairement petit — 17 clients actifs maximum.",
   },
   {
     q: "Vous gérez aussi le site web ?",

@@ -55,7 +55,7 @@ export default function HeroSection() {
             <div className="flex gap-8 mt-10 md:mt-14 flex-wrap">
               <div>
                 <div className="font-display font-bold text-[32px] md:text-[36px] tracking-display leading-none">17</div>
-                <div className="font-mono text-[11px] uppercase tracking-[0.12em] text-muted mt-1">Cabinets · 4 régions</div>
+                <div className="font-mono text-[11px] uppercase tracking-[0.12em] text-muted mt-1">Cabinets accompagnés</div>
               </div>
               <div>
                 <div className="font-display font-bold text-[32px] md:text-[36px] tracking-display leading-none">+120k€</div>
