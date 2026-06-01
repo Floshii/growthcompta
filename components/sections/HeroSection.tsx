@@ -17,10 +17,10 @@ export default function HeroSection() {
 
         {/* Title */}
         <h1
-          className="font-display font-bold text-ink m-0 max-w-[900px] mx-auto"
-          style={{ fontSize: 'clamp(40px, 5.6vw, 88px)', letterSpacing: '-0.04em', lineHeight: 0.94 }}
+          className="font-display font-bold text-ink m-0"
+          style={{ fontSize: 'clamp(40px, 5.5vw, 72px)', letterSpacing: '-0.04em', lineHeight: 0.94 }}
         >
-          Le système d&apos;acquisition moderne
+          Le système d&apos;acquisition moderne<br />
           pour cabinets comptables{' '}
           <span
             className="inline"
