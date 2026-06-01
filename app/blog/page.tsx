@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "Blog — Stratégies d'acquisition pour cabinets comptables",
   description:
     "Articles, guides et stratégies pour développer l'acquisition de votre cabinet comptable. SEO, LinkedIn, IA, spécialisation.",
+  alternates: { canonical: '/blog' },
 }
 
 export default function BlogPage() {
