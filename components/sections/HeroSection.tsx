@@ -8,7 +8,7 @@ export default function HeroSection() {
   return (
     <section className="py-14 md:py-[70px]">
       <div className="max-w-[1280px] mx-auto px-5 md:px-8">
-        <div className="grid gap-10 lg:gap-16 items-center lg:grid-cols-[1.05fr_1fr]">
+        <div className="grid gap-10 lg:gap-16 items-center lg:grid-cols-[1.3fr_1fr]">
 
           {/* Left */}
           <div>
@@ -65,7 +65,7 @@ export default function HeroSection() {
           </div>
 
           {/* Right — Dashboard (desktop only) */}
-          <div className="hidden lg:block">
+          <div className="hidden lg:block lg:translate-y-6">
             <DashboardMock />
           </div>
 
