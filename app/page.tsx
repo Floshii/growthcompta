@@ -3,6 +3,7 @@ import LogosStripSection from '@/components/sections/LogosStripSection'
 import StatsSection from '@/components/sections/StatsSection'
 import ServicesSection from '@/components/sections/ServicesSection'
 import MethodSection from '@/components/sections/MethodSection'
+import SimulateurSection from '@/components/sections/SimulateurSection'
 import CasesSection from '@/components/sections/CasesSection'
 import TestimonialsSection from '@/components/sections/TestimonialsSection'
 import FitSection from '@/components/sections/FitSection'
@@ -49,6 +50,7 @@ export default function HomePage() {
       <StatsSection />
       <ServicesSection />
       <MethodSection />
+      <SimulateurSection />
       {/* <CasesSection /> — masqué jusqu'à avoir des chiffres clients confirmés */}
       <TestimonialsSection />
       <FitSection />
