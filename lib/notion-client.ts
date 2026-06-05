@@ -111,6 +111,14 @@ export async function insertLeadToNotion(
   const ambitionMapped = ambitionRaw ? (AMBITION_MAP[ambitionRaw] ?? ambitionRaw) : undefined
   if (ambitionMapped) properties['Ambition'] = { select: { name: ambitionMapped } }
 
+  // ── Nurturing tracking ────────────────────────────────────────
+  // Requires 4 Checkbox columns in the Notion DB (add them manually):
+  //   "Nurturing J1" | "Nurturing J3" | "Nurturing J7" | "Nurturing J14"
+  properties['Nurturing J1']  = { checkbox: false }
+  properties['Nurturing J3']  = { checkbox: false }
+  properties['Nurturing J7']  = { checkbox: false }
+  properties['Nurturing J14'] = { checkbox: false }
+
   const page = await notion.pages.create({
     parent: { database_id: dbId },
     properties: properties as Parameters<typeof notion.pages.create>[0]['properties'],
