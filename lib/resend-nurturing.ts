@@ -44,11 +44,21 @@ function emailWrapper(preheader: string, bodyHtml: string): string {
 </html>`
 }
 
-function ctaButton(url: string, label: string): string {
+/** CTA bloc : bouton Calendly + alternative téléphone si CONTACT_PHONE est défini */
+function contactCta(calendlyUrl: string, ctaLabel: string, subtext?: string): string {
+  const phone = process.env.CONTACT_PHONE
+  const phoneHtml = phone
+    ? `<p style="margin:10px 0 0;text-align:center;color:#6b6b66;font-size:13px;">
+        Ou appelez directement&nbsp;:&nbsp;
+        <a href="tel:${esc(phone.replace(/\s/g, ''))}" style="color:#e85d2b;font-weight:600;text-decoration:none;">${esc(phone)}</a>
+       </p>`
+    : ''
+
   return `<table width="100%" cellpadding="0" cellspacing="0"><tr>
-  <td align="center" style="padding:24px 0 8px;">
-    <a href="${esc(url)}" style="display:inline-block;background:#e85d2b;color:#fff;font-size:14px;font-weight:700;padding:14px 32px;border-radius:99px;text-decoration:none;">${esc(label)} →</a>
-    <p style="margin:10px 0 0;color:#a8a8a0;font-size:11px;">30 min &middot; Gratuit &middot; Sans engagement</p>
+  <td align="center" style="padding:24px 0 4px;">
+    <a href="${esc(calendlyUrl)}" style="display:inline-block;background:#e85d2b;color:#fff;font-size:14px;font-weight:700;padding:14px 32px;border-radius:99px;text-decoration:none;">${esc(ctaLabel)} →</a>
+    ${subtext ? `<p style="margin:8px 0 0;color:#a8a8a0;font-size:11px;">${esc(subtext)}</p>` : ''}
+    ${phoneHtml}
   </td>
 </tr></table>`
 }
@@ -64,116 +74,169 @@ function articleCard(slug: string, title: string): string {
 </table>`
 }
 
-// ── Per-dimension content pools ───────────────────────────────────────────────
+// ── Per-dimension content ─────────────────────────────────────────────────────
 
-// J+1 : why this dimension matters (2-3 sentences, no fluff)
+// J+1 — what's strong (1-2 sentences, positive, genuine)
+const DIMENSION_STRENGTH: Record<string, string> = {
+  visibility:
+    "Votre cabinet ressort là où vos prospects cherchent. C'est la fondation que 70&nbsp;% des cabinets n'ont pas encore — vous avez une vraie longueur d'avance sur ce point.",
+  positioning:
+    "Votre positionnement est clair et vous distingue des cabinets généralistes. Ça attire les bons clients et filtre naturellement les mauvais sans effort commercial supplémentaire.",
+  conversion:
+    "Votre site transforme les visiteurs en prospects. C'est rare — la majorité des cabinets perdent leurs leads au moment même où ils arrivent sur le site.",
+  acquisition:
+    "Vous avez un flux de prospects entrants. C'est le levier que tout le monde cherche à construire — vous l'avez déjà.",
+  content:
+    "Vous publiez et construisez votre autorité dans la durée. Ça travaille pour vous en permanence, même quand vous ne prospectez pas.",
+  crm:
+    "Vous suivez vos prospects et ne perdez pas de leads dans les mailles. C'est ce qui fait la différence entre 20&nbsp;% et 40&nbsp;% de taux de closing.",
+  automation:
+    "Vous utilisez les outils pour gagner du temps là où les autres consomment des heures inutilement. Ça libère de la bande passante pour l'essentiel.",
+  reputation:
+    "Votre réputation en ligne inspire confiance. C'est souvent ce qui fait pencher la balance quand un prospect hésite entre vous et un concurrent.",
+  supply:
+    "Votre cabinet peut absorber la croissance sans se casser. C'est la fondation que beaucoup négligent — et qui les fait stagner au pire moment.",
+}
+
+// J+1 — why the weak dimension matters (2-3 sentences, no negativity bias, focus on opportunity)
 const DIMENSION_INSIGHT: Record<string, string> = {
   visibility:
     "Sur Google, les cabinets visibles captent les demandes entrantes — les autres attendent le bouche-à-oreille. Un cabinet bien positionné sur « expert-comptable [ville] » reçoit des prospects qualifiés sans effort commercial actif. C'est la différence entre une acquisition subie et une acquisition choisie.",
   positioning:
-    "Sans spécialisation claire, vous êtes en compétition avec tout le monde — y compris les gros cabinets avec dix fois votre budget marketing. Les cabinets qui ont choisi une niche et l'ont communiquée constatent une hausse de 40 à 60 % de leur panier moyen en 12 mois. Pas parce qu'ils travaillent plus, mais parce qu'ils ont arrêté de se battre sur le prix.",
+    "Choisir une niche et la communiquer clairement, c'est souvent la décision qui permet d'augmenter le panier moyen de 40 à 60&nbsp;% en 12 mois — pas parce qu'on travaille plus, mais parce qu'on arrête de se battre sur le prix.",
   conversion:
-    "Votre site reçoit peut-être des visiteurs — mais s'il ne les convertit pas, il n'a aucune valeur commerciale. Un site qui convertit répond à trois questions en cinq secondes : qui êtes-vous, pour qui, et quoi faire maintenant. La plupart des cabinets n'ont que la première.",
+    "Un site qui convertit répond à trois questions en cinq secondes&nbsp;: qui êtes-vous, pour qui, et quoi faire maintenant. Travailler ce point, c'est transformer du trafic existant en prospects sans dépenser plus en acquisition.",
   acquisition:
-    "Dépendre du bouche-à-oreille, c'est piloter à l'aveugle : vous ne contrôlez ni le volume ni la qualité des leads. Les cabinets qui ont installé un système d'acquisition diversifié ont un pipeline prévisible. Ils savent combien de prospects entrent chaque mois — et peuvent agir dessus.",
+    "Construire un deuxième canal d'acquisition — SEO local, LinkedIn, ads — c'est ce qui rend la croissance prévisible. Vous contrôlez le volume et la qualité des leads entrants, au lieu de dépendre des recommandations.",
   content:
-    "Sans contenu visible, vous n'existez pas en dehors de vos clients actuels. Les cabinets qui publient régulièrement — même une fois par semaine sur LinkedIn — construisent une autorité sectorielle qui génère des leads entrants 6 à 12 mois après. Le contenu est le seul actif marketing qui travaille quand vous dormez.",
+    "Publier régulièrement — même une fois par semaine — construit une autorité sectorielle qui génère des leads entrants 6 à 12 mois après. Le contenu est le seul actif marketing qui travaille quand vous dormez.",
   crm:
-    "La plupart des leads perdus ne sont pas perdus parce qu'ils n'étaient pas intéressés. Ils sont perdus faute de relance. Un suivi simple — même dans un tableau Notion — change radicalement le taux de closing. Les cabinets qui tracent leur pipeline ferment en moyenne deux fois plus de prospects que ceux qui gèrent par email et mémoire.",
+    "La plupart des leads perdus ne sont pas perdus parce qu'ils n'étaient pas intéressés — ils sont perdus faute de relance. Un suivi simple change radicalement le taux de closing, sans toucher à l'acquisition.",
   automation:
-    "Ce que vos confrères font en trois heures, des cabinets comparables le font en vingt minutes avec les bons outils. L'automatisation n'est plus réservée aux grands groupes — un cabinet de cinq personnes peut aujourd'hui automatiser son onboarding, ses relances et une partie de sa communication. Le temps gagné se réinvestit directement dans l'acquisition.",
+    "Ce que certains cabinets font en trois heures, d'autres le font en vingt minutes avec les bons outils. Le temps gagné sur l'administratif se réinvestit directement dans le développement commercial.",
   reputation:
-    "Un prospect qui hésite entre vous et un concurrent va regarder vos avis Google. Moins de cinq avis, note médiocre, aucun témoignage sur le site — et il choisit l'autre. La réputation en ligne est devenue le premier filtre de sélection d'un prestataire comptable. Elle se construit en quelques semaines avec une démarche active auprès de vos clients satisfaits.",
+    "Un prospect hésite entre vous et un concurrent — il regarde vos avis Google. La réputation en ligne est devenue le premier filtre de sélection d'un prestataire comptable, et elle se construit en quelques semaines.",
   supply:
-    "Pousser sur l'acquisition quand on est déjà saturé crée plus de problèmes qu'elle n'en résout : dégradation de la qualité de service, turnover, insatisfaction client. Avant d'ouvrir le robinet, la question à répondre est simple : peut-on absorber dix clients de plus sans casser ce qui fonctionne ?",
+    "Créer de la marge opérationnelle avant d'accélérer l'acquisition, c'est ce qui permet de scaler sans dégrader la qualité de service — et donc sans risquer de perdre les clients qu'on vient d'acquérir.",
 }
 
-// J+5 : one actionable quick win per dimension (doable in < 2h)
+// J+5 — one actionable quick win per dimension (doable in < 2h)
 const DIMENSION_ACTION: Record<string, string> = {
   visibility:
-    "Ouvrez Google Business Profile et complétez chaque champ à 100 % : description détaillée, horaires, photos récentes, catégories secondaires. Activez la prise de rendez-vous directement depuis la fiche. C'est la mise à jour avec le meilleur ratio effort / impact sur le référencement local.",
+    "Ouvrez Google Business Profile et complétez chaque champ à 100&nbsp;%&nbsp;: description, horaires, photos récentes, catégories secondaires. Activez la prise de rendez-vous directement depuis la fiche. Meilleur ratio effort&nbsp;/ impact sur le référencement local.",
   positioning:
-    "Écrivez en une phrase votre positionnement : <em>« Nous sommes le cabinet comptable de référence pour [niche] dans [région]. »</em> Testez-la sur votre page d'accueil cette semaine. Si ça fait peur d'être aussi précis, c'est que vous êtes sur la bonne voie.",
+    "Écrivez en une phrase votre positionnement&nbsp;: <em>«&nbsp;Nous sommes le cabinet comptable de référence pour [niche] dans [région].&nbsp;»</em> Testez-la sur votre page d'accueil cette semaine. Si ça fait peur d'être aussi précis, vous êtes sur la bonne voie.",
   conversion:
-    "Testez votre site avec quelqu'un qui ne vous connaît pas : en cinq secondes, peut-il dire ce que vous faites, pour qui, et comment vous contacter ? Sinon, c'est votre section hero à réécrire en priorité — avant toute autre optimisation.",
+    "Testez votre site avec quelqu'un qui ne vous connaît pas&nbsp;: en cinq secondes, peut-il dire ce que vous faites, pour qui, et comment vous contacter&nbsp;? Sinon, c'est votre section hero à réécrire en priorité — avant toute autre optimisation.",
   acquisition:
-    "Faites la liste de vos dix meilleurs clients actuels. Qu'ont-ils en commun — secteur, taille, problème initial ? Ce profil est votre ICP. Cette semaine, initiez cinq conversations LinkedIn avec des profils identiques. Pas de pitch : une question sur leur situation.",
+    "Faites la liste de vos dix meilleurs clients actuels. Qu'ont-ils en commun — secteur, taille, problème initial&nbsp;? Ce profil est votre ICP. Cette semaine, initiez cinq conversations LinkedIn avec des profils identiques. Pas de pitch&nbsp;: une question sur leur situation.",
   content:
-    "Publiez un post LinkedIn cette semaine. Format : un problème récurrent que vous observez chez vos clients + une façon concrète de l'adresser. 150 mots maximum. Pas de hashtags, pas de « n'hésitez pas à me contacter ». Juste de la valeur. Mesurez les impressions à 48h.",
+    "Publiez un post LinkedIn cette semaine. Format&nbsp;: un problème récurrent chez vos clients&nbsp;+ une façon concrète de l'adresser. 150 mots maximum. Pas de hashtags, pas de «&nbsp;n'hésitez pas à me contacter&nbsp;». Juste de la valeur. Mesurez les impressions à 48h.",
   crm:
-    "Créez un tableau avec quatre colonnes : Nom / Email / Dernier contact / Statut (À contacter · En discussion · Perdu). Listez vos dix derniers prospects. Regardez combien sont en « Perdu » uniquement par manque de relance. Ce chiffre est votre première priorité.",
+    "Créez un tableau avec quatre colonnes&nbsp;: Nom&nbsp;/ Email&nbsp;/ Dernier contact&nbsp;/ Statut (À contacter · En discussion · Perdu). Listez vos dix derniers prospects. Regardez combien sont en «&nbsp;Perdu&nbsp;» uniquement par manque de relance.",
   automation:
-    "Identifiez la tâche administrative que vous répétez le plus souvent chaque semaine. Cherchez si ChatGPT ou un template peut la diviser par trois. Objectif de la semaine : gagner une heure, pas restructurer votre workflow — juste une tâche, un gain mesurable.",
+    "Identifiez la tâche administrative que vous répétez le plus souvent. Cherchez si ChatGPT ou un template peut la diviser par trois. Objectif&nbsp;: gagner une heure cette semaine — pas restructurer votre workflow, juste une tâche, un gain mesurable.",
   reputation:
-    "Envoyez un message court à trois clients satisfaits avec votre lien Google direct. Texte : <em>« Bonjour [Prénom], si vous êtes satisfait de notre accompagnement, un avis Google nous aiderait beaucoup — 2 minutes : [lien]. Merci d'avance. »</em> Trois messages, cette semaine.",
+    "Envoyez un message court à trois clients satisfaits avec votre lien Google direct. Texte&nbsp;: <em>«&nbsp;Bonjour [Prénom], si vous êtes satisfait de notre accompagnement, un avis Google nous aiderait beaucoup — 2 minutes&nbsp;: [lien].&nbsp;»</em>",
   supply:
-    "Calculez votre capacité réelle : combien de clients par collaborateur, et quel est votre seuil de saturation ? Ce chiffre vous dira si vous pouvez activer l'acquisition maintenant ou si vous devez d'abord créer de la marge. Sans ce repère, vous pilotez à l'aveugle.",
+    "Calculez votre capacité réelle&nbsp;: combien de clients par collaborateur, et quel est votre seuil de saturation&nbsp;? Ce chiffre vous dira si vous pouvez activer l'acquisition maintenant ou si vous devez d'abord créer de la marge.",
 }
 
-// J+3 : quadrant-specific insight (situation + 2-3 priority moves)
+// J+3 — quadrant-specific situation + priority moves
 const QUADRANT_INSIGHT: Record<string, string> = {
-  'demand-constrained': `Votre opérationnel est prêt. Votre équipe peut absorber plus de clients. Le problème est en amont : pas assez de leads qualifiés qui entrent.
+  'demand-constrained': `Votre opérationnel est prêt. Votre équipe peut absorber plus de clients. Le problème est en amont&nbsp;: pas assez de leads qualifiés qui entrent.
 <br><br>
-C'est la situation la plus actionnable — vous n'avez pas à restructurer, vous avez à activer. Les cabinets dans votre profil qui ont progressé le plus vite ont suivi la même séquence : clarifier leur positionnement en ligne, lancer un canal d'acquisition (SEO local ou LinkedIn outbound), installer un suivi de leads minimal. Pas les trois en même temps — <strong>un seul levier, pendant 60 jours</strong>.
+C'est la situation la plus actionnable — vous n'avez pas à restructurer, vous avez à activer. Les cabinets dans votre profil qui ont progressé le plus vite ont suivi la même séquence&nbsp;: clarifier leur positionnement en ligne, lancer un canal d'acquisition (SEO local ou LinkedIn outbound), installer un suivi de leads minimal. Pas les trois en même temps — <strong>un seul levier, pendant 60 jours</strong>.
 <br><br>
-Le risque à éviter : tester cinq choses en deux semaines et conclure que rien ne marche.`,
+Le risque à éviter&nbsp;: tester cinq choses en deux semaines et conclure que rien ne marche.`,
 
-  'supply-constrained': `Votre acquisition fonctionne — peut-être trop bien. Vous savez attirer des clients, mais votre capacité à les absorber est en tension.
+  'supply-constrained': `Votre acquisition fonctionne — et c'est une vraie force. Vous avez prouvé que vous savez attirer des clients. Le prochain défi&nbsp;: faire en sorte que la capacité suive, pour que cette acquisition ne devienne pas un problème de qualité.
 <br><br>
-Pousser davantage sur l'acquisition maintenant serait une erreur. La dégradation de qualité de service est le chemin le plus court vers le churn et les mauvais avis. Les cabinets dans votre profil qui ont bien géré cette phase ont fait une chose en premier : <strong>auditer la charge réelle par collaborateur</strong> et identifier les deux ou trois tâches qui consomment le plus de temps sans valeur proportionnelle. Souvent, c'est là que se cachent 20 % de capacité supplémentaire.
+Les cabinets dans votre profil qui ont bien géré cette phase ont fait une chose en premier&nbsp;: <strong>auditer la charge réelle par collaborateur</strong> et identifier les deux ou trois tâches qui consomment le plus de temps sans valeur proportionnelle. Souvent, c'est là que se cachent 20&nbsp;% de capacité supplémentaire — sans recruter.
 <br><br>
-L'objectif à 60 jours : créer la marge avant de rouvrir l'acquisition.`,
+L'objectif à 60 jours&nbsp;: créer cette marge, puis réouvrir l'acquisition en position de force.`,
 
-  'scale-ready': `Vous êtes dans le top 15 % des cabinets sur l'acquisition. Vos deux moteurs tournent — leads entrants et capacité opérationnelle.
+  'scale-ready': `Vous êtes dans le top 15&nbsp;% des cabinets sur l'acquisition. Vos deux moteurs tournent — leads entrants et capacité opérationnelle.
 <br><br>
-La question n'est plus « comment démarrer » mais « comment industrialiser pour ne plus dépendre de votre présence personnelle ». Les cabinets dans votre position qui ont franchi le cap suivant ont tous fait la même chose : ils ont <strong>identifié leur segment le plus rentable et concentré 80 % de leurs efforts dessus</strong> — en abandonnant les campagnes et clients qui diluaient le focus.
+La question n'est plus «&nbsp;comment démarrer&nbsp;» mais «&nbsp;comment industrialiser pour que la croissance ne dépende plus de votre présence personnelle&nbsp;». Les cabinets dans votre position qui ont franchi le cap suivant ont tous fait la même chose&nbsp;: <strong>identifier leur segment le plus rentable et concentrer 80&nbsp;% de leurs efforts dessus</strong> — en abandonnant les campagnes et clients qui diluent le focus.
 <br><br>
-La prochaine étape concrète : poser le chiffre. Quel CA additionnel sur 12 mois, sur quel segment, avec quel coût d'acquisition cible ?`,
+La prochaine étape concrète&nbsp;: poser le chiffre. Quel CA additionnel sur 12 mois, sur quel segment, avec quel coût d'acquisition cible&nbsp;?`,
 
   'restructure': `Votre diagnostic pointe des tensions sur les deux axes — acquisition et opérationnel. Dans cette situation, accélérer l'acquisition amplifierait les problèmes existants plutôt que de les résoudre.
 <br><br>
-Ce n'est pas un mauvais signal — c'est souvent la phase de transition entre un cabinet artisanal et un cabinet structuré. La plupart des fondateurs y passent. Ce que les cabinets qui s'en sont sortis ont fait en commun : ils ont <strong>réduit avant de construire</strong>. Réduit l'offre aux un ou deux segments rentables, augmenté les prix pour filtrer naturellement le volume, stabilisé l'équipe. Seulement ensuite, ils ont activé l'acquisition.
+Ce n'est pas un mauvais signal — c'est la phase de transition entre un cabinet artisanal et un cabinet structuré. La plupart des fondateurs y passent. Ce que les cabinets qui s'en sont sortis ont fait&nbsp;: <strong>réduire avant de construire</strong>. Réduire l'offre aux un ou deux segments rentables, augmenter les prix pour filtrer le volume, stabiliser l'équipe. Seulement ensuite, activer l'acquisition.
 <br><br>
-C'est contre-intuitif — mais c'est la séquence qui fonctionne.`,
+C'est contre-intuitif — mais c'est la séquence qui fonctionne durablement.`,
 }
 
-// ── Email J+1 — "Votre point le plus faible" ─────────────────────────────────
+// J+7 — vision motivante et chemin vers la croissance, spécifique au quadrant
+const QUADRANT_VISION: Record<string, string> = {
+  'demand-constrained': `Votre cabinet a la capacité — il manque le flux entrant. Ce n'est pas le problème le plus difficile à résoudre&nbsp;: c'est un problème d'activation, pas de reconstruction.
+<br><br>
+Avec le bon système en place, les demandes qualifiées remplacent progressivement la prospection active. Dans 6 à 9 mois, vous pouvez choisir vos clients — refuser ceux qui ne correspondent pas à votre cible, accepter ceux qui correspondent parfaitement. C'est ça, l'acquisition maîtrisée.`,
 
-function buildJ1Html(lead: NurturingLead, _calendlyUrl: string): string {
-  const weakest = lead.weakest3LabelsFr[0] ?? 'Acquisition'
-  const insight = DIMENSION_INSIGHT[lead.weakest3[0] ?? 'acquisition'] ?? DIMENSION_INSIGHT['acquisition']
-  const article = lead.articles[0]
+  'supply-constrained': `Vous prouvez quelque chose que beaucoup de cabinets cherchent encore&nbsp;: vous savez attirer des clients. C'est le levier le plus dur à construire — et vous l'avez déjà.
+<br><br>
+La prochaine étape, c'est de structurer pour que cette croissance ne repose plus sur vous seul. Un cabinet qui tourne sans votre présence dans les opérations quotidiennes — c'est l'objectif. Et il est accessible plus vite qu'on ne le pense quand on s'y attaque méthodiquement.`,
+
+  'scale-ready': `Vous êtes déjà là où la plupart des cabinets aspirent à être. La question n'est plus si vous allez scaler — c'est à quelle vitesse et avec quelle précision vous choisissez votre prochain cap.
+<br><br>
+Les cabinets dans votre position qui ont franchi le palier suivant ne l'ont pas fait en travaillant plus. Ils ont mieux choisi&nbsp;: un segment, une offre premium, un canal d'acquisition maîtrisé. La croissance à ce stade est une question de clarté stratégique, pas d'effort supplémentaire.`,
+
+  'restructure': `Les fondations que vous posez maintenant sont précisément ce qui vous permettra de croître solidement dans 6 mois — sans risque de tout casser en accélérant trop tôt.
+<br><br>
+Les cabinets qui ont pris ce temps de structuration avant d'accélérer ne l'ont jamais regretté. Vous construisez quelque chose de durable. Et quand vous rouvrirez l'acquisition depuis des bases stables, la croissance sera beaucoup plus rapide — et beaucoup moins douloureuse.`,
+}
+
+// ── Email J+1 — Force + Levier principal ─────────────────────────────────────
+
+function buildJ1Html(lead: NurturingLead, calendlyUrl: string): string {
+  const strengthKey = lead.best1
+  const weakestKey  = lead.weakest3[0] ?? 'acquisition'
+  const strength    = DIMENSION_STRENGTH[strengthKey] ?? ''
+  const insight     = DIMENSION_INSIGHT[weakestKey]   ?? ''
+  const article     = lead.articles[0]
 
   return emailWrapper(
-    `Votre point le plus faible : ${weakest} — et ce que font les cabinets qui l'ont adressé`,
+    `${lead.firstName}, votre force et votre levier principal — suite à votre diagnostic`,
     `
 <p style="margin:0 0 6px;color:#6b6b66;font-size:11px;text-transform:uppercase;letter-spacing:0.1em;">Bonjour ${esc(lead.firstName)},</p>
-<h1 style="margin:0 0 20px;font-size:22px;color:#1a1a1a;font-weight:700;line-height:1.25;">
-  Votre point le plus faible&nbsp;: <span style="color:#e85d2b;">${esc(weakest)}</span>
+<h1 style="margin:0 0 24px;font-size:22px;color:#1a1a1a;font-weight:700;line-height:1.25;">
+  Votre diagnostic en clair.
 </h1>
 
-<p style="margin:0 0 16px;color:#3d3d3a;font-size:15px;line-height:1.75;">
-  Votre diagnostic l'a identifié comme votre principal levier inexploité. Ce n'est pas un hasard — c'est la dimension que la plupart des cabinets remettent à plus tard, parce qu'on gère le quotidien et les dossiers en priorité. C'est précisément ce qui creuse l'écart avec ceux qui avancent.
-</p>
-
-<p style="margin:0 0 16px;color:#3d3d3a;font-size:15px;line-height:1.75;">
-  ${insight}
-</p>
+<table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:28px;">
+  <tr>
+    <td style="background:#f0faf4;border:1px solid #b8e8cc;border-radius:8px;padding:18px 20px;width:48%;vertical-align:top;">
+      <p style="margin:0 0 6px;color:#0a8f4a;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;">Votre force</p>
+      <p style="margin:0 0 6px;color:#1a1a1a;font-size:14px;font-weight:700;">${esc(lead.best1LabelFr)}</p>
+      <p style="margin:0;color:#3d3d3a;font-size:13px;line-height:1.65;">${strength}</p>
+    </td>
+    <td style="width:4%;"></td>
+    <td style="background:#fff8f5;border:1px solid #f5cebb;border-radius:8px;padding:18px 20px;width:48%;vertical-align:top;">
+      <p style="margin:0 0 6px;color:#e85d2b;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;">Votre levier principal</p>
+      <p style="margin:0 0 6px;color:#1a1a1a;font-size:14px;font-weight:700;">${esc(lead.weakest3LabelsFr[0] ?? 'Acquisition')}</p>
+      <p style="margin:0;color:#3d3d3a;font-size:13px;line-height:1.65;">${insight}</p>
+    </td>
+  </tr>
+</table>
 
 <p style="margin:0 0 24px;color:#3d3d3a;font-size:15px;line-height:1.75;">
-  Les cabinets qui ont adressé ce point ont un point commun : ils ont arrêté d'attendre d'avoir « le temps ». Ils ont isolé une action, l'ont testée pendant 30 jours, et ont mesuré. Pas de grand projet. Pas de refonte. Une action.
+  Les cabinets qui avancent le plus vite ne cherchent pas à tout améliorer en même temps. Ils s'appuient sur leur force pour générer de la confiance — et adressent leur principal levier en premier pour débloquer la croissance.
 </p>
 
 ${article ? articleCard(article.slug, article.title) : ''}
+
+${contactCta(calendlyUrl, 'On regarde ça ensemble — 30 min, gratuit', '30 min · Sans engagement · Sans pitch')}
 `,
   )
 }
 
-// ── Email J+3 — "Les cabinets en situation X font ça" ────────────────────────
+// ── Email J+3 — Situation + plan selon le quadrant ───────────────────────────
 
-function buildJ3Html(lead: NurturingLead, _calendlyUrl: string): string {
-  const article  = lead.articles[1]
-  const insight  = QUADRANT_INSIGHT[lead.quadrantId] ?? QUADRANT_INSIGHT['demand-constrained']
+function buildJ3Html(lead: NurturingLead, calendlyUrl: string): string {
+  const insight = QUADRANT_INSIGHT[lead.quadrantId] ?? QUADRANT_INSIGHT['demand-constrained']
+  const article = lead.articles[1]
 
   return emailWrapper(
     `Les cabinets « ${lead.quadrantLabelFr} » — ce qu'ils font en premier`,
@@ -184,7 +247,7 @@ function buildJ3Html(lead: NurturingLead, _calendlyUrl: string): string {
 </h1>
 
 <p style="margin:0 0 16px;color:#3d3d3a;font-size:15px;line-height:1.75;">
-  Votre profil de diagnostic place votre cabinet dans la catégorie <strong>${esc(lead.quadrantLabelFr)}</strong>. Ce n'est pas juste un label — ça définit précisément quelle est votre prochaine priorité, et dans quel ordre agir.
+  Votre diagnostic vous place dans la catégorie <strong>${esc(lead.quadrantLabelFr)}</strong>. Ce n'est pas juste un label — ça définit précisément quelle est votre prochaine priorité, et dans quel ordre agir pour ne pas gaspiller d'énergie sur les mauvais leviers.
 </p>
 
 <p style="margin:0 0 24px;color:#3d3d3a;font-size:15px;line-height:1.75;">
@@ -192,19 +255,21 @@ function buildJ3Html(lead: NurturingLead, _calendlyUrl: string): string {
 </p>
 
 ${article ? articleCard(article.slug, article.title) : ''}
+
+${contactCta(calendlyUrl, 'Cartographier mon plan d\'action', '30 min · Gratuit · Basé sur votre diagnostic')}
 `,
   )
 }
 
-// ── Email J+5 — "3 actions concrètes" ────────────────────────────────────────
+// ── Email J+5 — 3 actions concrètes cette semaine ────────────────────────────
 
-function buildJ5Html(lead: NurturingLead, _calendlyUrl: string): string {
-  const [cat0, cat1, cat2]   = lead.weakest3
-  const [lab0, lab1, lab2]   = lead.weakest3LabelsFr
+function buildJ5Html(lead: NurturingLead, calendlyUrl: string): string {
+  const [cat0, cat1, cat2]  = lead.weakest3
+  const [lab0, lab1, lab2]  = lead.weakest3LabelsFr
   const action0 = DIMENSION_ACTION[cat0 ?? 'acquisition'] ?? ''
   const action1 = DIMENSION_ACTION[cat1 ?? 'visibility']  ?? ''
   const action2 = DIMENSION_ACTION[cat2 ?? 'crm']         ?? ''
-  const article  = lead.articles[2]
+  const article = lead.articles[2]
 
   return emailWrapper(
     `3 actions concrètes cette semaine — taillées pour votre situation`,
@@ -215,7 +280,7 @@ function buildJ5Html(lead: NurturingLead, _calendlyUrl: string): string {
 </h1>
 
 <p style="margin:0 0 24px;color:#3d3d3a;font-size:15px;line-height:1.75;">
-  Basées sur vos trois dimensions les plus faibles. Chacune est faisable en moins de deux heures. Pas de projet, pas de réunion — une action, un résultat mesurable.
+  Basées sur vos trois dimensions les plus faibles. Chacune est faisable en moins de deux heures — pas de projet, pas de réunion, juste une action et un résultat mesurable.
 </p>
 
 <table width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #e6e1d3;border-radius:8px;overflow:hidden;margin-bottom:24px;">
@@ -234,24 +299,31 @@ function buildJ5Html(lead: NurturingLead, _calendlyUrl: string): string {
 </table>
 
 ${article ? articleCard(article.slug, article.title) : ''}
+
+<p style="margin:0 0 20px;color:#3d3d3a;font-size:15px;line-height:1.75;">
+  Besoin d'aide pour mettre l'une de ces actions en place&nbsp;? C'est exactement ce qu'on fait pendant l'appel — gratuitement, en 30 minutes.
+</p>
+
+${contactCta(calendlyUrl, 'Je veux de l\'aide pour la mise en place', '30 min · Gratuit · On travaille sur votre cas concret')}
 `,
   )
 }
 
-// ── Email J+7 — CTA commercial ────────────────────────────────────────────────
+// ── Email J+7 — Vision motivante + CTA ───────────────────────────────────────
 
 function buildJ7Html(lead: NurturingLead, calendlyUrl: string): string {
+  const vision     = QUADRANT_VISION[lead.quadrantId] ?? QUADRANT_VISION['demand-constrained']
   const scoreColor = lead.globalScore >= 76 ? '#0a5fbf'
     : lead.globalScore >= 56 ? '#0a8f4a'
     : lead.globalScore >= 36 ? '#e85d2b'
     : '#dc4a2b'
 
   return emailWrapper(
-    `Votre score de ${lead.globalScore}/100 — on en parle ?`,
+    `${lead.firstName} — la voie la plus directe vers votre prochaine étape`,
     `
 <p style="margin:0 0 6px;color:#6b6b66;font-size:11px;text-transform:uppercase;letter-spacing:0.1em;">Bonjour ${esc(lead.firstName)},</p>
 <h1 style="margin:0 0 24px;font-size:22px;color:#1a1a1a;font-weight:700;line-height:1.25;">
-  On peut en parler&nbsp;?
+  La voie la plus directe vers votre prochaine étape.
 </h1>
 
 <table width="100%" cellpadding="0" cellspacing="0" style="background:#faf8f4;border:1px solid #e6e1d3;border-radius:10px;margin-bottom:28px;">
@@ -262,21 +334,22 @@ function buildJ7Html(lead: NurturingLead, calendlyUrl: string): string {
     <p style="margin:2px 0 0;color:#6b6b66;font-size:11px;">/100 points</p>
   </td>
   <td style="padding:20px 24px;text-align:center;width:50%;">
-    <p style="margin:0 0 4px;color:#6b6b66;font-size:9px;text-transform:uppercase;letter-spacing:0.1em;">Niveau</p>
-    <p style="margin:0;font-size:15px;font-weight:700;color:#1a1a1a;line-height:1.3;">${esc(lead.levelLabel)}</p>
+    <p style="margin:0 0 4px;color:#6b6b66;font-size:9px;text-transform:uppercase;letter-spacing:0.1em;">Profil</p>
+    <p style="margin:0;font-size:14px;font-weight:700;color:#1a1a1a;line-height:1.3;">${esc(lead.quadrantLabelFr)}</p>
+    <p style="margin:4px 0 0;color:#6b6b66;font-size:11px;">${esc(lead.levelLabel)}</p>
   </td>
 </tr>
 </table>
 
-<p style="margin:0 0 16px;color:#3d3d3a;font-size:15px;line-height:1.75;">
-  Ça fait une semaine que vous avez votre diagnostic. J'ai regardé votre situation — votre profil <strong>${esc(lead.quadrantLabelFr)}</strong> avec un score de ${lead.globalScore}/100 appelle quelques actions précises, dans un ordre précis.
+<p style="margin:0 0 20px;color:#3d3d3a;font-size:15px;line-height:1.75;">
+  ${vision}
 </p>
 
 <p style="margin:0 0 28px;color:#3d3d3a;font-size:15px;line-height:1.75;">
-  Si vous voulez qu'on passe 30 minutes ensemble pour transformer ce diagnostic en plan d'action — sans pitch, sans engagement — le lien est ci-dessous. Sinon, aucun problème : les ressources envoyées cette semaine sont suffisantes pour démarrer seul.
+  En 30 minutes ensemble, on peut transformer votre diagnostic en plan d'action concret — les leviers à activer, dans quel ordre, avec quels indicateurs. Sans pitch, sans engagement. Juste du concret basé sur votre situation.
 </p>
 
-${ctaButton(calendlyUrl, 'Réserver mon audit stratégique gratuit')}
+${contactCta(calendlyUrl, 'Réserver mon audit stratégique gratuit', '30 min · Gratuit · Sans engagement')}
 `,
   )
 }
@@ -295,7 +368,7 @@ export const NURTURING_STEPS: NurturingStep[] = [
     day: 1,
     notionColumn: 'Nurturing J1',
     subject: (l) =>
-      `${l.firstName}, votre point le plus faible : ${l.weakest3LabelsFr[0] ?? 'Acquisition'}`,
+      `${l.firstName} — votre force et votre levier principal`,
     buildHtml: buildJ1Html,
   },
   {
@@ -316,7 +389,7 @@ export const NURTURING_STEPS: NurturingStep[] = [
     day: 7,
     notionColumn: 'Nurturing J7',
     subject: (l) =>
-      `${l.firstName} — on peut en parler ? (score : ${l.globalScore}/100)`,
+      `${l.firstName} — la voie vers votre prochaine étape (score : ${l.globalScore}/100)`,
     buildHtml: buildJ7Html,
   },
 ]

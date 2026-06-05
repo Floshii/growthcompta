@@ -97,6 +97,8 @@ export interface NurturingLead {
   levelLabel:        string
   quadrantId:        string
   quadrantLabelFr:   string
+  best1:             string    // strongest category key
+  best1LabelFr:      string    // French label for best1
   weakest3:          string[]   // category keys, e.g. ['crm', 'visibility', 'content']
   weakest3LabelsFr:  string[]   // French labels for weakest3
   articles:          RecommendedArticle[]  // one article per weakest dimension
@@ -149,7 +151,7 @@ function getClient() {
   return { notion: new Client({ auth: token }), dbId }
 }
 
-function computeWeakest3(page: PageObjectResponse): string[] {
+function computeRankedCategories(page: PageObjectResponse): { weakest3: string[]; best1: string } {
   const scores: Record<string, number> = {
     visibility:  num(page, 'Score Visibilité'),
     positioning: num(page, 'Score Positionnement'),
@@ -161,11 +163,14 @@ function computeWeakest3(page: PageObjectResponse): string[] {
     reputation:  num(page, 'Score Réputation'),
     supply:      num(page, 'Score Supply (dim)'),
   }
-  return Object.entries(scores)
+  const ranked = Object.entries(scores)
     .map(([cat, score]) => ({ cat, pct: score / (CATEGORY_MAX[cat] ?? 10) }))
     .sort((a, b) => a.pct - b.pct)
-    .slice(0, 3)
-    .map(w => w.cat)
+
+  return {
+    weakest3: ranked.slice(0, 3).map(w => w.cat),
+    best1:    ranked[ranked.length - 1].cat,
+  }
 }
 
 function parseLead(page: PageObjectResponse): NurturingLead | null {
@@ -173,9 +178,9 @@ function parseLead(page: PageObjectResponse): NurturingLead | null {
   const submittedAt  = dateProp(page, 'Date soumission')
   if (!emailAddr || !submittedAt) return null
 
-  const quadrantNotion = sel(page, 'Quadrant')
-  const quadrantId     = QUADRANT_FROM_NOTION[quadrantNotion] ?? 'demand-constrained'
-  const weakest3       = computeWeakest3(page)
+  const quadrantNotion        = sel(page, 'Quadrant')
+  const quadrantId            = QUADRANT_FROM_NOTION[quadrantNotion] ?? 'demand-constrained'
+  const { weakest3, best1 }  = computeRankedCategories(page)
 
   const articles = weakest3.map(
     cat => ARTICLES_BY_CATEGORY[cat]?.[0] ?? ARTICLES_BY_CATEGORY['acquisition'][0],
@@ -190,6 +195,8 @@ function parseLead(page: PageObjectResponse): NurturingLead | null {
     levelLabel:       sel(page, 'Niveau'),
     quadrantId,
     quadrantLabelFr:  QUADRANT_LABELS_FR[quadrantId] ?? quadrantNotion,
+    best1,
+    best1LabelFr:     CATEGORY_LABELS_FR[best1] ?? best1,
     weakest3,
     weakest3LabelsFr: weakest3.map(c => CATEGORY_LABELS_FR[c] ?? c),
     articles,
