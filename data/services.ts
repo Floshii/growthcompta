@@ -89,9 +89,9 @@ export const services: Service[] = [
     icon: 'FileText',
     stat: '4,7%',
     statLabel: 'taux de conversion blog',
-    metaTitle: 'Content sales pour cabinet comptable | GrowthCompta',
+    metaTitle: 'Contenu pour expert-comptable : transformer son expertise en machine à clients | GrowthCompta',
     metaDescription:
-      "Guides verticaux, comparateurs et content SEO qui convertissent pour cabinets comptables. Taux de conversion blog moyen 4,7%.",
+      "Guide complet du content marketing pour cabinets comptables. LinkedIn, SEO, newsletter, YouTube — l'Équation du Contenu Rentable : Expertise × Distribution × Confiance × Nurturing.",
     faqs: [
       {
         question: "Combien d'articles faut-il produire par mois ?",
