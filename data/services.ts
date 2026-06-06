@@ -116,9 +116,9 @@ export const services: Service[] = [
     icon: 'Zap',
     stat: '38%',
     statLabel: 'SQL ratio moyen',
-    metaTitle: 'Sales ops & automation pour cabinet comptable | GrowthCompta',
+    metaTitle: 'Sales ops cabinet comptable : CRM, nurturing et conversion des leads | GrowthCompta',
     metaDescription:
-      'CRM, nurturing et automation pour qualifier vos leads avant de les contacter. SQL ratio moyen 38% sur notre portefeuille.',
+      'Comment les cabinets comptables convertissent leurs prospects sans perdre de leads. CRM, scoring, nurturing, règles de l\'Ordre — le système complet.',
     faqs: [
       {
         question: 'Avec quels CRM travaillez-vous ?',
