@@ -9,13 +9,14 @@ const MAX_DAYS = 180
 
 // Price anchors — update these to match your real pricing
 const PRICE_ANCHORS = {
-  easy: { fire: { min: 900,   max: 1_800 }, engine: { min: 700,   max: 1_400 } },
-  hard: { fire: { min: 1_800, max: 3_500 }, engine: { min: 1_300, max: 2_600 } },
+  easy:   { fire: { min: 900,   max: 1_800 }, engine: { min: 700,   max: 1_400 } },
+  medium: { fire: { min: 1_200, max: 2_400 }, engine: { min: 900,   max: 1_800 } },
+  hard:   { fire: { min: 1_800, max: 3_500 }, engine: { min: 1_300, max: 2_600 } },
 } as const
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
-type Niche = 'easy' | 'hard'
+type Niche = 'easy' | 'medium' | 'hard'
 
 function lerp(a: number, b: number, t: number) {
   return Math.round(a + (b - a) * Math.max(0, Math.min(1, t)))
@@ -90,6 +91,43 @@ function computeScenario(niche: Niche, days: number): Scenario {
     }
   }
 
+  // medium niche
+  if (niche === 'medium') {
+    if (zone === 'fire') return {
+      zone, badge: '🔥 FIRE MIX', priceMin, priceMax, commitment,
+      approach: 'Paid ads ciblés + LinkedIn outbound complémentaire',
+      tagline:  'Combiner les deux canaux pour aller chercher les décideurs où ils sont.',
+      includes: [
+        'Campagnes Meta ou Google Ads sur les segments accessibles',
+        'Séquences LinkedIn outbound sur les profils moins actifs en ligne',
+        'Landing pages et CRM de qualification',
+        'Reporting hebdomadaire et arbitrage canal',
+      ],
+    }
+    if (zone === 'hybrid') return {
+      zone, badge: '🔥⚙️ MIX + ENGINE', priceMin, priceMax, commitment,
+      approach: 'Paid ads + LinkedIn + fondations SEO et contenu',
+      tagline:  'Leads courts terme et visibilité long terme en parallèle.',
+      includes: [
+        'Campagnes paid sur les segments accessibles',
+        'Outbound LinkedIn ciblé sur les décideurs moins visibles',
+        'SEO local et contenu de niche déployés en parallèle',
+        'Reporting combiné multi-canal',
+      ],
+    }
+    return {
+      zone, badge: '⚙️ ENGINE MIX', priceMin, priceMax, commitment,
+      approach: 'SEO de niche + Content + positionnement expert',
+      tagline:  'Créer la demande là où votre cible cherche des réponses.',
+      includes: [
+        'SEO local et pages de niche sectorielles',
+        'Contenu éducatif pour les acheteurs partiellement en ligne',
+        'Positionnement expert et personal brand discret',
+        'Reporting mensuel sur la progression organique',
+      ],
+    }
+  }
+
   // hard niche
   if (zone === 'fire') return {
     zone, badge: '🔥 FIRE CUSTOM', priceMin, priceMax, commitment,
@@ -134,6 +172,11 @@ function NicheQuestion({ value, onChange }: { value: Niche | null; onChange: (v:
       value: 'easy',
       label: 'Accessible en ligne',
       sub:   'LMNP, médecins, e-commerçants, freelances — Facebook Ads & SEO fonctionnent bien.',
+    },
+    {
+      value: 'medium',
+      label: 'Modérément accessible',
+      sub:   'Avocats, artisans, TPE locales, professions B2B partiellement en ligne — approche mixte.',
     },
     {
       value: 'hard',
