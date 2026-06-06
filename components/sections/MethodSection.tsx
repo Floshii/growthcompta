@@ -13,7 +13,7 @@ const phases = [
       'Dashboard : coût/lead, coût/RDV, taux de signature',
     ],
     price: '1 000€',
-    priceDetail: '+ 100€ / RDV qualifié livré',
+    priceDetail: '· coût/lead adapté à votre niche',
     highlight: '100% au résultat',
   },
   {

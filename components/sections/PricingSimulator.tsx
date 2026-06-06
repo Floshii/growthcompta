@@ -9,7 +9,7 @@ type Niche     = 'easy' | 'medium' | 'hard'
 
 // ── Pricing constants ─────────────────────────────────────────────────────────
 
-const FIRE_PRICING = "1 000 € d'activation · 8 leads qualifiés inclus · 150 €/lead au-delà"
+const FIRE_PRICING = "1 000 € d'activation · 8 leads qualifiés inclus · 100 % à la performance ensuite"
 
 const ENGINE_FLOOR: Record<Niche, string> = {
   easy:   'Setup à partir de 5 000 € · FUEL à partir de 1 500 €/mois',
