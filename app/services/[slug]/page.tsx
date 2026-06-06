@@ -71,10 +71,16 @@ export default async function ServicePage({ params }: PageProps) {
 
       <section className="bg-gradient-to-br from-blue-700 to-blue-900 text-white py-20">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-blue-200 text-sm uppercase tracking-widest mb-4">Service</p>
-          <h1 className="font-display text-4xl md:text-5xl font-bold mb-6">{service.title}</h1>
-          <p className="text-xl text-blue-100 mb-8 leading-relaxed">{service.shortDesc}</p>
-          <div className="flex flex-wrap items-center gap-6">
+          <p className="text-blue-200 text-sm uppercase tracking-widest mb-4">
+            {serviceContent?.frontmatter.title ? service.title : 'Service'}
+          </p>
+          <h1 className="font-display text-4xl md:text-5xl font-bold mb-6 leading-tight">
+            {serviceContent?.frontmatter.title ?? service.title}
+          </h1>
+          {!serviceContent?.frontmatter.title && (
+            <p className="text-xl text-blue-100 mb-8 leading-relaxed">{service.shortDesc}</p>
+          )}
+          <div className="flex flex-wrap items-center gap-6 mt-8">
             <Button href="/outils/audit-acquisition" size="lg" variant="accent" aria-label="Demander un audit gratuit">
               Audit gratuit
             </Button>

@@ -10,6 +10,7 @@ export interface ServiceFAQItem {
 }
 
 export interface ServiceContentFrontmatter {
+  title?: string
   faq?: ServiceFAQItem[]
 }
 
