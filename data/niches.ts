@@ -1159,4 +1159,978 @@ export const niches: Niche[] = [
       { question: 'Peut-on déduire une certification ICF ou EMCC ?', answer: 'Oui. Les frais de formation et de certification professionnelle sont des charges d\'exploitation déductibles dès lors qu\'elles sont directement liées à l\'activité de coaching.' },
     ],
   },
+
+  // ─── Santé libérale ───────────────────────────────────────────────────────────
+
+  {
+    slug: 'osteopathes',
+    label: 'Ostéopathes',
+    headline: 'Expert-comptable pour ostéopathes : sérénité administrative, focus cabinet',
+    description: 'Expert-comptable spécialisé ostéopathe : déclaration 2035, cotisations URSSAF, charges déductibles. Gérez votre cabinet libéral sereinement et développez votre patientèle.',
+    keywords: ['expert comptable ostéopathe', 'comptable ostéopathie libérale', 'déclaration 2035 ostéopathe', 'comptabilité BNC ostéopathe'],
+    stat: { value: '30 000+', label: 'ostéopathes libéraux en France — profession en forte croissance depuis la reconnaissance légale de 2014' },
+    painPoints: [
+      'TVA exonérée ou non selon la nature des actes réalisés au cabinet',
+      'Déclaration BNC 2035 complexe avec les charges spécifiques du libéral',
+      'Cotisations URSSAF et retraite CIPAV difficiles à anticiper et optimiser',
+      'Gestion des remplaçants et rétrocession d\'honoraires',
+    ],
+    services: [
+      'Déclaration BNC 2035 et liasse fiscale libérale',
+      'Conseil sur les charges déductibles du cabinet',
+      'Optimisation cotisations sociales URSSAF et CIPAV',
+      'Accompagnement à l\'installation en libéral',
+      'Gestion des remplaçants et rétrocession d\'honoraires',
+    ],
+    avantages: [
+      'Marché de 30 000 ostéos en croissance de 5 %/an — demande constante et prévisible',
+      'Dossiers standardisables autour du régime BNC et de la 2035',
+      'Communauté professionnelle très active : bouche-à-oreille naturel entre confrères',
+    ],
+    relatedArticles: [
+      'comment-specialiser-cabinet-comptable',
+      'seo-expert-comptable-guide-complet',
+      'etude-croissance-cabinets-comptables-2026',
+    ],
+    faqs: [
+      { question: 'Les actes d\'ostéopathie sont-ils soumis à TVA ?', answer: 'Non. Les actes d\'ostéopathie sont exonérés de TVA lorsqu\'ils s\'inscrivent dans le cadre des soins à la personne (article 261-4-1° du CGI). Cette exonération s\'applique dès lors que l\'ostéopathe est reconnu légalement selon l\'arrêté de 2007.' },
+      { question: 'Quel régime fiscal pour un ostéopathe libéral ?', answer: 'Le régime de la déclaration contrôlée (BNC réel) est généralement obligatoire au-delà de 77 700 € de recettes. En dessous, le micro-BNC avec son abattement de 34 % est possible, mais souvent moins avantageux si les charges réelles dépassent ce seuil.' },
+      { question: 'Comment gérer la rétrocession d\'honoraires à un remplaçant ?', answer: 'Les honoraires rétrocédés à un remplaçant sont des charges déductibles pour le titulaire. Le remplaçant doit les déclarer dans ses propres recettes BNC. Un contrat de remplacement écrit est indispensable pour sécuriser la relation fiscale et sociale.' },
+    ],
+  },
+
+  {
+    slug: 'psychologues',
+    label: 'Psychologues libéraux',
+    headline: 'Expert-comptable pour psychologues : sérénité fiscale pour vos consultations',
+    description: 'Expert-comptable pour psychologues libéraux : BNC 2035, TVA, Mon Psy, mix salariat. Concentrez-vous sur vos patients, on s\'occupe de votre comptabilité.',
+    keywords: ['expert comptable psychologue', 'comptable psychologue libéral', 'BNC psychologue', 'déclaration 2035 psychologue'],
+    stat: { value: '25 000+', label: 'psychologues libéraux en France — marché dopé par le dispositif Mon Psy depuis 2022' },
+    painPoints: [
+      'Mix salariat et activité libérale difficile à déclarer correctement',
+      'TVA et exonération sur les consultations psychologiques',
+      'Dispositif Mon Psy : comptabilisation des remboursements Assurance Maladie',
+      'Choix du statut pour les psychologues en création de cabinet',
+    ],
+    services: [
+      'Déclaration BNC 2035 pour psychologue libéral',
+      'Gestion du mix salariat et activité indépendante',
+      'Comptabilisation Mon Psy et remboursements CPAM',
+      'Accompagnement création de cabinet et choix du statut',
+      'Optimisation fiscale et cotisations sociales',
+    ],
+    avantages: [
+      'Demande en forte hausse post-Covid — le marché de la santé mentale est en plein essor',
+      'Communauté très soudée sur les réseaux pro : prescriptions naturelles entre confrères',
+      'Dossiers standardisés autour de la 2035 — efficacité et marges préservées',
+    ],
+    relatedArticles: [
+      'comment-specialiser-cabinet-comptable',
+      'seo-expert-comptable-guide-complet',
+      'cout-acquisition-client-cabinet-comptable',
+    ],
+    faqs: [
+      { question: 'Les consultations de psychologie sont-elles soumises à TVA ?', answer: 'Non. Les soins dispensés aux personnes par les membres des professions médicales et paramédicales réglementées sont exonérés de TVA. Les psychologues bénéficient de cette exonération pour leurs actes thérapeutiques.' },
+      { question: 'Comment déclarer un mix salariat et activité libérale ?', answer: 'Les deux revenus sont déclarés séparément : les salaires sur la 2042 classique, et les honoraires libéraux sur la 2035. Les charges déductibles (loyer du cabinet, formations, supervision) ne concernent que la partie libérale.' },
+      { question: 'Le dispositif Mon Psy change-t-il ma comptabilité ?', answer: 'Mon Psy est remboursé par l\'Assurance Maladie directement au psychologue via une facturation spécifique. Ces remboursements s\'intègrent dans les recettes BNC. Le suivi des actes éligibles et des remboursements doit être tracé rigoureusement.' },
+    ],
+  },
+
+  {
+    slug: 'orthophonistes',
+    label: 'Orthophonistes',
+    headline: 'Expert-comptable pour orthophonistes : comptabilité libérale sans stress',
+    description: 'Expert-comptable spécialisé orthophoniste : NGAP, CARPIMKO, charges cabinet. Déclaration 2035 et optimisation fiscale pour les orthophonistes libéraux en France.',
+    keywords: ['expert comptable orthophoniste', 'comptable orthophoniste libéral', 'CARPIMKO orthophoniste', 'BNC orthophoniste'],
+    stat: { value: '24 000+', label: 'orthophonistes en France — majorité en exercice libéral avec actes NGAP et cotisations CARPIMKO' },
+    painPoints: [
+      'Actes NGAP avec des tarifs variables selon les bilans et les séances',
+      'Cotisations CARPIMKO et régime social des libéraux à optimiser',
+      'Gestion des remplaçants et accueil de stagiaires',
+      'Installation en libéral : choix du statut et déductions d\'installation',
+    ],
+    services: [
+      'Déclaration BNC 2035 orthophoniste',
+      'Optimisation cotisations CARPIMKO et URSSAF',
+      'Accompagnement installation libérale',
+      'Gestion des remplaçants et rétrocession',
+      'Conseil charges déductibles du cabinet',
+    ],
+    avantages: [
+      'Profession réglementée avec des revenus stables et prévisibles — clients fidèles',
+      'Dossiers homogènes facilitant les process internes du cabinet comptable',
+      'Forte communauté professionnelle : un orthophoniste satisfait en parle à 5 confrères',
+    ],
+    relatedArticles: [
+      'comment-specialiser-cabinet-comptable',
+      'seo-expert-comptable-guide-complet',
+      'etude-croissance-cabinets-comptables-2026',
+    ],
+    faqs: [
+      { question: 'Les orthophonistes libéraux doivent-ils tenir une comptabilité ?', answer: 'Oui. Tout professionnel libéral en BNC réel doit tenir une comptabilité recettes-dépenses et déposer une déclaration 2035. En micro-BNC (sous le seuil de recettes), les obligations sont allégées mais la déclaration reste obligatoire.' },
+      { question: 'Qu\'est-ce que la CARPIMKO et comment optimiser ses cotisations ?', answer: 'La CARPIMKO est la caisse de retraite des auxiliaires médicaux libéraux dont les orthophonistes. Elle gère la retraite de base, la complémentaire et la prévoyance. Les cotisations sont en partie déductibles des revenus BNC.' },
+      { question: 'Puis-je déduire l\'achat du matériel d\'orthophonie ?', answer: 'Oui. Les logiciels de bilan, plateformes numériques thérapeutiques et matériel de cabinet sont des charges déductibles en BNC réel. Pour les équipements importants (plus de 500 € HT), l\'amortissement sur plusieurs années est obligatoire.' },
+    ],
+  },
+
+  {
+    slug: 'veterinaires',
+    label: 'Vétérinaires',
+    headline: 'Expert-comptable pour vétérinaires : cabinet libéral, clinique ou SELARL ?',
+    description: 'Expert-comptable spécialisé vétérinaires : SCP, SELARL, TVA médicaments, charges clinique. De l\'exercice libéral à la clinique multi-praticiens, on structure votre comptabilité.',
+    keywords: ['expert comptable vétérinaire', 'comptable clinique vétérinaire', 'SELARL vétérinaire', 'TVA médicaments vétérinaires'],
+    stat: { value: '19 000+', label: 'vétérinaires en France — 70 % exercent en structure libérale ou clinique indépendante' },
+    painPoints: [
+      'TVA sur les médicaments et produits vétérinaires à taux variables',
+      'Choix de la structure : SCP, SELARL ou SAS vétérinaire',
+      'Gestion des associés et valorisation des parts de clinique',
+      'Charges de personnel élevées dans les cliniques multi-praticiens',
+    ],
+    services: [
+      'Comptabilité clinique vétérinaire (TVA, stocks, personnel)',
+      'Conseil sur la structure juridique (SCP, SELARL, SAS)',
+      'Valorisation des parts et accompagnement à l\'association',
+      'Gestion des charges de personnel et optimisation sociale',
+      'Accompagnement à la transmission ou à la cession de clinique',
+    ],
+    avantages: [
+      'Dossiers à fort CA — même une petite clinique dépasse 500 k€ de recettes annuelles',
+      'Besoin de conseil structurel fort : structure, associés, transmission — missions récurrentes',
+      'Secteur en mutation (consolidation des réseaux) : des clients en attente d\'accompagnement',
+    ],
+    relatedArticles: [
+      'comment-specialiser-cabinet-comptable',
+      'seo-expert-comptable-guide-complet',
+      'etude-croissance-cabinets-comptables-2026',
+    ],
+    faqs: [
+      { question: 'Quelle structure juridique pour une clinique vétérinaire ?', answer: 'La SELARL est la forme la plus courante pour les professions libérales réglementées. Elle combine la responsabilité limitée et l\'exercice libéral. La SAS vétérinaire est désormais possible et offre plus de flexibilité pour l\'actionnariat.' },
+      { question: 'La TVA s\'applique-t-elle aux soins vétérinaires ?', answer: 'Oui. Contrairement aux soins humains, les actes vétérinaires sont soumis à TVA à 20 %. Les médicaments peuvent bénéficier de taux réduits selon leur classification. La récupération de la TVA sur les achats est possible.' },
+      { question: 'Comment valoriser une clinique vétérinaire pour une association ?', answer: 'La valorisation repose sur un multiple de l\'EBITDA (3 à 6 fois selon la taille et la région) ou une valeur de CA ajustée. L\'évaluation prend en compte le fichier clients, le matériel et la localisation.' },
+    ],
+  },
+
+  {
+    slug: 'sages-femmes',
+    label: 'Sages-femmes libérales',
+    headline: 'Expert-comptable pour sages-femmes libérales : de la 2035 à l\'optimisation',
+    description: 'Expert-comptable spécialisé sages-femmes : déclaration 2035, CARPIMKO, actes NGAP. Gestion comptable et fiscale de votre activité libérale, de l\'installation à la retraite.',
+    keywords: ['expert comptable sage-femme', 'comptable sage-femme libérale', 'BNC sage-femme', 'CARPIMKO sage-femme'],
+    stat: { value: '6 500+', label: 'sages-femmes libérales en France — profession en croissance avec extension des compétences depuis 2023' },
+    painPoints: [
+      'Mix activité libérale et salariat hospitalier à déclarer correctement',
+      'Extension des compétences en gynécologie : nouveaux revenus à qualifier',
+      'CARPIMKO et régime de protection sociale libérale complexe',
+      'Installation en libéral : premier bilan, équipement déductible',
+    ],
+    services: [
+      'Déclaration BNC 2035 sage-femme libérale',
+      'Gestion du mix salariat et libéral',
+      'Optimisation cotisations CARPIMKO',
+      'Accompagnement installation en libéral',
+      'Déductions matériel et charges professionnelles',
+    ],
+    avantages: [
+      'Extension des compétences de 2023 : revenus en hausse, nouveaux besoins comptables',
+      'Profession réglementée avec revenus stables — clients fidèles et prescripteurs',
+      'Peu de cabinets spécialisés : premier positionné capte l\'essentiel des recherches',
+    ],
+    relatedArticles: [
+      'comment-specialiser-cabinet-comptable',
+      'seo-expert-comptable-guide-complet',
+      'cout-acquisition-client-cabinet-comptable',
+    ],
+    faqs: [
+      { question: 'Une sage-femme libérale doit-elle s\'inscrire à l\'Ordre ?', answer: 'Oui. L\'inscription à l\'Ordre national des sages-femmes est obligatoire pour exercer en France, en libéral ou en salarié. Cet enregistrement est requis avant toute facturation d\'actes.' },
+      { question: 'Comment déclarer les revenus issus des consultations de gynécologie ?', answer: 'Depuis 2023, les sages-femmes peuvent réaliser des consultations de gynécologie de prévention. Ces actes sont cotés dans la NGAP et s\'intègrent dans les recettes BNC de la déclaration 2035.' },
+      { question: 'Les sages-femmes peuvent-elles déduire le matériel de suivi à domicile ?', answer: 'Oui. Le tensiomètre, le sonar, les équipements de surveillance fœtale et autres matériels professionnels sont déductibles en BNC réel. Pour les équipements dépassant 500 € HT, un amortissement sur la durée d\'usage est obligatoire.' },
+    ],
+  },
+
+  // ─── Immobilier & Patrimoine ──────────────────────────────────────────────────
+
+  {
+    slug: 'agents-immobiliers',
+    label: 'Agents immobiliers',
+    headline: 'Expert-comptable pour agents immobiliers : commissions, TVA et rentabilité agence',
+    description: 'Expert-comptable pour agents immobiliers et mandataires : commissions, TVA, structure juridique. Optimisez la rentabilité de votre agence et développez votre réseau.',
+    keywords: ['expert comptable agent immobilier', 'comptable agence immobilière', 'TVA commissions immobilier', 'comptable mandataire immobilier'],
+    stat: { value: '35 000+', label: 'agences immobilières en France — marché en mutation avec l\'essor des mandataires indépendants' },
+    painPoints: [
+      'TVA à 20 % sur les commissions et honoraires d\'agence',
+      'Saisonnalité marquée : revenus très variables selon le marché immobilier',
+      'Mandataires immobiliers : statut, commissions et reversements',
+      'Passage d\'agent salarié à gérant d\'agence : quelle structure choisir ?',
+    ],
+    services: [
+      'Comptabilité agence immobilière (commissions, TVA, personnel)',
+      'Conseil sur la structure (EI, EURL, SAS, franchise)',
+      'Gestion des mandataires et agents commerciaux',
+      'Optimisation de la rémunération du dirigeant',
+      'Accompagnement ouverture de second point de vente',
+    ],
+    avantages: [
+      'Marché en restructuration : les agents créent leur propre structure en masse',
+      'Panier moyen mission élevé (CA supérieur à 200 k€ pour une agence établie)',
+      'Mandataires en forte croissance : vivier de prospects à cibler facilement',
+    ],
+    relatedArticles: [
+      'comment-specialiser-cabinet-comptable',
+      'seo-expert-comptable-guide-complet',
+      'cout-acquisition-client-cabinet-comptable',
+    ],
+    faqs: [
+      { question: 'Les commissions d\'agence immobilière sont-elles soumises à TVA ?', answer: 'Oui, les honoraires d\'une agence immobilière sont soumis à TVA à 20 %. Cette TVA s\'applique que la transaction concerne un bien neuf ou ancien. Seules les locations nues d\'habitation agissant comme intermédiaire peuvent être exonérées.' },
+      { question: 'Quel statut juridique pour ouvrir une agence immobilière ?', answer: 'La SAS ou la SARL sont les formes les plus courantes. La carte professionnelle T (transaction) est obligatoire. Le choix entre IS et IR dépend du niveau de revenus et des objectifs patrimoniaux.' },
+      { question: 'Comment gérer les mandataires immobiliers sur le plan fiscal ?', answer: 'Les mandataires sont des indépendants (souvent auto-entrepreneurs ou agents commerciaux) qui perçoivent des commissions rétrocédées. Ces rétrocessions sont des charges déductibles pour l\'agence, et des recettes imposables pour le mandataire.' },
+    ],
+  },
+
+  {
+    slug: 'cgp',
+    label: 'Conseillers en gestion de patrimoine',
+    headline: 'Expert-comptable pour CGP : holdings, revenus mixtes et optimisation fiscale',
+    description: 'Expert-comptable spécialisé CGP : honoraires, commissions, holding patrimoniale. Gérez votre activité de conseil en gestion de patrimoine avec un expert qui comprend votre métier.',
+    keywords: ['expert comptable CGP', 'comptable conseiller gestion patrimoine', 'holding CGP', 'TVA conseil patrimonial'],
+    stat: { value: '5 000+', label: 'CGP indépendants en France — panier moyen mission annuel supérieur à 3 500 €' },
+    painPoints: [
+      'Revenus mixtes : honoraires de conseil et commissions rétrocédées par les assureurs',
+      'TVA applicable aux honoraires mais exonérée sur les commissions d\'assurance',
+      'ORIAS, CIF, IAS : conformité réglementaire et documentation comptable',
+      'Holding patrimoniale : intégration fiscale et remontée de dividendes',
+    ],
+    services: [
+      'Comptabilité CGP (honoraires, rétrocessions, commissions)',
+      'Gestion TVA sur les différents flux de revenus',
+      'Création et gestion de holding patrimoniale',
+      'Conformité comptable ORIAS et CIF',
+      'Optimisation de la rémunération du dirigeant',
+    ],
+    avantages: [
+      'Dossiers à forte valeur : les CGP comprennent l\'intérêt d\'un bon conseil comptable',
+      'Missions récurrentes et durables — relation longue avec le client',
+      'Complémentarité naturelle avec votre propre offre de conseil patrimonial',
+    ],
+    relatedArticles: [
+      'comment-specialiser-cabinet-comptable',
+      'seo-expert-comptable-guide-complet',
+      'etude-croissance-cabinets-comptables-2026',
+    ],
+    faqs: [
+      { question: 'La TVA s\'applique-t-elle à toute l\'activité d\'un CGP ?', answer: 'Non. Les commissions d\'assurance (courtage) sont exonérées de TVA. Les honoraires de conseil patrimonial sont en revanche soumis à TVA à 20 %. Un CGP peut donc être en partie taxable et en partie exonéré, ce qui complexifie les déclarations.' },
+      { question: 'Faut-il créer une holding pour un CGP ?', answer: 'Au-delà d\'un certain niveau de revenus, la holding permet d\'optimiser la fiscalité des dividendes (régime mère-fille) et de protéger le patrimoine. Cette structure est pertinente dès que le CGP dispose de participations dans plusieurs entités.' },
+      { question: 'Comment justifier comptablement les rétrocessions de commissions ?', answer: 'Chaque rétrocession doit être documentée par un contrat de distribution ou de partenariat et une attestation de la compagnie d\'assurance ou de la société de gestion. Ces documents sont essentiels en cas de contrôle ACPR ou fiscal.' },
+    ],
+  },
+
+  {
+    slug: 'promoteurs',
+    label: 'Promoteurs immobiliers',
+    headline: 'Expert-comptable pour promoteurs immobiliers : VEFA, TVA et trésorerie longue',
+    description: 'Expert-comptable pour promoteurs immobiliers : VEFA, TVA promotion, SCI de programme, trésorerie. Maîtrisez la complexité comptable de vos opérations immobilières.',
+    keywords: ['expert comptable promoteur immobilier', 'comptable promotion immobilière', 'VEFA comptabilité', 'TVA promoteur immobilier'],
+    stat: { value: '250 000+', label: 'logements neufs mis en vente chaque année en France — portés par les promoteurs privés' },
+    painPoints: [
+      'Comptabilisation des VEFA sur la durée : avancement des travaux et reconnaissance des revenus',
+      'TVA sur marge ou sur prix total selon la nature de l\'opération',
+      'SCI de programme : comptabilité distincte pour chaque opération',
+      'Trésorerie longue durée : préfinancement, prêts promoteurs, garanties',
+    ],
+    services: [
+      'Comptabilité de promotion immobilière (VEFA, avancement)',
+      'Gestion TVA promotion (sur marge, sur prix, récupération)',
+      'Création et suivi de SCI de programme',
+      'Tableau de bord trésorerie pour opération longue durée',
+      'Bilan de promotion et résultat par opération',
+    ],
+    avantages: [
+      'Dossiers complexes avec honoraires à la hauteur — missions à 5-15 k€/an par opération',
+      'Relations durables : un promoteur fidélisé confie toutes ses opérations',
+      'Peu de cabinets maîtrisent vraiment la comptabilité de promotion immobilière',
+    ],
+    relatedArticles: [
+      'comment-specialiser-cabinet-comptable',
+      'seo-expert-comptable-guide-complet',
+      'etude-croissance-cabinets-comptables-2026',
+    ],
+    faqs: [
+      { question: 'Comment comptabiliser une VEFA en cours ?', answer: 'La VEFA est comptabilisée selon la méthode de l\'avancement : les revenus sont reconnus au fur et à mesure de l\'avancement des travaux, validé par des attestations d\'architecte. Cela lisse le résultat sur la durée de l\'opération.' },
+      { question: 'Quelle TVA s\'applique à une opération de promotion ?', answer: 'La TVA sur les ventes en VEFA est généralement à 20 %. La TVA sur marge s\'applique lors de la revente de terrains à bâtir achetés à des particuliers sans TVA. Le régime applicable dépend de la nature et de l\'historique du terrain.' },
+      { question: 'Pourquoi créer une SCI par opération ?', answer: 'La SCI de programme permet d\'isoler le risque financier de chaque opération, de faciliter l\'entrée d\'investisseurs et de simplifier la comptabilité de promotion. Elle peut être dissoute à l\'issue de l\'opération, après distribution des résultats.' },
+    ],
+  },
+
+  // ─── Digital & Freelance ──────────────────────────────────────────────────────
+
+  {
+    slug: 'developpeurs',
+    label: 'Développeurs freelance',
+    headline: 'Expert-comptable pour développeurs freelance : SASU, portage ou EURL ?',
+    description: 'Expert-comptable spécialisé développeurs freelance : TJM élevé, SASU ou portage salarial, TVA intracommunautaire. Optimisez votre structure et vos revenus de dev indépendant.',
+    keywords: ['expert comptable développeur freelance', 'comptable freelance informatique', 'SASU développeur', 'portage salarial développeur'],
+    stat: { value: '300 000+', label: 'développeurs freelance en France — TJM moyen entre 500 et 1 200 €/jour (données Malt 2024)' },
+    painPoints: [
+      'Choix de la structure : SASU, EURL, portage salarial ou auto-entrepreneur',
+      'TVA intracommunautaire sur les missions pour des clients étrangers',
+      'Propriété intellectuelle et cession de droits dans les contrats',
+      'Rémunération optimale : salaire vs dividendes pour les associés uniques',
+    ],
+    services: [
+      'Création et conseil structure juridique (SASU, EURL, AE)',
+      'Comptabilité mensuelle et gestion de trésorerie',
+      'TVA intracommunautaire et clients étrangers',
+      'Optimisation mix salaire / dividendes',
+      'Accompagnement levée de fonds ou association',
+    ],
+    avantages: [
+      'TJM élevé = CA et besoins comptables élevés — honoraires pleinement justifiés',
+      'Communauté tech très active sur Slack et LinkedIn — recommandations rapides',
+      'Clients autonomes numériquement : zéro friction pour le suivi et la facturation',
+    ],
+    relatedArticles: [
+      'comment-specialiser-cabinet-comptable',
+      'seo-expert-comptable-guide-complet',
+      'cout-acquisition-client-cabinet-comptable',
+    ],
+    faqs: [
+      { question: 'SASU ou portage salarial pour un développeur freelance ?', answer: 'Le portage salarial est simple mais coûteux (7 à 10 % du CA en frais). La SASU offre plus d\'optimisation fiscale (dividendes faiblement chargés) mais implique une gestion comptable plus rigoureuse. Au-delà de 70 k€ de CA, la SASU est généralement plus avantageuse.' },
+      { question: 'Comment gérer la TVA quand mes clients sont en Europe ?', answer: 'Les prestations B2B intracommunautaires sont en auto-liquidation : vous facturez HT et le client reverse la TVA dans son pays. Il faut déclarer ces opérations sur la déclaration EC Services et mentionner la mention légale sur vos factures.' },
+      { question: 'La cession de droits d\'auteur est-elle avantageuse fiscalement ?', answer: 'Sous conditions, les développeurs peuvent percevoir une partie de leur rémunération sous forme de droits d\'auteur, bénéficiant d\'un abattement de 34 %. Cette option est encadrée et doit être sécurisée avec un comptable spécialisé.' },
+    ],
+  },
+
+  {
+    slug: 'agences-seo',
+    label: 'Agences SEO',
+    headline: 'Expert-comptable pour agences SEO : abonnements, charges et croissance',
+    description: 'Expert-comptable pour agences SEO et consultants référencement : MRR, facturation clients, sous-traitance. Pilotez la santé financière de votre agence avec un expert comptable.',
+    keywords: ['expert comptable agence SEO', 'comptable consultant SEO', 'MRR agence', 'comptable agence marketing digital'],
+    stat: { value: '8 000+', label: 'agences et consultants SEO indépendants en France — marché en croissance constante' },
+    painPoints: [
+      'Comptabilisation des revenus récurrents (retainers mensuels)',
+      'TVA sur les prestations pour des clients hors France',
+      'Sous-traitance de rédacteurs et freelances : charges variables',
+      'Optimisation de la rémunération du fondateur en croissance rapide',
+    ],
+    services: [
+      'Comptabilité agence digitale (MRR, retainers, projets)',
+      'Gestion TVA intracommunautaire et international',
+      'Suivi charges sous-traitance et freelances',
+      'Tableau de bord rentabilité par client et prestation',
+      'Optimisation rémunération dirigeant et dividendes',
+    ],
+    avantages: [
+      'Les agences SEO comprennent la valeur du référencement — vous les prospectez avec vos propres méthodes',
+      'Modèle MRR prévisible : des clients stables avec des revenus récurrents',
+      'Secteur en croissance : de nouvelles agences se créent chaque mois en France',
+    ],
+    relatedArticles: [
+      'seo-expert-comptable-guide-complet',
+      'comment-specialiser-cabinet-comptable',
+      'cout-acquisition-client-cabinet-comptable',
+    ],
+    faqs: [
+      { question: 'Comment comptabiliser un abonnement mensuel d\'agence SEO ?', answer: 'Les retainers mensuels sont comptabilisés en produits sur la période concernée. Si un abonnement annuel est encaissé en avance, la part non encore réalisée est comptabilisée en produits constatés d\'avance (PCA).' },
+      { question: 'La TVA s\'applique-t-elle aux prestations pour des clients étrangers ?', answer: 'Pour les clients B2B dans l\'UE, la TVA est en auto-liquidation (client reverse dans son pays). Hors UE, les prestations de services numériques sont hors champ TVA français. Pour les clients français, la TVA à 20 % s\'applique normalement.' },
+      { question: 'Comment optimiser ma rémunération quand mon agence génère 300 k€ de CA ?', answer: 'En SASU ou SAS, le mix salaire (charges sociales) et dividendes (flat tax 30 %) est souvent optimal. Le niveau de salaire dépend de vos besoins personnels et de la trésorerie à conserver dans la société. Une simulation annuelle s\'impose.' },
+    ],
+  },
+
+  {
+    slug: 'agences-ia',
+    label: 'Agences IA',
+    headline: 'Expert-comptable pour agences IA : CIR, BSPCE et croissance rapide',
+    description: 'Expert-comptable pour agences et startups IA : Crédit Impôt Recherche, BSPCE, levée de fonds. Maîtrisez la fiscalité de l\'intelligence artificielle avec un expert à jour.',
+    keywords: ['expert comptable agence IA', 'comptable startup intelligence artificielle', 'CIR agence IA', 'BSPCE startup IA'],
+    stat: { value: '2,5 Mds€', label: 'marché de l\'IA en France en 2025 — les agences IA ont doublé en 18 mois (France Digitale)' },
+    painPoints: [
+      'Eligibilité et dossier Crédit Impôt Recherche (CIR) sur les projets IA',
+      'Revenus mixtes : prestations ponctuelles, SaaS récurrents et licences',
+      'BSPCE et intéressement de l\'équipe technique',
+      'Levée de fonds : obligations convertibles, valorisation et dilution',
+    ],
+    services: [
+      'Dossier CIR et CII, suivi des dépenses de R&D éligibles',
+      'Comptabilité agence IA (revenus mixtes, projets, licences)',
+      'Mise en place de BSPCE pour l\'équipe fondatrice',
+      'Accompagnement levée de fonds (seed, série A)',
+      'Modélisation financière et gestion de trésorerie',
+    ],
+    avantages: [
+      'Marché en explosion : les agences IA ont un besoin urgent de structuration comptable',
+      'CIR souvent mal exploité — valeur immédiate pour le client dès la première mission',
+      'Clients technologiques qui valorisent la compétence et recommandent rapidement',
+    ],
+    relatedArticles: [
+      'comment-specialiser-cabinet-comptable',
+      'seo-expert-comptable-guide-complet',
+      'etude-croissance-cabinets-comptables-2026',
+    ],
+    faqs: [
+      { question: 'Une agence IA peut-elle bénéficier du Crédit Impôt Recherche ?', answer: 'Oui, si l\'agence mène des travaux de R&D : développement de nouveaux modèles, résolution de verrous scientifiques, recherche sur des architectures IA. Le CIR rembourse 30 % des dépenses éligibles (salaires R&D, sous-traitance agréée).' },
+      { question: 'Comment comptabiliser les revenus d\'un SaaS IA ?', answer: 'Les abonnements annuels payés d\'avance sont comptabilisés en produits constatés d\'avance. Les revenus sont reconnus mensuellement au fur et à mesure de la délivrance du service.' },
+      { question: 'Qu\'est-ce qu\'un BSPCE et comment l\'attribuer à mon équipe ?', answer: 'Les BSPCE permettent aux salariés de souscrire des actions à un prix fixé aujourd\'hui, profitant de la hausse future de valorisation. Ils bénéficient d\'une fiscalité avantageuse (19 % de flat tax après 3 ans) et nécessitent une décision d\'AG.' },
+    ],
+  },
+
+  {
+    slug: 'dropshipping',
+    label: 'Dropshipping',
+    headline: 'Expert-comptable pour dropshipping : TVA OSS, marges et structure juridique',
+    description: 'Expert-comptable pour dropshippeurs : TVA OSS, droits de douane, comptabilité multi-boutiques. Structurez votre business dropshipping et optimisez vos marges nettes.',
+    keywords: ['expert comptable dropshipping', 'comptable dropshipping france', 'TVA OSS dropshipping', 'comptabilité dropshipping'],
+    stat: { value: '15 000+', label: 'e-commerçants dropshipping actifs en France — en forte croissance depuis 2020' },
+    painPoints: [
+      'TVA OSS obligatoire dès 10 000 € de ventes B2C dans l\'UE',
+      'Droits de douane sur les produits importés hors UE (Chine, US)',
+      'Marge nette vs CA brut : le CA affiché ne reflète pas la vraie rentabilité',
+      'Multi-boutiques : gestion de plusieurs entités et consolidation',
+    ],
+    services: [
+      'Déclaration TVA OSS (One Stop Shop) multi-pays',
+      'Comptabilité dropshipping (coût des ventes, douanes, frais plateforme)',
+      'Calcul et suivi de la marge nette par boutique',
+      'Conseil structure juridique (SASU, SARL)',
+      'Accompagnement passage de l\'auto-entreprise à la société',
+    ],
+    avantages: [
+      'Niche en forte demande : peu de comptables comprennent vraiment le dropshipping',
+      'Clients souvent jeunes et digitaux : process 100 % en ligne possible',
+      'TVA OSS = mission récurrente à forte valeur ajoutée',
+    ],
+    relatedArticles: [
+      'comment-specialiser-cabinet-comptable',
+      'seo-expert-comptable-guide-complet',
+      'cout-acquisition-client-cabinet-comptable',
+    ],
+    faqs: [
+      { question: 'Qu\'est-ce que la TVA OSS et qui est concerné ?', answer: 'Le guichet unique TVA OSS s\'applique aux ventes B2C de biens dans l\'UE dépassant 10 000 € par an. Il permet de déposer une seule déclaration en France pour l\'ensemble des pays de l\'UE, évitant les immatriculations TVA dans chaque pays.' },
+      { question: 'Les produits importés de Chine pour le dropshipping sont-ils taxés ?', answer: 'Oui. Depuis juillet 2021, la franchise TVA de 22 € à l\'import est supprimée. Tous les colis de Chine sont soumis à TVA et, selon la valeur, à des droits de douane. Ces montants s\'intègrent dans le coût de revient du produit.' },
+      { question: 'Dois-je créer une société pour faire du dropshipping ?', answer: 'En dessous de 30-40 k€ de bénéfice annuel, l\'auto-entreprise peut suffire. Au-delà, la société (SASU ou SARL) devient avantageuse pour l\'IS (taux réduit à 15 %) et pour protéger votre patrimoine personnel.' },
+    ],
+  },
+
+  {
+    slug: 'affiliation',
+    label: 'Affiliation',
+    headline: 'Expert-comptable pour affiliés : revenus passifs, TVA et optimisation fiscale',
+    description: 'Expert-comptable pour affiliés et marketeurs : Amazon Associates, réseaux affiliation, revenus passifs. Déclarez correctement vos commissions et optimisez votre fiscalité.',
+    keywords: ['expert comptable affiliation', 'comptable revenu affiliation', 'comptable Amazon Associates', 'fiscalité affiliation france'],
+    stat: { value: '1,2 Md€', label: 'marché de l\'affiliation en France en 2024 — des milliers d\'affiliés actifs sur des niches très diverses' },
+    painPoints: [
+      'Revenus multi-sources : Amazon Associates, réseaux affiliation, partenariats directs',
+      'TVA sur services numériques et revenus de plateformes étrangères',
+      'Statut optimal : micro-entrepreneur, BNC ou société',
+      'Déclaration obligatoire des comptes étrangers (Amazon, PayPal)',
+    ],
+    services: [
+      'Comptabilité revenus d\'affiliation multi-sources',
+      'Gestion TVA sur services numériques internationaux',
+      'Déclaration comptes étrangers (formulaire 3916)',
+      'Choix et création du statut optimal',
+      'Optimisation fiscale sur revenus passifs',
+    ],
+    avantages: [
+      'Marché peu couvert : les affiliés cherchent des comptables compétents sur leur modèle',
+      'Clients numériques à l\'aise avec les outils en ligne — process dématérialisé total',
+      'Revenus diversifiés : dossiers variés et intéressants à traiter',
+    ],
+    relatedArticles: [
+      'comment-specialiser-cabinet-comptable',
+      'seo-expert-comptable-guide-complet',
+      'cout-acquisition-client-cabinet-comptable',
+    ],
+    faqs: [
+      { question: 'Comment déclarer mes revenus Amazon Associates en France ?', answer: 'Les commissions Amazon Associates sont des revenus BNC si vous êtes un particulier ou indépendant. Ils s\'intègrent dans votre déclaration fiscale annuelle. Si Amazon vous verse depuis un compte US, une déclaration de compte étranger (3916) est obligatoire.' },
+      { question: 'Dois-je collecter la TVA sur mes revenus d\'affiliation ?', answer: 'Si vous êtes assujetti à la TVA et percevez des commissions d\'entreprises françaises, la TVA s\'applique à vos honoraires. Pour les revenus de plateformes étrangères hors UE, les règles d\'auto-liquidation s\'appliquent.' },
+      { question: 'Quel statut choisir pour un affilié qui gagne 50 000 €/an ?', answer: 'À ce niveau, la SASU ou l\'EURL à l\'IS deviennent intéressantes. L\'IS à 15 % sur les premiers 42 500 € de bénéfice est plus faible que l\'IR pour les tranches hautes. Une simulation fiscale personnalisée permet de choisir le statut optimal.' },
+    ],
+  },
+
+  {
+    slug: 'saas-b2b',
+    label: 'SaaS B2B',
+    headline: 'Expert-comptable pour SaaS B2B : MRR, CIR et croissance rapide',
+    description: 'Expert-comptable pour startups SaaS B2B : MRR, ARR, churn, CIR, BSPCE. Du pre-seed à la série A, structurez votre comptabilité SaaS pour séduire vos investisseurs.',
+    keywords: ['expert comptable SaaS', 'comptable startup SaaS', 'CIR SaaS', 'comptabilité MRR ARR'],
+    stat: { value: '60 %', label: 'des SaaS français lèvent des fonds avant la rentabilité — une comptabilité rigoureuse est indispensable' },
+    painPoints: [
+      'Comptabilisation du MRR et ARR selon les normes comptables françaises',
+      'Dépenses de R&D : capitalisation ou charge immédiate ?',
+      'CIR et CII sur les développements du produit SaaS',
+      'BSPCE, BSA et intéressement de l\'équipe fondatrice',
+    ],
+    services: [
+      'Comptabilité SaaS (MRR, ARR, churn, CAC, LTV)',
+      'Dossier CIR et suivi dépenses R&D éligibles',
+      'Mise en place BSPCE pour l\'équipe',
+      'Accompagnement levée de fonds (data room, due diligence)',
+      'Reporting investisseurs et tableau de bord financier mensuel',
+    ],
+    avantages: [
+      'Les fondateurs de SaaS paient bien — ils comprennent la valeur d\'un bon prestataire',
+      'CIR souvent mal exploité : valeur immédiate et différenciation forte',
+      'Une startup SaaS en croissance peut représenter 5-15 k€ d\'honoraires annuels',
+    ],
+    relatedArticles: [
+      'comment-specialiser-cabinet-comptable',
+      'seo-expert-comptable-guide-complet',
+      'etude-croissance-cabinets-comptables-2026',
+    ],
+    faqs: [
+      { question: 'Comment comptabiliser les abonnements annuels d\'un SaaS ?', answer: 'Les abonnements annuels encaissés d\'avance doivent être comptabilisés en produits constatés d\'avance (PCA). Le chiffre d\'affaires est reconnu mensuellement, au prorata de la période de service délivrée.' },
+      { question: 'Les développements de notre SaaS peuvent-ils bénéficier du CIR ?', answer: 'Oui, si les travaux constituent de la R&D : résolution d\'incertitudes techniques, développement de nouvelles fonctionnalités sur des verrous non triviaux. Le CIR rembourse 30 % des dépenses éligibles, ce qui peut représenter des dizaines de milliers d\'euros.' },
+      { question: 'Qu\'est-ce qu\'un BSPCE et comment en bénéficier ?', answer: 'Les BSPCE permettent aux salariés de souscrire des actions à un prix fixé aujourd\'hui, profitant de la hausse future de valorisation. Ils bénéficient d\'une fiscalité avantageuse (19 % de flat tax après 3 ans) et sont un outil puissant de fidélisation des talents.' },
+    ],
+  },
+
+  {
+    slug: 'createurs-contenu-adulte',
+    label: 'Créateurs de contenu premium',
+    headline: 'Expert-comptable pour créateurs de contenu premium : discrétion et optimisation',
+    description: 'Expert-comptable pour créateurs MYM, OnlyFans et plateformes premium : TVA, revenus étrangers, statut optimal. Confidentialité totale et optimisation fiscale garanties.',
+    keywords: ['expert comptable OnlyFans', 'comptable MYM France', 'fiscalité créateur contenu adulte', 'TVA contenu numérique abonnement'],
+    stat: { value: '50 000+', label: 'créateurs actifs sur MYM et OnlyFans en France en 2024 — marché en forte expansion' },
+    painPoints: [
+      'Revenus en devises étrangères (USD, GBP) à convertir et déclarer',
+      'TVA sur les abonnements et contenus numériques vendus dans l\'UE',
+      'Statut optimal : auto-entrepreneur, BNC ou SASU pour la confidentialité',
+      'Discrétion absolue requise : clients souhaitant protéger leur anonymat fiscal',
+    ],
+    services: [
+      'Déclaration des revenus plateformes étrangères (OnlyFans, MYM, Patreon)',
+      'Gestion TVA contenu numérique et régime OSS',
+      'Choix du statut optimal avec confidentialité maximale',
+      'Déclaration des comptes étrangers (formulaire 3916)',
+      'Optimisation fiscale et protection du patrimoine',
+    ],
+    avantages: [
+      'Quasi aucun comptable ne se positionne explicitement — différenciation radicale',
+      'Revenus souvent élevés pour des profils peu accompagnés — panier moyen fort',
+      'Bouche-à-oreille massif dans des communautés fermées très soudées',
+    ],
+    relatedArticles: [
+      'comment-specialiser-cabinet-comptable',
+      'seo-expert-comptable-guide-complet',
+      'cout-acquisition-client-cabinet-comptable',
+    ],
+    faqs: [
+      { question: 'Les revenus OnlyFans sont-ils imposables en France ?', answer: 'Oui. Tous les revenus perçus par un résident fiscal français, quelle que soit leur source, sont imposables en France. Les revenus de plateformes adultes sont des BNC ou des revenus commerciaux selon l\'activité exercée.' },
+      { question: 'Quelle TVA s\'applique aux abonnements OnlyFans ou MYM ?', answer: 'Les contenus numériques vendus à des particuliers dans l\'UE sont soumis à la TVA du pays de l\'acheteur. La plateforme collecte généralement cette TVA en votre nom. Il faut vérifier votre situation et potentiellement s\'inscrire au régime OSS.' },
+      { question: 'Comment protéger ma vie privée en tant que créateur de contenu ?', answer: 'La création d\'une société (SASU ou SARL) avec une adresse de domiciliation professionnelle permet de ne pas exposer votre adresse personnelle. Des solutions de domiciliation discrètes existent pour les dirigeants souhaitant préserver leur anonymat.' },
+    ],
+  },
+
+  // ─── Commerce local & Artisanat ───────────────────────────────────────────────
+
+  {
+    slug: 'boulangers',
+    label: 'Boulangers & Artisans',
+    headline: 'Expert-comptable pour boulangers : gestion artisanale et développement',
+    description: 'Expert-comptable pour boulangers et artisans alimentaires : TVA, charges salariales, bail commercial. De la boulangerie indépendante à l\'ouverture d\'un second point de vente.',
+    keywords: ['expert comptable boulanger', 'comptable boulangerie', 'TVA boulangerie', 'charges salariales boulangerie'],
+    stat: { value: '35 000+', label: 'boulangeries-pâtisseries artisanales en France — premier réseau artisanal du pays' },
+    painPoints: [
+      'Charges salariales lourdes (boulangers de nuit, apprentis, CDI)',
+      'TVA à 5,5 % ou 20 % selon les produits (pain vs pâtisserie)',
+      'Gestion des stocks de matières premières et des pertes',
+      'Bail commercial et négociation lors du renouvellement',
+    ],
+    services: [
+      'Comptabilité boulangerie (ventes caisse, stocks, personnel)',
+      'Gestion TVA multi-taux (pains à 5,5 %, pâtisseries à 20 %)',
+      'Suivi des charges salariales et conventions collectives',
+      'Accompagnement ouverture de second point de vente',
+      'Cession et transmission de boulangerie artisanale',
+    ],
+    avantages: [
+      'Secteur artisanal à fort volume : 35 000 boulangeries dont beaucoup cherchent un comptable de confiance',
+      'Clients fidèles avec des missions récurrentes (paie, TVA, bilan)',
+      'Peu de concurrence sur "comptable boulangerie" en SEO local',
+    ],
+    relatedArticles: [
+      'comment-specialiser-cabinet-comptable',
+      'seo-expert-comptable-guide-complet',
+      'cout-acquisition-client-cabinet-comptable',
+    ],
+    faqs: [
+      { question: 'Quelle TVA s\'applique aux ventes en boulangerie ?', answer: 'Le pain et la viennoiserie bénéficient du taux réduit à 5,5 %. Les produits consommés sur place passent à 10 %. Les pâtisseries fraîches à emporter sont en général à 5,5 %, sauf produits de confiserie ou chocolaterie qui peuvent être à 20 %.' },
+      { question: 'Comment gérer la paie des boulangers de nuit ?', answer: 'Les boulangers travaillant de nuit bénéficient de majorations prévues par la convention collective de la boulangerie. Ces majorations doivent être correctement calculées et déclarées. Un logiciel de paie sectoriel évite les erreurs coûteuses.' },
+      { question: 'Comment valoriser une boulangerie pour la céder ?', answer: 'La valorisation repose sur un multiple du CA annuel TTC (généralement 40 à 80 %) ajusté par l\'emplacement, la rentabilité et la fidélité clientèle. Le fonds de commerce inclut le matériel, le bail et la clientèle.' },
+    ],
+  },
+
+  {
+    slug: 'coiffeurs',
+    label: 'Coiffeurs',
+    headline: 'Expert-comptable pour coiffeurs : salon indépendant, franchise et développement',
+    description: 'Expert-comptable pour coiffeurs et salons de coiffure : charges salariales, caisse, bail commercial. Du salon indépendant à la franchise, optimisez la rentabilité de votre salon.',
+    keywords: ['expert comptable coiffeur', 'comptable salon coiffure', 'charges coiffeur', 'comptabilité salon coiffure'],
+    stat: { value: '80 000+', label: 'salons de coiffure en France — premier réseau artisanal en nombre d\'établissements' },
+    painPoints: [
+      'Charges salariales très élevées sous convention collective coiffure complexe',
+      'Gestion de la caisse et des pourboires',
+      'Bail commercial et charges locatives',
+      'Rachat d\'un salon existant ou ouverture d\'une franchise',
+    ],
+    services: [
+      'Comptabilité salon de coiffure (ventes, personnel, charges)',
+      'Gestion de la paie selon la convention collective coiffure',
+      'Suivi de la caisse et des pourboires',
+      'Accompagnement rachat ou cession de salon',
+      'Optimisation de la rentabilité (marges produits, services)',
+    ],
+    avantages: [
+      'Premier réseau artisanal en France : 80 000 salons dont beaucoup sous-accompagnés',
+      'Clients locaux fidèles — relation de confiance rapide à construire',
+      'Paie complexe sous convention coiffure : valeur ajoutée réelle et récurrente',
+    ],
+    relatedArticles: [
+      'comment-specialiser-cabinet-comptable',
+      'seo-expert-comptable-guide-complet',
+      'cout-acquisition-client-cabinet-comptable',
+    ],
+    faqs: [
+      { question: 'Quelles sont les spécificités de la convention collective coiffure ?', answer: 'La convention collective nationale de la coiffure (IDCC 2596) prévoit des grilles de salaires, des primes d\'ancienneté, des majorations pour travail le samedi et des règles spécifiques sur les pourboires. Elle est l\'une des plus complexes du secteur artisanal.' },
+      { question: 'Les pourboires reçus en salon doivent-ils être déclarés ?', answer: 'Oui. Les pourboires sont imposables et doivent être déclarés. Depuis 2022, les pourboires versés par carte bancaire sont exonérés de charges sociales et d\'impôt sur le revenu pour les salariés, dans la limite de 20 % du salaire brut.' },
+      { question: 'Comment racheter un salon de coiffure existant ?', answer: 'L\'achat d\'un fonds de commerce de coiffure comprend le droit au bail, le matériel et la clientèle. Une due diligence comptable préalable est indispensable pour vérifier le CA réel, les charges et la rentabilité. Un financement mixte prêt bancaire et ARCE est souvent utilisé.' },
+    ],
+  },
+
+  {
+    slug: 'estheticiennes',
+    label: 'Esthéticiennes',
+    headline: 'Expert-comptable pour esthéticiennes : de la micro-entreprise à l\'institut spécialisé',
+    description: 'Expert-comptable pour esthéticiennes et instituts de beauté : TVA soins, investissement matériel, bail. Développez votre institut avec un comptable qui connaît votre secteur.',
+    keywords: ['expert comptable esthéticienne', 'comptable institut beauté', 'TVA soins esthétiques', 'comptabilité spa'],
+    stat: { value: '60 000+', label: 'instituts de beauté et spas en France — secteur en forte croissance porté par le bien-être' },
+    painPoints: [
+      'TVA à 20 % sur les soins esthétiques non médicaux',
+      'Investissement matériel important (laser, LPG, appareils) à amortir',
+      'Charges fixes élevées : loyer, consommables, personnel',
+      'Choix du statut selon le profil : auto-entreprise, EI ou SARL',
+    ],
+    services: [
+      'Comptabilité institut de beauté (soins, produits, abonnements)',
+      'Gestion TVA et amortissement matériel esthétique',
+      'Paie personnels et gestion des heures',
+      'Conseil sur le statut juridique et la structure',
+      'Accompagnement développement (second salon, franchise)',
+    ],
+    avantages: [
+      'Marché du bien-être en croissance de 7 %/an — de nouveaux instituts ouvrent chaque mois',
+      'Investissements matériels récurrents créent des besoins de conseil réguliers',
+      'Clients souvent peu accompagnés en création — valeur ajoutée dès le démarrage',
+    ],
+    relatedArticles: [
+      'comment-specialiser-cabinet-comptable',
+      'seo-expert-comptable-guide-complet',
+      'cout-acquisition-client-cabinet-comptable',
+    ],
+    faqs: [
+      { question: 'Les soins esthétiques sont-ils soumis à TVA ?', answer: 'Oui, à 20 %. Contrairement aux soins médicaux prescrits par un médecin, les soins esthétiques (épilation, soin du visage, massage bien-être) sont soumis à TVA au taux normal. Seuls les actes paramédicaux réglementés bénéficient d\'une exonération.' },
+      { question: 'Comment amortir un appareil laser ou LPG ?', answer: 'Les équipements esthétiques professionnels sont amortis sur leur durée d\'utilisation réelle, généralement 5 à 7 ans. L\'amortissement réduit le résultat imposable chaque année, optimisant la fiscalité sur la durée.' },
+      { question: 'Quelle structure pour ouvrir un institut de beauté ?', answer: 'Avec moins de 30 k€ de bénéfice, l\'auto-entreprise peut convenir. Au-delà, la SARL ou la SAS protège le patrimoine personnel et permet d\'optimiser la fiscalité. La SARL est souvent préférée pour les instituts avec du personnel.' },
+    ],
+  },
+
+  {
+    slug: 'garages',
+    label: 'Garages automobiles',
+    headline: 'Expert-comptable pour garagistes : pièces, main-d\'œuvre, TVA et cession',
+    description: 'Expert-comptable pour garages automobiles et carrosseries : stock pièces, TVA, rachat véhicules. Rentabilité, transmission et optimisation fiscale pour les garagistes indépendants.',
+    keywords: ['expert comptable garage', 'comptable garagiste', 'TVA garage automobile', 'comptabilité mécanique'],
+    stat: { value: '35 000+', label: 'garages automobiles indépendants en France — marché stable porté par l\'entretien du parc existant' },
+    painPoints: [
+      'Stock de pièces détachées : gestion et valorisation en fin d\'exercice',
+      'TVA récupérable sur les véhicules achetés pour la revente',
+      'Marges atelier (main-d\'œuvre) vs vente de pièces : deux centres de profit',
+      'Départ en retraite et cession du fonds de commerce',
+    ],
+    services: [
+      'Comptabilité garage (atelier, ventes pièces, reprises véhicules)',
+      'Gestion TVA et stock de pièces détachées',
+      'Suivi marges atelier et rentabilité par prestation',
+      'Paie mécaniciens selon convention collective',
+      'Accompagnement cession et transmission du garage',
+    ],
+    avantages: [
+      'Marché stable avec un parc automobile vieillissant qui génère plus d\'entretien',
+      'Départs en retraite massifs : besoins de conseil en cession en forte hausse',
+      'Clients locaux fidèles — une bonne relation dure 10 à 20 ans',
+    ],
+    relatedArticles: [
+      'comment-specialiser-cabinet-comptable',
+      'seo-expert-comptable-guide-complet',
+      'cout-acquisition-client-cabinet-comptable',
+    ],
+    faqs: [
+      { question: 'La TVA est-elle récupérable sur l\'achat de véhicules par un garagiste ?', answer: 'Oui, sous conditions. Un garagiste qui achète des véhicules pour les revendre peut récupérer la TVA. En revanche, les véhicules affectés à son usage propre suivent les règles générales de déductibilité.' },
+      { question: 'Comment valoriser le stock de pièces détachées ?', answer: 'Le stock doit être valorisé en fin d\'exercice au coût d\'acquisition (FIFO ou coût moyen pondéré). Les pièces obsolètes ou détériorées peuvent faire l\'objet d\'une dépréciation. Un inventaire physique annuel est recommandé.' },
+      { question: 'Comment préparer la cession de mon garage ?', answer: 'La cession d\'un garage comprend le fonds de commerce (clientèle, outillage, droit au bail) et potentiellement les véhicules en stock. Une évaluation professionnelle préalable et un audit comptable permettent de fixer un prix juste et de préparer la due diligence.' },
+    ],
+  },
+
+  // ─── Juridique & Conseil ──────────────────────────────────────────────────────
+
+  {
+    slug: 'notaires',
+    label: 'Notaires',
+    headline: 'Expert-comptable pour notaires : office notarial, holding et optimisation',
+    description: 'Expert-comptable pour offices notariaux : comptabilité SCP, rémunération associés, CRPCEN, holding. Une expertise comptable à la hauteur des enjeux financiers des offices.',
+    keywords: ['expert comptable notaire', 'comptable office notarial', 'SCP notaires comptabilité', 'CRPCEN notaire'],
+    stat: { value: '17 000+', label: 'notaires en France — offices avec des revenus moyens supérieurs à 2 M€' },
+    painPoints: [
+      'Comptabilité de l\'office notarial : émoluments, fonds clients, charges',
+      'Rémunération des associés selon les règles de la profession réglementée',
+      'Caisse des retraites CRPCEN : cotisations et anticipation retraite',
+      'Holding patrimoniale des associés et structure SCP',
+    ],
+    services: [
+      'Comptabilité office notarial (émoluments, fonds clients, charges)',
+      'Conseil sur la rémunération des associés',
+      'Gestion cotisations CRPCEN et prévoyance',
+      'Création de holding patrimoniale pour les associés',
+      'Accompagnement à l\'association et valorisation des parts',
+    ],
+    avantages: [
+      'Dossiers à fort panier : un office notarial représente plusieurs dizaines de k€ d\'honoraires annuels',
+      'Clients exigeants qui valorisent l\'expertise — fidélisation longue durée',
+      'Peu de cabinets maîtrisent vraiment la comptabilité notariale spécifique',
+    ],
+    relatedArticles: [
+      'comment-specialiser-cabinet-comptable',
+      'seo-expert-comptable-guide-complet',
+      'etude-croissance-cabinets-comptables-2026',
+    ],
+    faqs: [
+      { question: 'Quelle est la spécificité de la comptabilité d\'un office notarial ?', answer: 'L\'office notarial tient une double comptabilité : sa comptabilité propre (charges, produits, rémunérations) et la comptabilité des fonds clients (dépôts immobiliers, successions). Ces deux comptabilités sont distinctes et font l\'objet de contrôles par la Chambre des notaires.' },
+      { question: 'Comment fonctionne la CRPCEN pour les notaires ?', answer: 'La CRPCEN gère la retraite de base et complémentaire des notaires salariés et, sous conditions, des notaires associés. Les cotisations sont calculées sur la rémunération et représentent une charge significative à anticiper dans le plan financier.' },
+      { question: 'Faut-il créer une holding pour un notaire associé ?', answer: 'Pour un notaire associé avec des revenus élevés, la holding patrimoniale permet d\'optimiser la fiscalité des dividendes issus de la SCP (régime mère-fille à 5 % d\'imposition effective) et de préparer la transmission du patrimoine professionnel et privé.' },
+    ],
+  },
+
+  {
+    slug: 'courtiers-assurance',
+    label: 'Courtiers en assurance',
+    headline: 'Expert-comptable pour courtiers en assurance : commissions, TVA et holding',
+    description: 'Expert-comptable pour courtiers en assurance : commissions récurrentes, TVA courtage, structure juridique. Optimisez la fiscalité de votre activité de courtage en assurance.',
+    keywords: ['expert comptable courtier assurance', 'comptable courtier en assurance', 'TVA courtage assurance', 'commission courtier assurance'],
+    stat: { value: '25 000+', label: 'courtiers en assurance indépendants en France — marché dynamisé par la délégation et le digital' },
+    painPoints: [
+      'Commissions récurrentes et non récurrentes : irrégularité des revenus',
+      'TVA exonérée sur le courtage mais taxable sur certains services connexes',
+      'ORIAS et conformité réglementaire : documentation comptable requise',
+      'Holding de détention pour optimiser les revenus du dirigeant',
+    ],
+    services: [
+      'Comptabilité courtier (commissions, reversements, charges)',
+      'Gestion TVA exonérée et mixité des opérations',
+      'Conseil conformité ORIAS et documentation comptable',
+      'Création de holding patrimoniale',
+      'Optimisation rémunération dirigeant',
+    ],
+    avantages: [
+      'Revenus récurrents (renouvellements de contrats) — stabilité financière attractive',
+      'Holding patrimoniale : mission à forte valeur ajoutée pour les courtiers établis',
+      'Communauté très réseau — un courtier satisfait en parle à ses confrères',
+    ],
+    relatedArticles: [
+      'comment-specialiser-cabinet-comptable',
+      'seo-expert-comptable-guide-complet',
+      'cout-acquisition-client-cabinet-comptable',
+    ],
+    faqs: [
+      { question: 'La TVA s\'applique-t-elle aux commissions d\'un courtier en assurance ?', answer: 'Non. Les opérations de courtage et d\'intermédiation en assurance sont exonérées de TVA en France (article 261 C du CGI). En revanche, les services accessoires (conseil, audit de contrats, formation) peuvent être soumis à TVA à 20 %.' },
+      { question: 'Comment déclarer les commissions récurrentes d\'un portefeuille ?', answer: 'Les commissions de renouvellement sont des produits à comptabiliser au fur et à mesure de leur encaissement ou acquisition. Un tableau de suivi du portefeuille facilite la prévision et la comptabilisation.' },
+      { question: 'Faut-il créer une holding pour un courtier qui gagne bien ?', answer: 'À partir de 100 k€ de revenus nets annuels, la holding permet de percevoir les dividendes avec une imposition effective de 5 % (régime mère-fille), contre 30 % de flat tax en perception directe. L\'économie fiscale justifie largement les frais de structure.' },
+    ],
+  },
+
+  {
+    slug: 'courtiers-immobiliers',
+    label: 'Courtiers immobiliers',
+    headline: 'Expert-comptable pour courtiers immobiliers : honoraires, réseau et croissance',
+    description: 'Expert-comptable pour courtiers en crédit immobilier IOBSP : honoraires, commissions bancaires, structure. Gérez votre activité de courtage crédit avec un expert spécialisé.',
+    keywords: ['expert comptable courtier immobilier', 'comptable courtier crédit', 'IOBSP comptabilité', 'honoraires courtier crédit'],
+    stat: { value: '10 000+', label: 'courtiers en crédit immobilier IOBSP en France — marché sensible aux cycles de taux d\'intérêt' },
+    painPoints: [
+      'Honoraires de courtage vs commissions bancaires : deux modes de rémunération à gérer',
+      'TVA à 20 % sur les honoraires de courtage',
+      'Mandataires et réseau de partenaires : sous-traitance et reversements',
+      'Forte saisonnalité liée aux cycles du marché immobilier',
+    ],
+    services: [
+      'Comptabilité courtier crédit (honoraires, commissions, reversements)',
+      'Gestion TVA sur honoraires de courtage',
+      'Suivi des mandataires et partenaires',
+      'Tableau de bord activité et prévisions',
+      'Optimisation structure et rémunération dirigeant',
+    ],
+    avantages: [
+      'Marché en restructuration avec l\'essor des plateformes digitales — nouveaux entrants à cibler',
+      'Missions simples à standardiser autour d\'un modèle de revenus lisible',
+      'Réseau de partenaires actif : un courtier satisfait vous recommande à tout son réseau',
+    ],
+    relatedArticles: [
+      'comment-specialiser-cabinet-comptable',
+      'seo-expert-comptable-guide-complet',
+      'cout-acquisition-client-cabinet-comptable',
+    ],
+    faqs: [
+      { question: 'Les honoraires d\'un courtier immobilier sont-ils soumis à TVA ?', answer: 'Oui. Les honoraires de courtage en crédit immobilier sont soumis à TVA à 20 %. Un courtier qui exerce aussi des activités d\'assurance (exonérées) peut avoir une comptabilité mixte nécessitant un calcul de prorata de TVA.' },
+      { question: 'Comment gérer les reversements à mes mandataires ?', answer: 'Les reversements aux mandataires sont des charges déductibles pour le cabinet de courtage. Chaque mandataire doit émettre une facture ou un relevé de commissions. Ces flux doivent être tracés rigoureusement pour la TVA et le contrôle fiscal.' },
+      { question: 'Quelle structure pour créer un réseau de courtiers ?', answer: 'La SAS est souvent la structure de choix pour un réseau de courtiers : flexibilité de l\'actionnariat, entrée de partenaires facilitée et gouvernance adaptable. Une holding de tête avec des filiales régionales est courante pour les réseaux de plus de 10 mandataires.' },
+    ],
+  },
+
+  // ─── Nouvelles niches 2026 ────────────────────────────────────────────────────
+
+  {
+    slug: 'consultants-ia',
+    label: 'Consultants IA',
+    headline: 'Expert-comptable pour consultants IA : TJM élevé et optimisation fiscale 2026',
+    description: 'Expert-comptable pour consultants en intelligence artificielle : TJM 800-2500€/jour, SASU, CIR. Structurez votre activité IA et optimisez votre fiscalité avec un expert à jour.',
+    keywords: ['expert comptable consultant IA', 'comptable freelance intelligence artificielle', 'SASU consultant IA', 'TJM consultant IA'],
+    stat: { value: '800 à 2 500 €', label: 'TJM moyen des consultants IA en France en 2025 — le profil freelance le plus porté du moment' },
+    painPoints: [
+      'TJM élevé génère un IS important : quelle structure pour optimiser ?',
+      'Propriété intellectuelle sur les livrables IA : comment la valoriser ?',
+      'Missions mixtes : conseil, formation, intégration — facturation complexe',
+      'Investissements formation et certifications (cloud, LLM) : déductibles ?',
+    ],
+    services: [
+      'Création et optimisation de la structure juridique (SASU, EURL)',
+      'Optimisation mix salaire / dividendes pour TJM élevé',
+      'Gestion TVA intracommunautaire (missions Europe)',
+      'Déductibilité des formations et investissements tech',
+      'CIR sur les développements IA réalisés pour des clients',
+    ],
+    avantages: [
+      'TJM parmi les plus élevés du marché — clients au pouvoir d\'achat fort',
+      'Communauté IA très active en ligne : prescriptions rapides et fortes',
+      'Marché en forte croissance : de nouveaux consultants IA se lancent chaque semaine',
+    ],
+    relatedArticles: [
+      'comment-specialiser-cabinet-comptable',
+      'seo-expert-comptable-guide-complet',
+      'etude-croissance-cabinets-comptables-2026',
+    ],
+    faqs: [
+      { question: 'Quelle structure choisir pour un consultant IA avec 150 k€ de CA ?', answer: 'La SASU est généralement optimale à ce niveau. Le taux d\'IS réduit à 15 % sur les premiers 42 500 € de bénéfice, combiné au versement de dividendes en flat tax (30 %), permet de conserver une part nette bien supérieure à une imposition en BNC ou en auto-entrepreneur.' },
+      { question: 'Les formations IA sont-elles déductibles ?', answer: 'Oui. Les certifications cloud (AWS, GCP, Azure), les formations sur les LLM et les outils d\'IA sont des charges professionnelles déductibles dès lors qu\'elles sont directement liées à l\'activité. En société, ces dépenses réduisent directement l\'IS.' },
+      { question: 'Un consultant IA peut-il bénéficier du CIR ?', answer: 'Si le consultant mène des travaux de R&D en propre (développement de nouvelles méthodes, résolution d\'incertitudes techniques), il peut bénéficier du CIR. Dans la plupart des missions de conseil opérationnel, c\'est le client qui bénéficie du CIR. Une analyse au cas par cas s\'impose.' },
+    ],
+  },
+
+  {
+    slug: 'nocode',
+    label: 'Agences No-Code',
+    headline: 'Expert-comptable pour agences no-code : Bubble, Webflow et structure adaptée',
+    description: 'Expert-comptable pour agences no-code et Make.com : revenus projets et récurrents, TVA, sous-traitance. Gérez votre agence no-code avec un expert qui comprend ce nouveau marché.',
+    keywords: ['expert comptable agence no-code', 'comptable Bubble Webflow', 'comptable Make.com', 'fiscalité agence no-code'],
+    stat: { value: '+40 %', label: 'croissance annuelle du marché no-code en France — des centaines d\'agences créées ces 3 dernières années' },
+    painPoints: [
+      'Mix revenus projets ponctuels et maintenance ou abonnements récurrents',
+      'Sous-traitance internationale (freelances est-européens, US)',
+      'TVA intracommunautaire sur les abonnements Bubble, Webflow et outils SaaS',
+      'Statut optimal pour le fondateur en croissance rapide',
+    ],
+    services: [
+      'Comptabilité agence no-code (projets, maintenance, abonnements)',
+      'Gestion TVA sous-traitance et outils SaaS internationaux',
+      'Optimisation structure et rémunération fondateur',
+      'Tableau de bord rentabilité par projet et client',
+      'Accompagnement levée de fonds ou association',
+    ],
+    avantages: [
+      'Niche émergente : les agences no-code cherchent des comptables qui comprennent leur modèle',
+      'Clients tech à l\'aise avec les outils numériques — process 100 % digital',
+      'Marché en croissance forte : le bouche-à-oreille dans la communauté no-code est puissant',
+    ],
+    relatedArticles: [
+      'comment-specialiser-cabinet-comptable',
+      'seo-expert-comptable-guide-complet',
+      'cout-acquisition-client-cabinet-comptable',
+    ],
+    faqs: [
+      { question: 'Comment comptabiliser les abonnements à des outils no-code comme Bubble ?', answer: 'Les abonnements aux outils SaaS (Bubble, Webflow, Make, Airtable) sont des charges d\'exploitation déductibles. Si ces outils sont facturés en dollars, une conversion au taux de change du jour de la facture est nécessaire.' },
+      { question: 'La TVA s\'applique-t-elle à la sous-traitance de freelances étrangers ?', answer: 'Pour les freelances hors UE, les prestations sont hors champ TVA français. Pour les freelances dans l\'UE, la TVA est en auto-liquidation en France. Ces opérations doivent être déclarées sur l\'EC Services.' },
+      { question: 'Quelle structure pour une agence no-code qui génère 200 k€ de CA ?', answer: 'La SAS ou SASU permet de combiner un salaire raisonnable avec des dividendes en flat tax (30 %). À 200 k€ de CA, l\'IS est généralement plus avantageux que l\'IR, surtout avec des charges réelles significatives (outils, sous-traitance, local).' },
+    ],
+  },
+
+  {
+    slug: 'media-newsletters',
+    label: 'Médias & Newsletters',
+    headline: 'Expert-comptable pour médias et newsletters : abonnements, pub et expansion',
+    description: 'Expert-comptable pour médias en ligne et newsletters premium : revenus Substack, Stripe, publicité. Structurez votre média digital et optimisez votre fiscalité d\'éditeur.',
+    keywords: ['expert comptable newsletter', 'comptable média en ligne', 'fiscalité newsletter Substack', 'TVA presse en ligne'],
+    stat: { value: '50 à 200 €', label: 'ARPU moyen des newsletters premium françaises — un modèle à forte marge et très peu concurrencé' },
+    painPoints: [
+      'TVA presse en ligne (2,1 %) vs TVA classique selon la nature du contenu',
+      'Revenus mixtes : abonnements, publicité, sponsoring, formations',
+      'Statut juridique de l\'éditeur : SAS, association ou indépendant ?',
+      'Comptabilisation des revenus Substack, Stripe, Beehiiv (paiements internationaux)',
+    ],
+    services: [
+      'Comptabilité média digital (abonnements, pub, sponsoring)',
+      'Gestion TVA presse en ligne et taux réduit',
+      'Structure juridique pour éditeur de newsletter',
+      'Suivi revenus plateformes (Substack, Stripe, Beehiiv)',
+      'Optimisation fiscale revenus mixtes',
+    ],
+    avantages: [
+      'Marché émergent avec très peu de comptables spécialisés',
+      'Modèle MRR stable et prévisible — clients à revenus récurrents',
+      'Créateurs prescripteurs : une recommandation dans une newsletter = des dizaines de prospects',
+    ],
+    relatedArticles: [
+      'comment-specialiser-cabinet-comptable',
+      'seo-expert-comptable-guide-complet',
+      'cout-acquisition-client-cabinet-comptable',
+    ],
+    faqs: [
+      { question: 'Quelle TVA s\'applique à une newsletter payante ?', answer: 'Les services de presse en ligne peuvent bénéficier du taux super-réduit de 2,1 % s\'ils sont reconnus comme services de presse (contenu d\'information régulier). Sinon, le taux normal de 20 % s\'applique. La reconnaissance CPPAP est déterminante.' },
+      { question: 'Comment déclarer les revenus perçus via Substack ou Beehiiv ?', answer: 'Ces revenus sont imposables en France si vous êtes résident fiscal français. Ils s\'intègrent dans vos recettes BNC ou CA selon votre statut. Si les paiements transitent par des comptes étrangers, une déclaration 3916 est obligatoire chaque année.' },
+      { question: 'Quelle structure pour un créateur de newsletter qui gagne 100 k€/an ?', answer: 'La SASU est souvent optimale : elle permet de combiner un salaire de dirigeant (déductible) avec des dividendes en flat tax. Elle offre également une image professionnelle pour les partenariats publicitaires et les cessions de médias.' },
+    ],
+  },
+
+  {
+    slug: 'youtubeurs',
+    label: 'YouTubeurs',
+    headline: 'Expert-comptable pour YouTubeurs : AdSense, sponsors et diversification fiscale',
+    description: 'Expert-comptable pour YouTubeurs et créateurs vidéo : revenus AdSense, sponsoring, droits d\'auteur. Optimisez votre fiscalité de YouTubeur et sécurisez votre activité en France.',
+    keywords: ['expert comptable youtubeur', 'comptable YouTube France', 'fiscalité AdSense', 'droits auteur YouTube'],
+    stat: { value: '3 000+', label: 'YouTubeurs français monétisés avec plus de 10 000 abonnés — une économie créative structurée' },
+    painPoints: [
+      'Revenus AdSense en USD : conversion, TVA et déclaration de compte étranger',
+      'Qualification fiscale : revenus commerciaux, BNC ou droits d\'auteur ?',
+      'Revenus de sponsoring et placements produits : facturation et TVA',
+      'Diversification (formation, produits, membership) : revenus mixtes à gérer',
+    ],
+    services: [
+      'Comptabilité YouTubeur (AdSense, sponsors, droits d\'auteur)',
+      'Déclaration revenus étrangers et comptes AdSense',
+      'Optimisation droits d\'auteur et abattement fiscal',
+      'Choix du statut optimal (auto-entrepreneur, SASU, artiste-auteur)',
+      'Conseil diversification des revenus',
+    ],
+    avantages: [
+      'Les YouTubeurs cherchent activement des comptables spécialisés — forte demande non satisfaite',
+      'Revenus souvent élevés une fois monétisés — panier moyen mission attractif',
+      'Communauté créateur très prescriptrice : une recommandation en vidéo = des centaines de prospects',
+    ],
+    relatedArticles: [
+      'comment-specialiser-cabinet-comptable',
+      'seo-expert-comptable-guide-complet',
+      '7-canaux-acquisition-cabinet-comptable',
+    ],
+    faqs: [
+      { question: 'Les revenus AdSense sont-ils des droits d\'auteur ?', answer: 'Pas automatiquement. Les revenus publicitaires AdSense sont en principe des revenus commerciaux (BIC) ou BNC. Cependant, si le créateur cède des droits d\'utilisation de ses œuvres à YouTube, une partie peut être qualifiée de droits d\'auteur, bénéficiant d\'un abattement de 34 %.' },
+      { question: 'Faut-il déclarer son compte AdSense Google à l\'administration fiscale ?', answer: 'Oui. Tout compte ouvert à l\'étranger (y compris les comptes AdSense hébergés hors France) doit être déclaré via le formulaire 3916. L\'omission est sanctionnée d\'une amende de 1 500 € par compte non déclaré.' },
+      { question: 'Comment facturer un sponsor pour un placement produit ?', answer: 'Un placement produit est une prestation de services facturée avec TVA à 20 %. La facture doit mentionner la TVA, votre numéro SIRET et la nature de la prestation. Pour un client étranger B2B, l\'auto-liquidation s\'applique.' },
+    ],
+  },
 ]
