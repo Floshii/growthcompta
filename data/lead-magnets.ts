@@ -34,7 +34,7 @@ export const leadMagnets: LeadMagnet[] = [
     slug: "audit-acquisition",
     title: "Audit gratuit de votre acquisition",
     description:
-      "Répondez à 10 questions et recevez un diagnostic personnalisé de votre système d'acquisition actuel avec les 3 priorités à adresser en premier.",
+      "Répondez à 22 questions et recevez un diagnostic personnalisé de votre système d'acquisition actuel avec les 3 priorités à adresser en premier.",
     type: "audit",
     embedUrl: undefined,
     embedHeight: 600,
@@ -42,7 +42,7 @@ export const leadMagnets: LeadMagnet[] = [
     ogImage: "/images/outils/audit-acquisition.jpg",
     metaTitle: "Audit gratuit acquisition cabinet comptable | GrowthCompta",
     metaDescription:
-      "Évaluez votre système d'acquisition en 10 questions. Recevez votre diagnostic personnalisé et les 3 priorités pour attirer plus de clients.",
+      "Évaluez votre système d'acquisition en 22 questions. Recevez votre diagnostic personnalisé et les 3 priorités pour attirer plus de clients.",
   },
   {
     slug: "calculateur-croissance",

@@ -40,7 +40,7 @@ export default function LandingPage({ onStart }: Props) {
               .
             </h1>
             <p className="text-[17px] text-ink-2 leading-relaxed max-w-[500px] mb-8">
-              10 questions. Un score sur 100. Vos 3 quick wins prioritaires et une roadmap 90 jours sur-mesure.
+              22 questions. Un score sur 100. Vos 3 quick wins prioritaires et une roadmap 90 jours sur-mesure.
             </p>
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
               <button
