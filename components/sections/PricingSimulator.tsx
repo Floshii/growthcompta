@@ -7,24 +7,9 @@ import { useState } from 'react'
 const MIN_DAYS = 30
 const MAX_DAYS = 180
 
-// Price anchors — update these to match your real pricing
-const PRICE_ANCHORS = {
-  easy:   { fire: { min: 900,   max: 1_800 }, engine: { min: 700,   max: 1_400 } },
-  medium: { fire: { min: 1_200, max: 2_400 }, engine: { min: 900,   max: 1_800 } },
-  hard:   { fire: { min: 1_800, max: 3_500 }, engine: { min: 1_300, max: 2_600 } },
-} as const
-
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
 type Niche = 'easy' | 'medium' | 'hard'
-
-function lerp(a: number, b: number, t: number) {
-  return Math.round(a + (b - a) * Math.max(0, Math.min(1, t)))
-}
-
-function fmt(n: number) {
-  return n.toLocaleString('fr-FR') + ' €'
-}
 
 function getZone(days: number): 'fire' | 'hybrid' | 'engine' {
   if (days <= 60)  return 'fire'
@@ -38,26 +23,20 @@ interface Scenario {
   approach:   string
   tagline:    string
   includes:   string[]
-  priceMin:   number
-  priceMax:   number
   commitment: string
+  phases:     ('FIRE' | 'ENGINE' | 'FUEL')[]
 }
 
 function computeScenario(niche: Niche, days: number): Scenario {
-  const t    = (days - MIN_DAYS) / (MAX_DAYS - MIN_DAYS)
-  const p    = PRICE_ANCHORS[niche]
   const zone = getZone(days)
 
-  const priceMin = lerp(p.fire.min, p.engine.min, t)
-  const priceMax = lerp(p.fire.max, p.engine.max, t)
-
-  const commitment = days <= 60 ? 'Engagement 3 mois'
-    : days <= 100 ? 'Engagement 4 mois'
-    : 'Engagement 6 mois'
+  const commitment = days <= 60 ? 'Engagement minimum 3 mois'
+    : days <= 100 ? 'Engagement minimum 4 mois'
+    : 'Engagement minimum 6 mois'
 
   if (niche === 'easy') {
     if (zone === 'fire') return {
-      zone, badge: '🔥 FIRE', priceMin, priceMax, commitment,
+      zone, badge: '🔥 FIRE', commitment, phases: ['FIRE', 'FUEL'],
       approach: 'Paid ads Meta & Google + Sales automation',
       tagline:  'Les premiers leads sous 30 jours.',
       includes: [
@@ -68,7 +47,7 @@ function computeScenario(niche: Niche, days: number): Scenario {
       ],
     }
     if (zone === 'hybrid') return {
-      zone, badge: '🔥⚙️ FIRE + ENGINE', priceMin, priceMax, commitment,
+      zone, badge: '🔥⚙️ FIRE + ENGINE', commitment, phases: ['FIRE', 'ENGINE', 'FUEL'],
       approach: 'Paid ads actifs + fondations SEO en parallèle',
       tagline:  'Résultats rapides et machine organique en construction.',
       includes: [
@@ -79,7 +58,7 @@ function computeScenario(niche: Niche, days: number): Scenario {
       ],
     }
     return {
-      zone, badge: '⚙️ ENGINE', priceMin, priceMax, commitment,
+      zone, badge: '⚙️ ENGINE', commitment, phases: ['ENGINE', 'FUEL'],
       approach: 'SEO programmatique + Content + Brand positioning',
       tagline:  'Une machine organique qui tourne seule.',
       includes: [
@@ -94,7 +73,7 @@ function computeScenario(niche: Niche, days: number): Scenario {
   // medium niche
   if (niche === 'medium') {
     if (zone === 'fire') return {
-      zone, badge: '🔥 FIRE MIX', priceMin, priceMax, commitment,
+      zone, badge: '🔥 FIRE MIX', commitment, phases: ['FIRE', 'FUEL'],
       approach: 'Paid ads ciblés + LinkedIn outbound complémentaire',
       tagline:  'Combiner les deux canaux pour aller chercher les décideurs où ils sont.',
       includes: [
@@ -105,7 +84,7 @@ function computeScenario(niche: Niche, days: number): Scenario {
       ],
     }
     if (zone === 'hybrid') return {
-      zone, badge: '🔥⚙️ MIX + ENGINE', priceMin, priceMax, commitment,
+      zone, badge: '🔥⚙️ MIX + ENGINE', commitment, phases: ['FIRE', 'ENGINE', 'FUEL'],
       approach: 'Paid ads + LinkedIn + fondations SEO et contenu',
       tagline:  'Leads courts terme et visibilité long terme en parallèle.',
       includes: [
@@ -116,7 +95,7 @@ function computeScenario(niche: Niche, days: number): Scenario {
       ],
     }
     return {
-      zone, badge: '⚙️ ENGINE MIX', priceMin, priceMax, commitment,
+      zone, badge: '⚙️ ENGINE MIX', commitment, phases: ['ENGINE', 'FUEL'],
       approach: 'SEO de niche + Content + positionnement expert',
       tagline:  'Créer la demande là où votre cible cherche des réponses.',
       includes: [
@@ -130,7 +109,7 @@ function computeScenario(niche: Niche, days: number): Scenario {
 
   // hard niche
   if (zone === 'fire') return {
-    zone, badge: '🔥 FIRE CUSTOM', priceMin, priceMax, commitment,
+    zone, badge: '🔥 FIRE CUSTOM', commitment, phases: ['FIRE', 'FUEL'],
     approach: 'LinkedIn outbound + ABM + Cold email ciblé',
     tagline:  "Atteindre des décideurs difficiles d'accès, vite.",
     includes: [
@@ -141,7 +120,7 @@ function computeScenario(niche: Niche, days: number): Scenario {
     ],
   }
   if (zone === 'hybrid') return {
-    zone, badge: '🔥⚙️ FIRE CUSTOM + ENGINE', priceMin, priceMax, commitment,
+    zone, badge: '🔥⚙️ FIRE CUSTOM + ENGINE', commitment, phases: ['FIRE', 'ENGINE', 'FUEL'],
     approach: 'Outbound ciblé + thought leadership en construction',
     tagline:  'Leads immédiats et autorité sectorielle en parallèle.',
     includes: [
@@ -152,7 +131,7 @@ function computeScenario(niche: Niche, days: number): Scenario {
     ],
   }
   return {
-    zone, badge: '⚙️ ENGINE CUSTOM', priceMin, priceMax, commitment,
+    zone, badge: '⚙️ ENGINE CUSTOM', commitment, phases: ['ENGINE', 'FUEL'],
     approach: 'Thought leadership + SEO de niche + Personal brand',
     tagline:  'Devenir la référence de votre niche.',
     includes: [
@@ -324,6 +303,41 @@ function VelocitySliderCard({ value, onChange }: { value: number; onChange: (v: 
   )
 }
 
+// ── Phase chips ───────────────────────────────────────────────────────────────
+
+const PHASE_META: Record<'FIRE' | 'ENGINE' | 'FUEL', { color: string; detail: string }> = {
+  FIRE:   { color: '#e85d2b', detail: 'Sprint · 30 j' },
+  ENGINE: { color: '#2563eb', detail: 'Setup · 3 mois' },
+  FUEL:   { color: '#0a8f4a', detail: 'Retainer · ∞' },
+}
+
+function PhaseChips({ phases }: { phases: ('FIRE' | 'ENGINE' | 'FUEL')[] }) {
+  return (
+    <a href="/#method" className="flex flex-wrap gap-2 group/chips" title="Voir les packages et tarifs">
+      {phases.map((p, i) => {
+        const m = PHASE_META[p]
+        return (
+          <span key={p} className="flex items-center gap-2">
+            <span
+              className="inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.1em] px-2.5 py-1 rounded-full transition-opacity group-hover/chips:opacity-80"
+              style={{ background: m.color + '20', color: m.color, border: `1px solid ${m.color}40` }}
+            >
+              {p}
+              <span className="opacity-60 normal-case tracking-normal">{m.detail}</span>
+            </span>
+            {i < phases.length - 1 && (
+              <span className="text-[#a8a8a0] text-[12px]">→</span>
+            )}
+          </span>
+        )
+      })}
+      <span className="self-center font-mono text-[10px] text-[#a8a8a0] underline underline-offset-2 opacity-0 group-hover/chips:opacity-100 transition-opacity">
+        voir tarifs détaillés
+      </span>
+    </a>
+  )
+}
+
 // ── Result panel (right column) ───────────────────────────────────────────────
 
 function ResultPanel({ s, calendlyUrl }: { s: Scenario; calendlyUrl: string }) {
@@ -342,26 +356,16 @@ function ResultPanel({ s, calendlyUrl }: { s: Scenario; calendlyUrl: string }) {
 
       <div className="relative p-6 md:p-7 flex flex-col gap-5">
 
-        {/* Badge + price */}
-        <div className="flex items-start justify-between gap-4">
-          <div>
-            <span className="inline-block font-mono text-[10px] text-accent uppercase tracking-[0.14em] mb-2">
-              Approche recommandée
-            </span>
-            <p className="font-display font-bold text-white text-[20px] tracking-[-0.025em] leading-[1.2]">
-              {s.badge}
-            </p>
-          </div>
-          <div className="flex-shrink-0 text-right">
-            <p className="font-mono text-[9.5px] uppercase tracking-[0.1em] text-[#a8a8a0] mb-1">/ mois</p>
-            <p
-              className="font-display font-bold text-accent leading-none tracking-[-0.03em]"
-              style={{ fontSize: 20 }}
-            >
-              {fmt(s.priceMin)} – {fmt(s.priceMax)}
-            </p>
-            <p className="font-mono text-[10px] text-[#a8a8a0] mt-1">{s.commitment}</p>
-          </div>
+        {/* Badge + label */}
+        <div>
+          <span className="inline-block font-mono text-[10px] text-accent uppercase tracking-[0.14em] mb-2">
+            Approche recommandée
+          </span>
+          <p className="font-display font-bold text-white text-[20px] tracking-[-0.025em] leading-[1.2] mb-3">
+            {s.badge}
+          </p>
+          {/* Phase chips → /#method */}
+          <PhaseChips phases={s.phases} />
         </div>
 
         {/* Tagline + approach */}
@@ -392,21 +396,28 @@ function ResultPanel({ s, calendlyUrl }: { s: Scenario; calendlyUrl: string }) {
           </ul>
         </div>
 
-        {/* Note */}
+        {/* Commitment + note */}
         <p className="text-[11.5px] text-[#a8a8a0] leading-[1.55] bg-white/[0.04] rounded-[10px] px-3.5 py-2.5">
-          Budget media ads (Meta, Google) en sus. Fourchette affinée lors de l&apos;appel de 30 min.
+          {s.commitment} · Budget media ads (Meta, Google) en sus · Tarifs exacts à l&apos;appel
         </p>
 
-        {/* CTA */}
-        <a
-          href={calendlyUrl}
-          className="flex items-center justify-center gap-2 bg-accent text-white font-medium text-[14px] px-6 py-3 rounded-full hover:bg-accent-deep transition-colors group w-full"
-        >
-          Réserver mon audit gratuit
-          <span className="inline-block transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
-            ↗
-          </span>
-        </a>
+        {/* CTAs */}
+        <div className="flex flex-col gap-2.5">
+          <a
+            href={calendlyUrl}
+            className="flex items-center justify-center gap-2 bg-accent text-white font-medium text-[14px] px-6 py-3 rounded-full hover:bg-accent-deep transition-colors group w-full"
+          >
+            Réserver mon audit gratuit
+            <span className="inline-block transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
+          </a>
+          <a
+            href="/#method"
+            className="flex items-center justify-center gap-2 bg-white/[0.06] text-white/80 font-medium text-[13.5px] px-6 py-2.5 rounded-full hover:bg-white/10 transition-colors border border-white/10 w-full"
+          >
+            Voir les packages & tarifs
+            <span className="text-[11px] opacity-60">↓</span>
+          </a>
+        </div>
       </div>
     </div>
   )
