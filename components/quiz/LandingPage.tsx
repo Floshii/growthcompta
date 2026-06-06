@@ -27,7 +27,7 @@ export default function LandingPage({ onStart }: Props) {
           <div>
             <span className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.14em] text-muted bg-white border border-line rounded-full px-3 py-1.5 mb-6">
               <span className="w-1.5 h-1.5 rounded-full bg-accent" style={{ animation: 'pulse-dot 2.4s ease-in-out infinite' }} />
-              Diagnostic Growth · Gratuit · 5 minutes
+              Diagnostic Growth · Gratuit · 8 minutes
             </span>
             <h1
               className="font-display font-bold text-ink mb-5"
@@ -125,7 +125,7 @@ export default function LandingPage({ onStart }: Props) {
                 Les 9 dimensions analysées.
               </h2>
               <p className="text-muted text-[15px] max-w-[480px] leading-relaxed">
-                8 dimensions d&apos;acquisition — et une 9e souvent ignorée : votre capacité à absorber de nouveaux clients. Parce qu&apos;augmenter l&apos;acquisition quand l&apos;offre ou les ressources sont saturées, ça ne fait qu&apos;accélérer les problèmes.
+                8 dimensions d&apos;acquisition — et une 9e bien connue mais rarement mesurée : votre capacité à absorber de nouveaux clients. Parce qu&apos;augmenter l&apos;acquisition quand l&apos;offre ou les ressources sont saturées, ça ne fait qu&apos;accélérer les problèmes.
               </p>
             </div>
           </div>
@@ -147,7 +147,7 @@ export default function LandingPage({ onStart }: Props) {
       <section className="py-16 md:py-20 bg-ink">
         <div className="max-w-[1280px] mx-auto px-5 md:px-8 grid md:grid-cols-2 gap-10 items-center">
           <div>
-            <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted-2 mb-4">5 minutes · 10 questions · Résultats immédiats</p>
+            <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted-2 mb-4">22 questions · 8 minutes · Résultats immédiats</p>
             <h2
               className="font-display font-bold text-white mb-4"
               style={{ fontSize: 'clamp(26px, 3vw, 44px)', letterSpacing: '-0.03em', lineHeight: 1.05 }}

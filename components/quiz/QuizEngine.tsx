@@ -148,7 +148,7 @@ export default function QuizEngine() {
             Analyse en cours…
           </p>
           <p className="text-muted text-[14px] leading-relaxed">
-            On calcule votre score sur 8 dimensions et on prépare vos recommandations personnalisées.
+            On calcule votre score sur 9 dimensions et on prépare vos recommandations personnalisées.
           </p>
         </div>
         <style>{`@keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }`}</style>
