@@ -62,9 +62,9 @@ export const services: Service[] = [
     icon: 'Target',
     stat: '38€',
     statLabel: 'CPL moyen · Meta ads',
-    metaTitle: 'Paid ads Meta + Google pour cabinet comptable | GrowthCompta',
+    metaTitle: 'Acquisition payante cabinet comptable : Facebook, Google ou LinkedIn | GrowthCompta',
     metaDescription:
-      'Campagnes Google Ads et Meta Ads ciblées pour cabinets comptables. CPL moyen 38€, attribution propre, reporting ROI mensuel.',
+      'Guide complet de l\'acquisition payante pour experts-comptables. Quel canal choisir selon votre niche ? Matrice Niche-Canal, framework, CPL moyen 38€.',
     faqs: [
       {
         question: 'Quel budget minimum pour lancer des campagnes ?',
