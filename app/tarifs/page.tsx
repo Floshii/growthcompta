@@ -45,11 +45,11 @@ export default function TarifsPage() {
     <>
       <StructuredData data={faqSchema} />
 
-      <section className="py-16 md:py-[100px]">
+      <section className="pt-10 pb-16 md:pt-12 md:pb-[100px]">
         <div className="max-w-[1280px] mx-auto px-5 md:px-8">
 
           {/* Header */}
-          <div className="mb-12 md:mb-16 max-w-[680px]">
+          <div className="mb-6 md:mb-8 max-w-[680px]">
             <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted mb-3 flex items-center gap-2">
               <span className="inline-block w-1.5 h-1.5 rounded-full bg-accent" />
               Investissement · estimez votre budget en 2 questions
