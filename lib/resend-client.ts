@@ -103,7 +103,7 @@ function buildProspectEmail({
       <p style="margin:10px 0 0;color:#6b6b66;font-size:12px;">30 min · Gratuit · Sans engagement</p>
     </td></tr></table>
     <p style="margin:0;color:#a8a8a0;font-size:11px;border-top:1px solid #e6e1d3;padding-top:20px;">
-      Vous recevez cet email car vous avez complété le Cabinet Growth Score sur growthcompta.fr.
+      Vous recevez cet email car vous avez complété le Cabinet Growth Score sur growthcompta.com.
     </p>
   </td></tr>
 </table>
