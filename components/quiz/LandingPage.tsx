@@ -3,14 +3,15 @@
 import ScoreGauge from './ScoreGauge'
 
 const DIMENSIONS = [
-  'Visibilité Google',
-  'Positionnement',
-  'Site & Conversion',
-  'Acquisition & Leads',
-  'Contenu & Autorité',
-  'CRM & Relance',
-  'Automation & IA',
-  'Réputation & Preuves',
+  { label: 'Visibilité Google', group: 'demand' },
+  { label: 'Positionnement', group: 'demand' },
+  { label: 'Site & Conversion', group: 'demand' },
+  { label: 'Acquisition & Leads', group: 'demand' },
+  { label: 'Contenu & Autorité', group: 'demand' },
+  { label: 'CRM & Relance', group: 'demand' },
+  { label: 'Automation & IA', group: 'demand' },
+  { label: 'Réputation & Preuves', group: 'demand' },
+  { label: 'Offre & Capacité', group: 'supply' },
 ]
 
 interface Props {
@@ -26,7 +27,7 @@ export default function LandingPage({ onStart }: Props) {
           <div>
             <span className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.14em] text-muted bg-white border border-line rounded-full px-3 py-1.5 mb-6">
               <span className="w-1.5 h-1.5 rounded-full bg-accent" style={{ animation: 'pulse-dot 2.4s ease-in-out infinite' }} />
-              Diagnostic Growth · Gratuit · 3 minutes
+              Diagnostic Growth · Gratuit · 5 minutes
             </span>
             <h1
               className="font-display font-bold text-ink mb-5"
@@ -51,7 +52,7 @@ export default function LandingPage({ onStart }: Props) {
               </button>
               <div className="flex items-center gap-2">
                 <span className="text-accent text-[14px]">★★★★★</span>
-                <span className="font-mono text-[11px] text-muted">47 cabinets diagnostiqués cette semaine</span>
+                <span className="font-mono text-[11px] text-muted">+50 cabinets diagnostiqués</span>
               </div>
             </div>
           </div>
@@ -94,7 +95,7 @@ export default function LandingPage({ onStart }: Props) {
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {[
-              { n: '01', icon: '◎', title: 'Votre score de croissance', desc: "Un score précis sur 100, calculé sur 8 dimensions clés de l'acquisition." },
+              { n: '01', icon: '◎', title: 'Votre score de croissance', desc: "Un score précis sur 100, calculé sur 9 dimensions — acquisition et capacité de votre cabinet." },
               { n: '02', icon: '⚡', title: '3 quick wins prioritaires', desc: 'Les actions à fort impact que vous pouvez lancer dès demain matin.' },
               { n: '03', icon: '⬡', title: 'Votre radar growth', desc: 'Un visuel clair de vos points forts et de vos angles morts.' },
               { n: '04', icon: '📅', title: 'Roadmap 30 / 60 / 90 jours', desc: "Un plan d'action séquencé pour transformer le diagnostic en résultats." },
@@ -115,22 +116,27 @@ export default function LandingPage({ onStart }: Props) {
       {/* 8 DIMENSIONS */}
       <section className="py-14 md:py-16 bg-white border-y border-line">
         <div className="max-w-[1280px] mx-auto px-5 md:px-8">
-          <div className="mb-10">
-            <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted mb-3 flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-accent" />Méthode GC™
-            </p>
-            <h2 className="font-display font-bold text-ink text-[32px] md:text-[40px] tracking-display leading-none mb-3">
-              Les 8 dimensions analysées.
-            </h2>
-            <p className="text-muted text-[15px] max-w-[480px] leading-relaxed">
-              On benchmarke votre cabinet sur les mêmes critères que les leaders de la profession.
-            </p>
+          <div className="mb-10 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+            <div>
+              <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted mb-3 flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-accent" />Méthode GC
+              </p>
+              <h2 className="font-display font-bold text-ink text-[32px] md:text-[40px] tracking-display leading-none mb-3">
+                Les 9 dimensions analysées.
+              </h2>
+              <p className="text-muted text-[15px] max-w-[480px] leading-relaxed">
+                8 dimensions d&apos;acquisition — et une 9e souvent ignorée : votre capacité à absorber de nouveaux clients. Parce qu&apos;augmenter l&apos;acquisition quand l&apos;offre ou les ressources sont saturées, ça ne fait qu&apos;accélérer les problèmes.
+              </p>
+            </div>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-3">
             {DIMENSIONS.map((d, i) => (
-              <div key={d} className="bg-paper rounded-xl px-4 py-4 border border-line flex items-center gap-3">
+              <div
+                key={d.label}
+                className={`rounded-xl px-4 py-4 border flex items-center gap-3 ${d.group === 'supply' ? 'border-accent/30 bg-accent/5' : 'bg-paper border-line'}`}
+              >
                 <span className="font-mono text-[10px] text-muted w-4 shrink-0">{String(i + 1).padStart(2, '0')}</span>
-                <span className="text-[13px] text-ink font-medium leading-tight">{d}</span>
+                <span className={`text-[13px] font-medium leading-tight ${d.group === 'supply' ? 'text-accent' : 'text-ink'}`}>{d.label}</span>
               </div>
             ))}
           </div>
@@ -141,7 +147,7 @@ export default function LandingPage({ onStart }: Props) {
       <section className="py-16 md:py-20 bg-ink">
         <div className="max-w-[1280px] mx-auto px-5 md:px-8 grid md:grid-cols-2 gap-10 items-center">
           <div>
-            <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted-2 mb-4">3 minutes · 10 questions</p>
+            <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted-2 mb-4">5 minutes · 10 questions · Résultats immédiats</p>
             <h2
               className="font-display font-bold text-white mb-4"
               style={{ fontSize: 'clamp(26px, 3vw, 44px)', letterSpacing: '-0.03em', lineHeight: 1.05 }}

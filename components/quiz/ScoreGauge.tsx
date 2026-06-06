@@ -32,6 +32,7 @@ export default function ScoreGauge({ score, size = 280, animate = true }: Props)
   const arcStart = -225 * (Math.PI / 180)
   const arcEnd = 45 * (Math.PI / 180)
   const pct = displayed / 100
+  const totalArcLength = r * (270 * Math.PI / 180) // arc spans 270°
 
   const ptAt = (t: number) => ({
     x: cx + r * Math.cos(arcStart + (arcEnd - arcStart) * t),
@@ -43,12 +44,6 @@ export default function ScoreGauge({ score, size = 280, animate = true }: Props)
     return `M ${a.x} ${a.y} A ${r} ${r} 0 1 1 ${b.x} ${b.y}`
   })()
 
-  const fillPath = (() => {
-    const a = ptAt(0); const b = ptAt(pct)
-    const large = pct > 0.5 ? 1 : 0
-    return `M ${a.x} ${a.y} A ${r} ${r} 0 ${large} 1 ${b.x} ${b.y}`
-  })()
-
   const color = displayed >= 76 ? '#0a5fbf' : displayed >= 56 ? '#0a8f4a' : displayed >= 36 ? '#e85d2b' : '#dc4a2b'
 
   return (
@@ -57,11 +52,12 @@ export default function ScoreGauge({ score, size = 280, animate = true }: Props)
         <path d={bgPath} fill="none" stroke="#e6e1d3" strokeWidth="18" strokeLinecap="round" />
         {pct > 0 && (
           <path
-            d={fillPath}
+            d={bgPath}
             fill="none"
             stroke={color}
             strokeWidth="18"
             strokeLinecap="round"
+            strokeDasharray={`${pct * totalArcLength} ${totalArcLength}`}
             style={{ filter: 'drop-shadow(0 4px 12px rgba(232,93,43,0.25))' }}
           />
         )}
