@@ -18,6 +18,10 @@ const cols = {
     { href: '/pricing', label: 'Pricing' },
     { href: '/carrieres', label: 'Carrières' },
   ],
+  Ressources: [
+    { href: '/niches', label: '56 niches comptables' },
+    { href: '/expert-comptable', label: 'Expert-comptable par ville' },
+  ],
   Contact: [
     { href: 'mailto:hello@growthcompta.com', label: 'hello@growthcompta.com' },
     { href: calendlyUrl, label: 'Prendre rendez-vous', external: true },
@@ -28,7 +32,7 @@ export default function Footer() {
   return (
     <footer className="bg-ink text-white border-t border-white/8">
       <div className="max-w-[1280px] mx-auto px-8 pt-16 pb-8">
-        <div className="grid grid-cols-1 md:grid-cols-[1.4fr_1fr_1fr_1fr] gap-12 pb-12">
+        <div className="grid grid-cols-1 md:grid-cols-[1.4fr_1fr_1fr_1fr_1fr] gap-12 pb-12">
           <div>
             <Link
               href="/"
