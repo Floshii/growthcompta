@@ -214,3 +214,30 @@
   from { opacity: 0; transform: translateY(12px); }
   to { opacity: 1; transform: none; }
 }
+
+/* ── GClients CRM — design tokens ─────────────────── */
+@theme {
+  /* Arrière-plans */
+  --color-crm-base: #0A0A0F;
+  --color-crm-surface: #111118;
+  /* Bordures */
+  --color-crm-line: #1E1E2E;
+  /* Texte */
+  --color-crm-primary: #F0F0F5;
+  --color-crm-muted: #6B6B80;
+  /* Accents */
+  --color-crm-green: #22C55E;
+  --color-crm-amber: #F59E0B;
+  --color-crm-blue: #3B82F6;
+  --color-crm-red: #EF4444;
+  --color-crm-purple: #8B5CF6;
+  /* Polices */
+  --font-crm: var(--font-inter-crm, "Inter"), system-ui, sans-serif;
+  --font-crm-mono: var(--font-jb-mono, "JetBrains Mono"), ui-monospace, monospace;
+}
+
+@keyframes crm-toast-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.crm-toast-enter { animation: crm-toast-in 0.2s ease-out; }
