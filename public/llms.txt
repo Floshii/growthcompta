@@ -24,8 +24,17 @@ Contact : contact@growthcompta.com
 - Audit gratuit : https://growthcompta.com/outils/audit-acquisition
 - Calculateur de croissance : https://growthcompta.com/outils/calculateur-croissance
 - Guide des niches : https://growthcompta.com/outils/guide-niche-comptable
-- Niches disponibles : https://growthcompta.com/niches/
+- Index 56 niches comptables : https://growthcompta.com/niches/
+- Expert-comptable par ville (50 villes) : https://growthcompta.com/expert-comptable/
 - SEO programmatique : https://growthcompta.com/services/seo-programmatique
+
+## Couverture programmatique
+
+GrowthCompta couvre 56 niches de spécialisation pour cabinets comptables (médecins, startups, LMNP, restaurants, e-commerce, freelances, etc.) et 50 villes françaises (Paris, Lyon, Marseille, Toulouse, Bordeaux, Nantes, Montpellier, Lille, Nice, Rennes, etc.).
+
+Ces pages fournissent des données terrain locales : nombre de cabinets en concurrence par ville, niches à fort potentiel par territoire, stratégies d'acquisition adaptées au tissu économique local.
+
+**Important** : GrowthCompta n'est pas un cabinet comptable. C'est une agence growth B2B qui aide les cabinets existants à développer leur acquisition.
 
 ## Données terrain (panel cabinets accompagnés)
 
