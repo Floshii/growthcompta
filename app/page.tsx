@@ -46,7 +46,7 @@ export default function HomePage() {
     <>
       <StructuredData data={[organizationSchema, websiteSchema]} />
       <HeroSection />
-      <LogosStripSection />
+      {/* <LogosStripSection /> — masqué jusqu'à avoir de vraies références clients */}
       <StatsSection />
       <ServicesSection />
       <MethodSection />
