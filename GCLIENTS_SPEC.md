@@ -101,24 +101,61 @@ Les chemins à consulter :
 
 ## 4. Design system
 
+### Thème : dark + light mode
+
+L'app supporte deux thèmes : dark (défaut) et light. L'utilisateur peut basculer
+depuis Settings → Apparence. La préférence est persistée en DB (`workspace_members.theme`
+ou `localStorage` pour les guests). La détection automatique via
+`prefers-color-scheme` s'applique au premier chargement si aucune préférence n'est
+enregistrée.
+
+**Implémentation :**
+- Les tokens CSS sont déclarés via classes `.theme-dark` et `.theme-light` sur `<html>`
+- Tailwind v4 : utiliser `@variant dark { ... }` ou classes conditionnelles
+- Composants : utiliser uniquement les tokens CSS (`var(--bg)`, etc.) — jamais de
+  valeurs hardcodées pour les couleurs d'interface
+
 ### Couleurs (CSS custom properties dans `app/globals.css`)
 ```css
+/* ── Dark theme (défaut) ── */
+.theme-dark, :root {
+  --bg:        #0A0A0F;
+  --surface:   #111118;
+  --surface-2: #16161F;
+  --border:    #1E1E2E;
+  --text:      #F0F0F5;
+  --muted:     #6B6B80;
+  --input-bg:  #0E0E16;
+  --scrim:     rgba(4, 4, 8, 0.55);
+}
+
+/* ── Light theme ── */
+.theme-light {
+  --bg:        #F4F4F8;
+  --surface:   #FFFFFF;
+  --surface-2: #F0F0F5;
+  --border:    #E2E2EC;
+  --text:      #0A0A0F;
+  --muted:     #6B6B80;
+  --input-bg:  #FFFFFF;
+  --scrim:     rgba(100, 100, 120, 0.35);
+}
+
+/* ── Couleurs sémantiques (invariantes dark/light) ── */
 :root {
-  --bg:        #0A0A0F;   /* fond principal */
-  --surface:   #111118;   /* sidebar, headers */
-  --surface-2: #16161F;   /* cards, inputs */
-  --border:    #1E1E2E;   /* séparateurs */
-  --text:      #F0F0F5;   /* texte principal */
-  --muted:     #6B6B80;   /* texte secondaire */
-  --green:     #22C55E;   /* signé, CTA, MRR */
-  --amber:     #F59E0B;   /* proposition */
-  --blue:      #3B82F6;   /* prospect, liens */
-  --red:       #EF4444;   /* suppression, risque */
-  --purple:    #8B5CF6;   /* qualifié, avatar ML */
-  --orange:    #F97316;   /* négociation, accent nav */
-  --cta:       #22C55E;   /* boutons primaires (fixe, indépendant de --orange) */
+  --green:     #22C55E;
+  --amber:     #F59E0B;
+  --blue:      #3B82F6;
+  --red:       #EF4444;
+  --purple:    #8B5CF6;
+  --orange:    #F97316;
+  --cta:       #22C55E;
 }
 ```
+
+**Note sur les glows en light mode :** Les `text-shadow` et `box-shadow` de glow
+doivent être désactivés en light mode (opacité 0) car illisibles sur fond clair.
+Utiliser uniquement les bordures colorées pour marquer le stage.
 
 ### Stages pipeline
 ```typescript
@@ -139,7 +176,8 @@ export const STAGES = [
 - Nombres KPI : 30–38px bold
 
 ### Règles visuelles
-- Dark mode uniquement
+- Dark mode par défaut, light mode complet disponible (toggle Settings)
+- Jamais de valeurs couleur hardcodées dans les composants — toujours `var(--bg)` etc.
 - Pas de gradients sauf : logo GClients, avatars responsables
 - Glow effects : `text-shadow` et `box-shadow` avec la couleur du stage + opacité 24–40%
 - Fond global : grille de points `radial-gradient` 26×26px à opacité 0.018
@@ -368,6 +406,27 @@ CREATE TABLE activities (
   created_by    uuid REFERENCES auth.users(id),
   created_at    timestamptz DEFAULT now()
 );
+
+-- ── Integrations OAuth tokens ──────────────────────
+-- Stocke les tokens OAuth des intégrations tierces par workspace
+CREATE TABLE integration_tokens (
+  id            uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  workspace_id  uuid NOT NULL REFERENCES workspaces(id) ON DELETE CASCADE,
+  provider      text NOT NULL CHECK (provider IN (
+                  'pennylane', 'tiime', 'gmail', 'outlook',
+                  'calendly', 'aircall', 'ringover', 'pappers'
+                )),
+  access_token  text NOT NULL,
+  refresh_token text,
+  expires_at    timestamptz,
+  meta          jsonb DEFAULT '{}',  -- scopes, compte lié, etc.
+  created_at    timestamptz DEFAULT now(),
+  updated_at    timestamptz DEFAULT now(),
+  UNIQUE(workspace_id, provider)
+);
+
+ALTER TABLE integration_tokens ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "tokens_all" ON integration_tokens FOR ALL USING (is_workspace_member(workspace_id));
 
 -- ── Invitations ──────────────────────────────────────
 CREATE TABLE invitations (
@@ -839,12 +898,23 @@ Page settings avec 3 onglets :
 Route `/admin` protégée par email (seuls les emails `@growthcompta.com` y accèdent,
 vérification via `auth.users.email` dans le middleware).
 
+Ajouter un champ `status text NOT NULL DEFAULT 'active' CHECK (status IN ('active', 'suspended'))`
+sur la table `workspaces`.
+
 Contenu :
-- Liste de tous les workspaces : nom, nb membres, nb deals, MRR total pipeline,
-  date création
-- Cliquer sur un workspace → voir son pipeline en lecture seule
+- Liste de tous les workspaces : nom, status (badge actif/suspendu), nb membres,
+  nb deals, MRR total pipeline, date création, dernière activité
 - Métriques globales en haut : nb workspaces actifs (activité < 7 jours),
   MRR total agrégé, nb deals en cours
+- Cliquer sur un workspace → voir son pipeline en lecture seule
+- Actions disponibles (owner GrowthCompta uniquement) :
+  - **Suspendre** un workspace : le status passe à `suspended`, une bannière
+    apparaît pour tous les membres du cabinet ("Votre accès est suspendu.
+    Contactez GrowthCompta."), toutes les mutations sont bloquées via RLS
+  - **Réactiver** : repasse à `active`, bannière disparaît immédiatement
+
+Modifier les RLS policies sur toutes les tables data pour bloquer SELECT/INSERT/UPDATE
+si `workspaces.status = 'suspended'` (ajouter la condition dans `is_workspace_member`).
 
 **T4.4 — PWA**
 - `app/manifest.ts` : Web App Manifest avec nom "GClients", icônes, theme_color `#0A0A0F`
@@ -862,17 +932,296 @@ Contenu :
   succès/erreurs de toutes les mutations
 - Favicon : même icône que PWA
 
+**T4.6 — Toggle light/dark mode**
+- Toggle dans Settings → Apparence : "Sombre / Clair / Automatique"
+- Appliquer la classe `.theme-dark` ou `.theme-light` sur `<html>` côté client
+- Persister la préférence dans `workspace_members.theme` (ajouter colonne
+  `theme text NOT NULL DEFAULT 'dark' CHECK (theme IN ('dark', 'light', 'auto'))`)
+- Fallback `localStorage` pour les pages non-authentifiées (login, invite)
+- Les glows de stage sont désactivés en light mode (opacité 0)
+
 ### Critères d'acceptation Sprint 4
 - [ ] Inviter un membre par email → il reçoit l'email, clique, rejoint le workspace
 - [ ] Le membre invité voit les mêmes deals, ses actions sont visibles par l'owner
 - [ ] Settings : changer le nom du cabinet → mis à jour partout instantanément
 - [ ] `/admin` accessible uniquement avec email GrowthCompta
+- [ ] Suspendre un workspace → les membres voient la bannière et ne peuvent plus mutater
+- [ ] Réactiver le workspace → accès rétabli immédiatement sans refresh
+- [ ] Toggle light/dark → bascule instantané, persisté après refresh
 - [ ] App installable comme PWA sur mobile (manifest + meta tags)
 - [ ] Skeleton screens visibles 200ms au chargement (simular slow 3G dans DevTools)
 
 ---
 
-## 14. Contraintes transversales (valables pour tous les sprints)
+## 14. Sprint 5 — Intégrations natives `jours 21–28`
+
+### Objectif
+Connecter GClients aux outils déjà utilisés par les cabinets comptables.
+Chaque intégration est native : bouton "Connecter" dans Settings → OAuth →
+sync automatique. Pas besoin de Make/Zapier pour les cas d'usage principaux.
+
+L'onglet Settings gagne un sous-onglet **Intégrations** avec une grille de
+connecteurs (nom + logo + status badge connected/disconnected + bouton action).
+
+---
+
+### T5.1 — Infrastructure OAuth commune
+
+Avant d'implémenter les connecteurs individuels, poser la fondation :
+
+- `app/api/integrations/[provider]/connect/route.ts` : initie le flow OAuth
+  (redirect vers le provider avec `state = workspaceId + CSRF`)
+- `app/api/integrations/[provider]/callback/route.ts` : reçoit le code,
+  échange contre access + refresh token, stocke dans `integration_tokens`
+- `lib/integrations/refresh.ts` : helper générique pour rafraîchir un token
+  expiré avant chaque appel API
+- Composant `IntegrationCard` : carte réutilisable avec logo, nom, description,
+  status (connected/error/disconnected), bouton connect/disconnect
+
+---
+
+### T5.2 — Pennylane
+
+**Déclencheur sur signature** : quand un deal passe en stage `signe`, créer
+automatiquement le dossier client dans Pennylane.
+
+OAuth :
+- `PENNYLANE_CLIENT_ID` / `PENNYLANE_CLIENT_SECRET` dans `.env`
+- Scopes : `customers:write`
+- Redirect URI : `{APP_URL}/api/integrations/pennylane/callback`
+
+Sync :
+```typescript
+// Appelé dans updateDealStage() quand newStage === 'signe'
+async function syncDealToPennylane(deal: Deal, workspaceId: string) {
+  const token = await getIntegrationToken(workspaceId, 'pennylane')
+  if (!token) return  // intégration non connectée, silencieux
+  await pennylaneAPI.createCustomer({
+    name: deal.company,
+    source_id: deal.id,  // pour idempotence
+    billing_email: '',   // à enrichir si contact.email disponible
+  })
+}
+```
+
+Affichage : dans DealCard et le SlideOver, badge "Sync Pennylane" sur les deals
+en stage `signe` qui ont été synchronisés (flag `meta.pennylane_synced` dans
+le deal ou dans `integration_tokens.meta`).
+
+---
+
+### T5.3 — Tiime
+
+Même pattern que Pennylane — un workspace utilisera l'un OU l'autre.
+Settings affiche les deux connecteurs, mais bloque si l'autre est déjà connecté
+("Vous utilisez déjà Pennylane. Déconnectez-le pour activer Tiime.").
+
+OAuth Tiime : API moins documentée — implémenter en mode "API key" si OAuth
+non disponible (champ texte dans Settings pour coller la clé API Tiime).
+
+Action à la signature : `POST /api/v1/clients` avec `{ name, siret }`.
+
+---
+
+### T5.4 — Gmail / Outlook
+
+**Objectif** : les emails envoyés aux contacts apparaissent automatiquement
+comme activités `email` dans GClients.
+
+**Gmail** :
+- OAuth Google : scopes `gmail.readonly` + `gmail.send`
+- Après connexion : enregistrer un Gmail Push Notification (Pub/Sub Google)
+  vers `app/api/integrations/gmail/webhook/route.ts`
+- À chaque nouveau message : si l'expéditeur ou destinataire correspond à un
+  contact GClients (matching par email), créer une activité `email`
+- Affichage : les emails importés ont un badge "Gmail" dans la timeline activités
+
+**Outlook** :
+- OAuth Microsoft : scopes `Mail.Read`
+- Microsoft Graph webhooks vers `app/api/integrations/outlook/webhook/route.ts`
+- Même logique de matching et création d'activité
+
+**Envoi depuis GClients** (optionnel, Sprint 5+) :
+- Bouton "Envoyer un email" sur un deal → ouvre composer in-app
+- Envoi via Gmail/Outlook API avec l'email connecté
+
+---
+
+### T5.5 — Calendly
+
+**Objectif** : quand un meeting Calendly est planifié avec un contact GClients,
+créer une activité `réunion` avec la date, l'objet et le lien de la réunion.
+
+- OAuth Calendly : scope `default`
+- Créer un webhook Calendly via API : `invitee.created` → 
+  `app/api/integrations/calendly/webhook/route.ts`
+- À chaque event : matching par email de l'invité → créer activité `réunion`
+  sur le deal correspondant (deal le plus récent de ce contact)
+- Si aucun deal trouvé : créer l'activité sans deal_id (visible dans Activities globales)
+
+---
+
+### T5.6 — Pappers / INPI
+
+**Objectif** : enrichissement automatique des données entreprise. Quand un deal
+est créé avec un nom d'entreprise, GClients propose d'auto-remplir les données
+depuis Pappers.
+
+- API Pappers (clé API dans Settings → Intégrations) — pas d'OAuth, clé API simple
+- Dans le SlideOver de création d'un deal : champ "Entreprise" avec autocomplete
+  qui interroge Pappers `GET /entreprises?q={query}` (debounce 300ms)
+- Sélectionner une entreprise → remplit automatiquement : secteur (code NAF → libellé),
+  SIREN, dirigeant principal (en tant que Contact suggéré)
+- Ne pas stocker de données Pappers en DB — juste utiliser pour pré-remplir le formulaire
+
+API key : `PAPPERS_API_KEY` dans `.env`.
+
+---
+
+### T5.7 — Aircall
+
+**Objectif** : log automatique des appels + click-to-call.
+
+**Log automatique** :
+- Dans Settings → Intégrations → Aircall : entrer le webhook secret Aircall
+- Créer un endpoint `app/api/integrations/aircall/webhook/route.ts`
+- Écouter l'event `call.ended` : extraire numéro appelé/appelant, durée, date
+- Matching par téléphone contre les contacts GClients
+- Si match : créer activité `appel` avec note "Appel Aircall — Xmin Ys"
+  et mise à jour de `last_activity_at` sur le deal lié
+
+**Click-to-call** :
+- Dans DealCard et ContactSlideOver : icône téléphone → ouvre `aircall://dial/{phone}`
+  (protocole Aircall desktop app) ou `https://phone.aircall.io/calls/new?phone=`
+
+---
+
+### T5.8 — Ringover
+
+Même pattern qu'Aircall (les deux ne peuvent pas être actifs simultanément —
+même garde que Pennylane/Tiime).
+
+- Webhook Ringover sur `call_ended`
+- Click-to-call via `ringover://` protocol ou l'API web Ringover
+
+---
+
+### T5.9 — Make (Webhooks sortants)
+
+**Objectif** : permettre aux utilisateurs de connecter GClients à n'importe quel
+scénario Make sans code.
+
+Dans Settings → Intégrations → Make :
+- Champ "URL du webhook" (fourni par Make)
+- Triggers disponibles (checkboxes) :
+  - Nouveau deal créé
+  - Deal changé de stage
+  - Deal signé
+  - Nouvelle activité logée
+  - Nouveau contact créé
+
+À chaque trigger coché : `POST {webhookUrl}` avec le payload JSON de l'entité.
+
+```typescript
+// lib/integrations/make.ts
+export async function sendMakeWebhook(
+  workspaceId: string,
+  event: MakeEvent,
+  payload: Record<string, unknown>
+) {
+  const config = await getMakeConfig(workspaceId)
+  if (!config?.webhookUrl || !config.triggers.includes(event)) return
+  await fetch(config.webhookUrl, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ event, timestamp: new Date().toISOString(), data: payload }),
+  })
+}
+```
+
+Stocker la config Make dans `integration_tokens.meta` (provider = 'make', pas d'OAuth).
+
+---
+
+### Structure des fichiers Sprint 5
+
+```
+app/
+├── api/
+│   └── integrations/
+│       ├── [provider]/
+│       │   ├── connect/route.ts     # Initie OAuth
+│       │   └── callback/route.ts    # Reçoit token
+│       ├── gmail/webhook/route.ts
+│       ├── outlook/webhook/route.ts
+│       ├── calendly/webhook/route.ts
+│       └── aircall/webhook/route.ts
+├── (app)/settings/
+│   └── integrations/                # Nouvel onglet Settings
+│       └── page.tsx
+lib/
+├── integrations/
+│   ├── oauth.ts          # Helpers communs OAuth
+│   ├── refresh.ts        # Refresh token générique
+│   ├── pennylane.ts      # API Pennylane
+│   ├── tiime.ts          # API Tiime
+│   ├── gmail.ts          # Gmail API
+│   ├── outlook.ts        # Microsoft Graph
+│   ├── calendly.ts       # Calendly API
+│   ├── pappers.ts        # Pappers API
+│   ├── aircall.ts        # Aircall webhooks + click-to-call
+│   ├── ringover.ts       # Ringover webhooks
+│   └── make.ts           # Make webhooks sortants
+components/
+└── settings/
+    ├── IntegrationCard.tsx          # Carte réutilisable
+    └── IntegrationsView.tsx         # Grille de connecteurs
+```
+
+### Variables d'environnement supplémentaires (Sprint 5)
+```bash
+# Pennylane
+PENNYLANE_CLIENT_ID=
+PENNYLANE_CLIENT_SECRET=
+
+# Google (Gmail)
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+GOOGLE_PUBSUB_TOPIC=
+
+# Microsoft (Outlook)
+MICROSOFT_CLIENT_ID=
+MICROSOFT_CLIENT_SECRET=
+MICROSOFT_TENANT_ID=common
+
+# Calendly
+CALENDLY_CLIENT_ID=
+CALENDLY_CLIENT_SECRET=
+
+# Pappers
+PAPPERS_API_KEY=
+
+# Aircall
+AIRCALL_WEBHOOK_SECRET=
+
+# Ringover
+RINGOVER_WEBHOOK_SECRET=
+```
+
+### Critères d'acceptation Sprint 5
+- [ ] Settings → Intégrations affiche tous les connecteurs avec status correct
+- [ ] Connecter Pennylane → déplacer un deal en Signé → vérifier création client dans Pennylane
+- [ ] Tiime bloqué si Pennylane déjà connecté (et vice-versa)
+- [ ] Envoyer un email Gmail à un contact → activité apparaît dans GClients < 30s
+- [ ] Créer un event Calendly avec email d'un contact → activité réunion créée
+- [ ] Champ entreprise avec autocomplete Pappers → sélection remplit le formulaire
+- [ ] Terminer un appel Aircall avec numéro d'un contact → activité appel créée
+- [ ] Click-to-call sur une card → appel lancé dans Aircall/Ringover
+- [ ] Webhook Make déclenché sur signature de deal → payload reçu dans Make
+
+---
+
+## 15. Contraintes transversales (valables pour tous les sprints)
 
 ### Code
 - TypeScript strict (`"strict": true` dans tsconfig)
@@ -907,7 +1256,7 @@ Contenu :
 
 ---
 
-## 15. CLAUDE.md à placer à la racine du repo gclients
+## 16. CLAUDE.md à placer à la racine du repo gclients
 
 ```markdown
 # GClients — Instructions pour agents
@@ -935,10 +1284,12 @@ Next.js 15 App Router · React 19 · TypeScript strict · Tailwind v4 · Supabas
 
 ## Design system
 Voir section 4 de GCLIENTS_SPEC.md. En résumé :
-- Dark mode only, --bg: #0A0A0F, --surface: #111118
+- Dark mode par défaut + light mode complet (toggle Settings)
+- Tokens CSS via `.theme-dark` / `.theme-light` sur `<html>` — jamais de couleurs hardcodées
+- --bg: #0A0A0F (dark) / #F4F4F8 (light), --surface: #111118 (dark) / #FFFFFF (light)
 - Inter pour UI, JetBrains Mono pour les nombres
-- Stages : blue/purple/amber/orange/green
-- Glow effects avec text-shadow et box-shadow en couleur du stage
+- Stages : blue/purple/amber/orange/green (invariants dark/light)
+- Glow effects (text-shadow, box-shadow) : activés en dark, désactivés en light
 
 ## Référence UI
 Les composants prototype sont dans floshii/growthcompta branche
@@ -947,5 +1298,5 @@ claude/gclients-crm-build-5hhrk4, dossier components/crm/
 
 ---
 
-*Spec rédigée le 9 juin 2026 — version 1.0*
+*Spec rédigée le 9 juin 2026 — version 1.1 (9 juin 2026 : light mode, superadmin suspension, Sprint 5 intégrations)*
 *Auteur : Claude (session GClients CRM build)*
