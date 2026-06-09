@@ -109,11 +109,19 @@ ou `localStorage` pour les guests). La détection automatique via
 `prefers-color-scheme` s'applique au premier chargement si aucune préférence n'est
 enregistrée.
 
-**Implémentation :**
-- Les tokens CSS sont déclarés via classes `.theme-dark` et `.theme-light` sur `<html>`
-- Tailwind v4 : utiliser `@variant dark { ... }` ou classes conditionnelles
-- Composants : utiliser uniquement les tokens CSS (`var(--bg)`, etc.) — jamais de
-  valeurs hardcodées pour les couleurs d'interface
+**Implémentation (validée dans le prototype growthcompta) :**
+- Tokens de couleur runtime : `--gc-bg`, `--gc-surface`, `--gc-surface2`, `--gc-border`,
+  `--gc-text`, `--gc-muted`, `--gc-hover-bg`, `--gc-shadow-card`, `--gc-scrim`,
+  `--gc-scrollbar`, `--gc-scrollbar-h`, `--gc-grid` — définis sur `:root` (dark)
+  et `:root[data-theme="light"]` (light)
+- `@theme` Tailwind v4 référence ces vars : `--color-crm-base: var(--gc-bg)` etc.
+  → toutes les classes `bg-crm-*` / `text-crm-*` s'adaptent automatiquement
+- Le composant `AppShell` maintient un state `theme: 'dark' | 'light'` et fait
+  `document.documentElement.setAttribute('data-theme', theme)` dans un `useEffect`
+- Composants : utiliser uniquement les tokens CSS (`var(--gc-text)`, etc.) dans les
+  inline styles — jamais de valeurs hex hardcodées pour les couleurs d'interface
+- Glows (text-shadow, box-shadow colorés) : désactivés en light mode via
+  `:root[data-theme="light"] .gc-glow-num { text-shadow: none !important; }`
 
 ### Couleurs (CSS custom properties dans `app/globals.css`)
 ```css
@@ -130,26 +138,31 @@ enregistrée.
 }
 
 /* ── Light theme ── */
-.theme-light {
-  --bg:        #F4F4F8;
-  --surface:   #FFFFFF;
-  --surface-2: #F0F0F5;
-  --border:    #E2E2EC;
-  --text:      #0A0A0F;
-  --muted:     #6B6B80;
-  --input-bg:  #FFFFFF;
-  --scrim:     rgba(100, 100, 120, 0.35);
+:root[data-theme="light"] {
+  --gc-bg:         #F4F5F8;
+  --gc-surface:    #FFFFFF;
+  --gc-surface2:   #FAFAFB;
+  --gc-border:     #E5E7EE;
+  --gc-text:       #15151D;
+  --gc-muted:      #767688;
+  --gc-hover-bg:   rgba(0,0,0,0.04);
+  --gc-shadow-card: 0 1px 2px rgba(20,22,40,0.06);
+  --gc-scrim:      rgba(30,32,48,0.32);
+  --gc-scrollbar:  #D9DBE4;
+  --gc-scrollbar-h: #C2C5D2;
+  --gc-grid:       rgba(20,20,40,0.035);
 }
 
-/* ── Couleurs sémantiques (invariantes dark/light) ── */
+/* ── Accents sémantiques (invariants dark/light) ── */
 :root {
-  --green:     #22C55E;
-  --amber:     #F59E0B;
-  --blue:      #3B82F6;
-  --red:       #EF4444;
-  --purple:    #8B5CF6;
-  --orange:    #F97316;
-  --cta:       #22C55E;
+  --gc-green:  #22C55E;
+  --gc-amber:  #F59E0B;
+  --gc-blue:   #3B82F6;
+  --gc-red:    #EF4444;
+  --gc-purple: #8B5CF6;
+  --gc-orange: #F97316;
+  --gc-cta:    #22C55E;
+  --gc-accent: #F97316; /* accent UI = orange GC par défaut */
 }
 ```
 

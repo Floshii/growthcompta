@@ -59,11 +59,11 @@ export default function KpiChip({ label, target, format, accent, suffix, delta, 
       </div>
       {/* Nombre animé */}
       <div
-        className="font-crm-mono font-bold leading-none tracking-[-0.03em] whitespace-nowrap"
+        className="gc-glow-num font-crm-mono font-bold leading-none tracking-[-0.03em] whitespace-nowrap"
         style={{
           fontSize: big ? 38 : 30,
           color: accent,
-          textShadow: `0 0 26px ${accent}40`,
+          textShadow: accent.startsWith('#') ? `0 0 26px ${accent}40` : 'none',
         }}
       >
         {display}

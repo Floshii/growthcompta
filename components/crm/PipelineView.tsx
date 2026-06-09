@@ -85,7 +85,7 @@ function KanbanColumn({
         {/* MRR total de la colonne */}
         <div className="flex items-baseline gap-[3px]">
           <span
-            className="font-crm-mono text-[22px] font-bold tracking-[-0.03em] leading-none"
+            className="gc-glow-num font-crm-mono text-[22px] font-bold tracking-[-0.03em] leading-none"
             style={{
               color: stage.color,
               textShadow: `0 0 18px ${stage.color}24`,
@@ -217,10 +217,10 @@ export default function PipelineView({ deals, onMoveDeal, onOpenDeal, onNewDeal,
         style={{
           gridTemplateColumns: `repeat(${isMobile ? 2 : 4}, 1fr)`,
           gap: 1,
-          background: '#1E1E2E', // gap color = border = hairlines
+          background: 'var(--gc-border)',
         }}
       >
-        <KpiChip label="Pipeline MRR"        target={pipelineMrr} format={fmtEUR} accent="#F0F0F5" delta={12} big />
+        <KpiChip label="Pipeline MRR"        target={pipelineMrr} format={fmtEUR} accent="var(--gc-text)" delta={12} big />
         <KpiChip label="Deals en cours"      target={enCours.length} accent="#3B82F6" delta={null} />
         <KpiChip label="Taux de conversion"  target={conv} accent="#8B5CF6" suffix="%" delta={4} />
         <KpiChip label="MRR signé · juin"    target={signeMrr} format={fmtEUR} accent="#22C55E" delta={9} />

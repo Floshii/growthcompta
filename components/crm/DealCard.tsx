@@ -49,7 +49,7 @@ export default function DealCard({ deal, stageColor, onOpen, overlay }: DealCard
     ? `0 18px 40px -10px rgba(0,0,0,0.7), 0 0 0 1px ${stageColor}`
     : hover
     ? `0 10px 26px -12px rgba(0,0,0,0.6), 0 0 ${Math.round(26 * glowAmt)}px -6px ${stageColor}88`
-    : '0 1px 2px rgba(0,0,0,0.25)'
+    : 'var(--gc-shadow-card)'
 
   return (
     <div
@@ -58,7 +58,7 @@ export default function DealCard({ deal, stageColor, onOpen, overlay }: DealCard
       style={{
         transform: overlay ? undefined : CSS.Translate.toString(transform),
         boxShadow,
-        borderColor: hover ? stageColor + '66' : '#1E1E2E',
+        borderColor: hover ? stageColor + '66' : 'var(--gc-border)',
         opacity: isDragging ? 0.3 : 1,
       }}
       className={[

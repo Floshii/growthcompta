@@ -94,9 +94,9 @@ function NavItem({
       onMouseLeave={() => setHover(false)}
       className="relative flex items-center gap-[11px] w-full px-[10px] py-[8px] rounded-[8px] text-[13.5px] text-left transition-all duration-100 cursor-pointer border-0"
       style={{
-        color: active ? '#F0F0F5' : hover ? '#F0F0F5' : '#6B6B80',
-        background: active ? '#1E1E2E' : hover ? 'rgba(255,255,255,0.03)' : 'transparent',
-        boxShadow: active ? 'inset 0 0 0 1px #1E1E2E' : 'none',
+        color: active ? 'var(--gc-text)' : hover ? 'var(--gc-text)' : 'var(--gc-muted)',
+        background: active ? 'var(--gc-border)' : hover ? 'var(--gc-hover-bg)' : 'transparent',
+        boxShadow: active ? 'inset 0 0 0 1px var(--gc-border)' : 'none',
         fontWeight: active ? 600 : 500,
         fontFamily: 'inherit',
       }}
@@ -206,7 +206,7 @@ function Sidebar({
         <div
           onClick={onClose}
           className="crm-fade-in fixed inset-0 z-50"
-          style={{ background: 'rgba(4,4,8,0.55)', backdropFilter: 'blur(2px)' }}
+          style={{ background: 'var(--gc-scrim)', backdropFilter: 'blur(2px)' }}
         />
       )}
       {aside}
@@ -216,7 +216,7 @@ function Sidebar({
 
 // ── Topbar ───────────────────────────────────────
 function Topbar({
-  activeTab, query, setQuery, onNewDeal, mobile, onMenu,
+  activeTab, query, setQuery, onNewDeal, mobile, onMenu, theme, onToggleTheme,
 }: {
   activeTab: Tab
   query: string
@@ -224,6 +224,8 @@ function Topbar({
   onNewDeal: () => void
   mobile: boolean
   onMenu: () => void
+  theme: 'dark' | 'light'
+  onToggleTheme: () => void
 }) {
   const [focus, setFocus] = useState(false)
 
@@ -267,7 +269,7 @@ function Topbar({
           width: mobile ? 'auto' : 280,
           flex: mobile ? 1 : 'none',
           height: 34,
-          border: `1px solid ${focus ? '#3B82F6' : '#1E1E2E'}`,
+          border: `1px solid ${focus ? '#3B82F6' : 'var(--gc-border)'}`,
         }}
       >
         <Search size={14} className="text-crm-muted shrink-0" />
@@ -286,6 +288,24 @@ function Topbar({
           </kbd>
         )}
       </div>
+
+      {/* Toggle thème sombre / clair */}
+      <button
+        onClick={onToggleTheme}
+        aria-label={theme === 'light' ? 'Passer en mode sombre' : 'Passer en mode clair'}
+        className="w-[34px] h-[34px] shrink-0 rounded-[9px] border border-crm-line bg-crm-surface text-crm-muted grid place-items-center transition-colors hover:text-crm-primary"
+      >
+        {theme === 'light' ? (
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
+            <path d="M13 9.5A5 5 0 0 1 6.5 3a5 5 0 1 0 6.5 6.5z"/>
+          </svg>
+        ) : (
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
+            <circle cx="8" cy="8" r="3"/>
+            <path d="M8 1v1.5M8 13.5V15M1 8h1.5M13.5 8H15M3 3l1 1M12 12l1 1M13 3l-1 1M4 12l-1 1"/>
+          </svg>
+        )}
+      </button>
 
       {/* Nouveau deal */}
       <button
@@ -318,6 +338,15 @@ export default function AppShell() {
   const [navOpen, setNavOpen] = useState(false)
   const [soOpen, setSoOpen] = useState(false)
   const [editingDeal, setEditingDeal] = useState<Deal | null>(null)
+  const [theme, setTheme] = useState<'dark' | 'light'>('dark')
+
+  // Applique data-theme sur <html> pour que les CSS vars et Tailwind s'adaptent
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme)
+    return () => { document.documentElement.removeAttribute('data-theme') }
+  }, [theme])
+
+  const toggleTheme = useCallback(() => setTheme((t) => t === 'dark' ? 'light' : 'dark'), [])
 
   // Chargement initial
   useEffect(() => {
@@ -379,6 +408,8 @@ export default function AppShell() {
           onNewDeal={openNew}
           mobile={isMobile}
           onMenu={() => setNavOpen(true)}
+          theme={theme}
+          onToggleTheme={toggleTheme}
         />
 
         {/* Zone de contenu */}
