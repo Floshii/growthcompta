@@ -14,8 +14,20 @@ export async function getDealsByStage(stage: Stage): Promise<Deal[]> {
 export async function updateDealStage(dealId: string, stage: Stage): Promise<Deal> {
   _deals = _deals.map((d) =>
     d.id === dealId
-      ? { ...d, stage, lastActivityAt: new Date().toISOString().split('T')[0] }
+      ? { ...d, stage, last: new Date().toISOString().split('T')[0] }
       : d,
   )
   return _deals.find((d) => d.id === dealId)!
+}
+
+export async function saveDeal(deal: Deal): Promise<Deal> {
+  const exists = _deals.some((d) => d.id === deal.id)
+  _deals = exists
+    ? _deals.map((d) => (d.id === deal.id ? deal : d))
+    : [..._deals, deal]
+  return deal
+}
+
+export async function deleteDeal(id: string): Promise<void> {
+  _deals = _deals.filter((d) => d.id !== id)
 }

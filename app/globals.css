@@ -218,26 +218,57 @@
 /* ── GClients CRM — design tokens ─────────────────── */
 @theme {
   /* Arrière-plans */
-  --color-crm-base: #0A0A0F;
-  --color-crm-surface: #111118;
+  --color-crm-base:     #0A0A0F;
+  --color-crm-surface:  #111118;
+  --color-crm-surface2: #16161F;
   /* Bordures */
   --color-crm-line: #1E1E2E;
   /* Texte */
   --color-crm-primary: #F0F0F5;
-  --color-crm-muted: #6B6B80;
+  --color-crm-muted:   #6B6B80;
   /* Accents */
-  --color-crm-green: #22C55E;
-  --color-crm-amber: #F59E0B;
-  --color-crm-blue: #3B82F6;
-  --color-crm-red: #EF4444;
+  --color-crm-green:  #22C55E;
+  --color-crm-amber:  #F59E0B;
+  --color-crm-blue:   #3B82F6;
+  --color-crm-red:    #EF4444;
   --color-crm-purple: #8B5CF6;
+  --color-crm-orange: #F97316;
   /* Polices */
-  --font-crm: var(--font-inter-crm, "Inter"), system-ui, sans-serif;
-  --font-crm-mono: var(--font-jb-mono, "JetBrains Mono"), ui-monospace, monospace;
+  --font-crm:      var(--font-inter-crm, "Inter"),         system-ui,     sans-serif;
+  --font-crm-mono: var(--font-jb-mono,   "JetBrains Mono"), ui-monospace, monospace;
 }
+
+/* Grille de fond — GClients */
+.crm-root {
+  position: relative;
+}
+.crm-root::before {
+  content: "";
+  position: fixed; inset: 0; pointer-events: none; z-index: 0;
+  background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.018) 1px, transparent 0);
+  background-size: 26px 26px;
+}
+.crm-root > * { position: relative; z-index: 1; }
+
+/* Bouton CTA vert (Nouveau deal) */
+.gc-cta {
+  transition: transform 120ms, box-shadow 120ms, filter 120ms;
+  box-shadow: 0 6px 18px -6px #22C55E;
+}
+.gc-cta:hover  { filter: brightness(1.06); transform: translateY(-1px); box-shadow: 0 8px 22px -6px #22C55E; }
+.gc-cta:active { transform: translateY(0); }
+
+/* Scrollbars CRM */
+.crm-root ::-webkit-scrollbar         { height: 10px; width: 10px; }
+.crm-root ::-webkit-scrollbar-track   { background: transparent; }
+.crm-root ::-webkit-scrollbar-thumb   { background: #1E1E2E; border-radius: 6px; border: 2px solid #0A0A0F; }
+.crm-root ::-webkit-scrollbar-thumb:hover { background: #2A2A3C; }
 
 @keyframes crm-toast-in {
   from { opacity: 0; transform: translateY(8px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 .crm-toast-enter { animation: crm-toast-in 0.2s ease-out; }
+
+@keyframes gcFade { from { opacity: 0; } to { opacity: 1; } }
+.crm-fade-in { animation: gcFade 200ms ease both; }

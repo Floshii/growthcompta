@@ -1,9 +1,23 @@
-import { companies as mockCompanies, type Company } from './mockData'
+import { deals } from './mockData'
 
-export async function getCompanies(): Promise<Company[]> {
-  return [...mockCompanies]
+export interface Company {
+  name: string
+  sector: string
+  totalMrr: number
+  dealCount: number
+  owners: string[]
 }
 
-export async function getCompanyById(id: string): Promise<Company | undefined> {
-  return mockCompanies.find((c) => c.id === id)
+export async function getCompanies(): Promise<Company[]> {
+  const map = new Map<string, Company>()
+  for (const d of deals) {
+    if (!map.has(d.company)) {
+      map.set(d.company, { name: d.company, sector: d.sector, totalMrr: 0, dealCount: 0, owners: [] })
+    }
+    const c = map.get(d.company)!
+    c.totalMrr += d.mrr
+    c.dealCount++
+    if (!c.owners.includes(d.owner)) c.owners.push(d.owner)
+  }
+  return [...map.values()].sort((a, b) => b.totalMrr - a.totalMrr)
 }
