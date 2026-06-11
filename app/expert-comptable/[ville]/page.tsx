@@ -98,8 +98,8 @@ export default async function VillePage({ params }: PageProps) {
           </p>
 
           <div className="flex flex-wrap gap-4">
-            <Button href="/outils/audit-acquisition" size="lg" variant="accent">
-              Audit gratuit — 5 min →
+            <Button href="/cabinet-growth-score" size="lg" variant="accent">
+              Faire mon Cabinet Growth Score — 5 min →
             </Button>
             <Button href="/niches" size="lg" variant="ghost-dark">
               Voir les niches disponibles
@@ -261,8 +261,8 @@ export default async function VillePage({ params }: PageProps) {
             ))}
           </ul>
           <div className="mt-10">
-            <Button href="/outils/audit-acquisition" size="lg" variant="accent">
-              Démarrer l&apos;audit gratuit →
+            <Button href="/cabinet-growth-score" size="lg" variant="accent">
+              Faire mon Cabinet Growth Score →
             </Button>
           </div>
         </div>

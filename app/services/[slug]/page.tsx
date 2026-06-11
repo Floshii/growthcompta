@@ -82,8 +82,8 @@ export default async function ServicePage({ params }: PageProps) {
             <p className="text-[18px] text-muted leading-relaxed mb-8">{service.shortDesc}</p>
           )}
           <div className="flex flex-wrap items-center gap-8 pt-6 border-t border-line">
-            <Button href="/outils/audit-acquisition" size="lg" variant="accent" aria-label="Demander un audit gratuit">
-              Audit gratuit
+            <Button href="/cabinet-growth-score" size="lg" variant="accent" aria-label="Faire mon Cabinet Growth Score">
+              Faire mon Cabinet Growth Score
             </Button>
             <div>
               <span className="font-display text-3xl font-bold text-accent">{service.stat}</span>

@@ -78,8 +78,8 @@ export default function ExpertComptableIndexPage() {
             en concurrence.
           </p>
           <div className="flex flex-wrap gap-4 justify-center mb-12">
-            <Button href="/outils/audit-acquisition" size="lg" variant="accent">
-              Audit gratuit — 5 min →
+            <Button href="/cabinet-growth-score" size="lg" variant="accent">
+              Faire mon Cabinet Growth Score — 5 min →
             </Button>
             <Button href="/niches" size="lg" variant="ghost-dark">
               Voir les 56 niches disponibles
@@ -157,8 +157,8 @@ export default function ExpertComptableIndexPage() {
             moteur d&apos;acquisition pour que votre cabinet signe de nouveaux clients de façon
             prévisible et sans dépendre du bouche-à-oreille.
           </p>
-          <Button href="/outils/audit-acquisition" size="md" variant="accent">
-            Démarrer l&apos;audit gratuit →
+          <Button href="/cabinet-growth-score" size="md" variant="accent">
+            Faire mon Cabinet Growth Score →
           </Button>
         </div>
       </section>

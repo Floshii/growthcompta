@@ -167,8 +167,8 @@ export default function NichesPage() {
             ))}
           </div>
 
-          <Button href="/outils/audit-acquisition" size="lg" variant="accent">
-            Audit gratuit — trouvez votre niche →
+          <Button href="/cabinet-growth-score" size="lg" variant="accent">
+            Faire mon Cabinet Growth Score — trouvez votre niche →
           </Button>
         </div>
       </section>
@@ -265,12 +265,12 @@ export default function NichesPage() {
             On vous aide à identifier votre niche la plus rentable
           </h2>
           <p className="text-gray-500 mb-8 leading-relaxed">
-            En 5 minutes, notre audit acquisition analyse votre cabinet et identifie
+            En 5 minutes, le Cabinet Growth Score analyse votre cabinet et identifie
             les 2-3 niches à fort potentiel adaptées à votre zone géographique,
             votre expertise actuelle et vos objectifs de CA.
           </p>
-          <Button href="/outils/audit-acquisition" size="lg" variant="accent">
-            Démarrer l&apos;audit gratuit →
+          <Button href="/cabinet-growth-score" size="lg" variant="accent">
+            Lancer mon Cabinet Growth Score →
           </Button>
         </div>
       </section>
