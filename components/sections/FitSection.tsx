@@ -64,7 +64,7 @@ export default function FitSection() {
             <div className="flex items-center gap-3">
               <span className="w-2 h-2 rounded-full bg-white/20" />
               <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-muted-2">
-                Pas fait pour vous si
+                Ce n&apos;est probablement pas pour vous si
               </span>
             </div>
             <ul className="flex flex-col gap-4 list-none m-0 p-0">
