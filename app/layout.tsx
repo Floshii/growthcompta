@@ -37,11 +37,11 @@ const instrumentSerif = Instrument_Serif({
 
 export const metadata: Metadata = {
   title: {
-    default: 'GrowthCompta — Le seul cabinet de growth pour experts-comptables',
+    default: 'GrowthCompta — Le système d\'acquisition des cabinets comptables ambitieux',
     template: '%s | GrowthCompta',
   },
   description:
-    "GrowthCompta installe votre moteur d'acquisition complet — SEO programmatique, paid ads, content & sales ops. Dédié aux cabinets d'expertise comptable.",
+    "GrowthCompta est le système d'acquisition pensé pour les cabinets comptables ambitieux : générez des leads qualifiés, attirez des clients premium et sortez de la dépendance au bouche-à-oreille.",
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://growthcompta.com'),
   alternates: {
     canonical: '/',
