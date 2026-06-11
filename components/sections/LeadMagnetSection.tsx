@@ -11,9 +11,9 @@ interface LeadMagnetSectionProps {
 
 export default function LeadMagnetSection({
   title = 'Où en est votre acquisition ?',
-  description = 'Faites notre audit gratuit en 22 questions et recevez votre diagnostic personnalisé avec les 3 priorités à adresser immédiatement.',
-  ctaText = 'Faire mon audit gratuit',
-  ctaHref = '/outils/audit-acquisition',
+  description = 'Faites votre Cabinet Growth Score en 5 minutes et recevez votre diagnostic personnalisé avec les 3 priorités à adresser immédiatement.',
+  ctaText = 'Faire mon Cabinet Growth Score',
+  ctaHref = '/cabinet-growth-score',
   variant = 'dark',
 }: LeadMagnetSectionProps) {
   const isDark = variant === 'dark'

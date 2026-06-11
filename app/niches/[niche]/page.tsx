@@ -91,8 +91,8 @@ export default async function NichePage({ params }: PageProps) {
             {data.description}
           </p>
           <div className="flex flex-wrap gap-4">
-            <Button href="/outils/audit-acquisition" size="lg" variant="accent">
-              Obtenir mon audit gratuit →
+            <Button href="/cabinet-growth-score" size="lg" variant="accent">
+              Faire mon Cabinet Growth Score →
             </Button>
             <Button href="/outils/guide-niche-comptable" size="lg" variant="ghost">
               Guide des niches
@@ -185,8 +185,8 @@ export default async function NichePage({ params }: PageProps) {
               ))}
             </ul>
             <div className="mt-10">
-              <Button href="/outils/audit-acquisition" size="lg" variant="accent">
-                Diagnostiquer votre acquisition →
+              <Button href="/cabinet-growth-score" size="lg" variant="accent">
+                Faire mon Cabinet Growth Score →
               </Button>
             </div>
           </div>
