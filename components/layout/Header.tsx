@@ -48,7 +48,7 @@ export default function Header() {
               className="w-1.5 h-1.5 rounded-full bg-accent"
               style={{ animation: 'pulse-dot 2.4s ease-in-out infinite' }}
             />
-            2 spots · ce mois
+            2 slots disponibles · Q1 2026
           </span>
           <Link
             href="/cabinet-growth-score"

@@ -18,7 +18,7 @@ export default function CTABanner() {
       <div className="max-w-[1280px] mx-auto px-5 md:px-8 text-center relative">
         <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted-2 mb-8 flex items-center justify-center gap-2">
           <span className="inline-block w-1.5 h-1.5 rounded-full bg-accent" />
-          2 spots disponibles · ce mois
+          2 slots disponibles · Q1 2026
         </p>
         <h2
           className="font-display font-bold text-white"

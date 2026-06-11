@@ -9,7 +9,7 @@ interface BreadcrumbSchemaProps {
   items: BreadcrumbItem[]
 }
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://growthcompta.fr'
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://growthcompta.com'
 
 export default function BreadcrumbSchema({ items }: BreadcrumbSchemaProps) {
   const schema = {

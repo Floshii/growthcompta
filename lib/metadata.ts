@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://growthcompta.fr'
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://growthcompta.com'
 const siteName = 'GrowthCompta'
 const defaultOgImage = '/og-image.png'
 
