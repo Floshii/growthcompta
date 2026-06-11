@@ -13,9 +13,9 @@ import StructuredData from '@/components/seo/StructuredData'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'GrowthCompta — Le seul cabinet de growth pour experts-comptables',
+  title: 'GrowthCompta — Le système d\'acquisition des cabinets comptables ambitieux',
   description:
-    "GrowthCompta installe votre moteur d'acquisition complet — SEO programmatique, paid ads, content & sales ops. Dédié aux cabinets d'expertise comptable.",
+    "GrowthCompta est le système d'acquisition pensé pour les cabinets comptables ambitieux : générez des leads qualifiés, attirez des clients premium et sortez de la dépendance au bouche-à-oreille.",
 }
 
 const organizationSchema = {
@@ -23,7 +23,7 @@ const organizationSchema = {
   '@type': 'Organization',
   name: 'GrowthCompta',
   url: 'https://growthcompta.com',
-  description: "Agence growth B2B spécialisée dans l'acquisition pour cabinets comptables français.",
+  description: "Le système d'acquisition pour cabinets comptables ambitieux — leads qualifiés, clients premium, croissance compoundée.",
 }
 
 const websiteSchema = {
