@@ -23,6 +23,7 @@
 @layer base {
   *, *::before, *::after { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
   body {
     font-family: var(--font-sans);
     color: var(--color-ink);

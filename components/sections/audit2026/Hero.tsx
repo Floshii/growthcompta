@@ -28,7 +28,7 @@ export default function Hero() {
               padding: '0 4px',
             }}
           >
-            transformée en machine de CA
+            transformée en CA
           </span>
           .
         </h1>
