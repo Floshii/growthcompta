@@ -21,6 +21,7 @@ const cols = {
   Ressources: [
     { href: '/niches', label: '56 niches comptables' },
     { href: '/expert-comptable', label: 'Expert-comptable par ville' },
+    { href: '/facturation-electronique', label: 'Facturation électronique 2026' },
   ],
   Contact: [
     { href: 'mailto:hello@growthcompta.com', label: 'hello@growthcompta.com' },
