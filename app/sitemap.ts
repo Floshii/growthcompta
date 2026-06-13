@@ -19,6 +19,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${siteUrl}/simulateurs/lmnp`,            lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
     { url: `${siteUrl}/facturation-electronique`,    lastModified: new Date(), changeFrequency: 'weekly',  priority: 0.8 },
     { url: `${siteUrl}/outils/simulateur-facture-electronique`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${siteUrl}/outils/plan-attaque-60-jours`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
   ]
 
   const servicePages: MetadataRoute.Sitemap = services.map((s) => ({

@@ -65,6 +65,8 @@ interface Result {
   mrr: number
   arr: number
   caAnneeUn: number
+  resteARembourser: number
+  paybackMonths: number | null
 }
 
 function calculer(inp: Inputs, weeksLeft: number | null): Result {
@@ -79,7 +81,12 @@ function calculer(inp: Inputs, weeksLeft: number | null): Result {
   const arr = mrr * 12
   const caAnneeUn = caMigration + arr
 
-  return { clientsAMigrer, chargeHeures, chargeValorisee, heuresParSemaine, caMigration, clientsAbonnes, mrr, arr, caAnneeUn }
+  // Payback period : le forfait migration couvre-t-il déjà le temps investi ?
+  // Sinon, combien de mois de récurrent faut-il pour rembourser le solde ?
+  const resteARembourser = Math.max(0, chargeValorisee - caMigration)
+  const paybackMonths = resteARembourser === 0 ? 0 : mrr > 0 ? resteARembourser / mrr : null
+
+  return { clientsAMigrer, chargeHeures, chargeValorisee, heuresParSemaine, caMigration, clientsAbonnes, mrr, arr, caAnneeUn, resteARembourser, paybackMonths }
 }
 
 // ─── Champ slider + valeur ────────────────────────────────────────
@@ -322,11 +329,31 @@ export default function SimulateurFactureElectronique() {
                     <span className="font-display font-bold text-ink text-[20px] tabular-nums">{num(r.clientsAbonnes)}</span>
                   </div>
 
-                  <div className="flex items-baseline justify-between gap-3">
+                  <div className="flex items-baseline justify-between gap-3 pb-3 border-b border-line">
                     <span className="text-[14px] text-ink-2">CA récurrent potentiel</span>
                     <span className="font-display font-bold text-[20px] tabular-nums" style={{ color: '#0a8f4a' }}>
                       {eur(r.mrr)}/mois · {eur(r.arr)}/an
                     </span>
+                  </div>
+
+                  <div>
+                    <div className="flex items-baseline justify-between gap-3">
+                      <span className="text-[14px] text-ink-2">Payback du temps investi</span>
+                      <span className="font-display font-bold text-ink text-[20px] tabular-nums">
+                        {r.paybackMonths === 0
+                          ? 'Immédiat'
+                          : r.paybackMonths === null
+                            ? '—'
+                            : `${r.paybackMonths.toFixed(1)} mois`}
+                      </span>
+                    </div>
+                    <p className="text-[12px] text-muted mt-1.5 mb-0">
+                      {r.paybackMonths === 0
+                        ? 'Le forfait migration couvre déjà la valeur du temps investi : le récurrent est immédiatement net.'
+                        : r.paybackMonths === null
+                          ? "Configure un abonnement récurrent pour calculer ton payback."
+                          : `Il reste ${eur(r.resteARembourser)} de temps investi non couvert par le forfait migration — couvert en ${r.paybackMonths.toFixed(1)} mois par le récurrent.`}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -357,6 +384,10 @@ export default function SimulateurFactureElectronique() {
             (réception généralisée et émission pour les grandes entreprises/ETI au 1er septembre 2026, émission
             pour les TPE/PME au 1er septembre 2027). Les paramètres par défaut sont des ordres de grandeur à
             ajuster avec la réalité de ton cabinet — cet outil ne remplace pas un chiffrage commercial détaillé.
+            {' '}Pour t&apos;organiser semaine par semaine, vois aussi le{' '}
+            <Link href="/outils/plan-attaque-60-jours" className="text-accent underline decoration-accent/30 hover:decoration-accent">
+              plan d&apos;attaque 60 jours
+            </Link>.
           </p>
         </div>
       </section>
