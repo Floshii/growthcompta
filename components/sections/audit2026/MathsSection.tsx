@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 const figures = [
   {
     value: '+72 000€',
@@ -48,6 +50,13 @@ export default function MathsSection() {
               Cas médian.
             </span>
           </h2>
+          <Link
+            href="/outils/simulateur-facture-electronique"
+            className="inline-flex items-center gap-2 mt-5 text-[14px] font-medium text-accent hover:text-accent-deep transition-colors group"
+          >
+            Calculer le chiffre de TON cabinet avec le simulateur
+            <span className="inline-block transition-transform duration-200 group-hover:translate-x-0.5">→</span>
+          </Link>
         </div>
 
         {/* Figures */}
