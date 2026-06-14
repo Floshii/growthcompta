@@ -16,7 +16,13 @@ const config: NextConfig = {
     ]
   },
   async redirects() {
-    return []
+    return [
+      {
+        source: '/outils/simulateur-lmnp',
+        destination: '/simulateurs/lmnp',
+        permanent: true,
+      },
+    ]
   },
 }
 

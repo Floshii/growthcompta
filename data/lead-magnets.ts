@@ -15,22 +15,6 @@ export interface LeadMagnet {
 
 export const leadMagnets: LeadMagnet[] = [
   {
-    slug: "simulateur-lmnp",
-    title: "Simulateur fiscal LMNP 2026",
-    description:
-      "Comparez les 4 régimes d'imposition (NUE micro-foncier, NUE réel, MEUBLÉE micro-BIC, LMNP réel) et recevez une recommandation automatique du régime le plus avantageux pour votre bien locatif.",
-    type: "calculator",
-    // Composant natif Next.js — page dédiée : /simulateurs/lmnp
-    // Pour un embed iframe WordPress sans header/footer, déployer en standalone Vercel.
-    embedUrl: undefined,
-    embedHeight: 900,
-    cta: "Lancer le simulateur",
-    ogImage: "/images/outils/simulateur-lmnp.jpg",
-    metaTitle: "Simulateur fiscal LMNP 2026 — Micro-foncier vs Réel vs LMNP | GrowthCompta",
-    metaDescription:
-      "Estimez votre fiscalité locative en temps réel. Comparez micro-foncier, réel foncier, micro-BIC et LMNP réel pour trouver le régime optimal.",
-  },
-  {
     slug: "audit-acquisition",
     title: "Audit gratuit de votre acquisition",
     description:
