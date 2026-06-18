@@ -12,16 +12,15 @@ const cols = {
     { href: '/services/brand-positioning', label: 'Brand & positioning' },
   ],
   Cabinet: [
-    { href: '/a-propos', label: 'À propos' },
     { href: '/blog', label: 'Blog' },
     { href: '/#method', label: 'Méthode' },
-    { href: '/pricing', label: 'Pricing' },
-    { href: '/carrieres', label: 'Carrières' },
+    { href: '/tarifs', label: 'Tarifs' },
   ],
   Ressources: [
     { href: '/niches', label: '56 niches comptables' },
     { href: '/expert-comptable', label: 'Expert-comptable par ville' },
-    { href: '/facturation-electronique', label: 'Facturation électronique 2026' },
+    { href: '/facturation-electronique', label: 'Facturation électronique — repricing' },
+    { href: '/facturation-electronique-2026', label: 'Automatisation facture élec. 2026' },
   ],
   Contact: [
     { href: 'mailto:hello@growthcompta.com', label: 'hello@growthcompta.com' },

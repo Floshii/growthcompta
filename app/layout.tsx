@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Bricolage_Grotesque, Geist, Geist_Mono, Instrument_Serif } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/react'
-import Header from '@/components/layout/Header'
+import ConditionalHeader from '@/components/layout/ConditionalHeader'
 import Footer from '@/components/layout/Footer'
 import GoogleAnalytics from '@/components/analytics/GoogleAnalytics'
 import MetaPixel from '@/components/analytics/MetaPixel'
@@ -67,7 +67,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${bricolage.variable} ${geist.variable} ${geistMono.variable} ${instrumentSerif.variable}`}
     >
       <body>
-        <Header />
+        <ConditionalHeader />
         <main id="main-content">{children}</main>
         <Footer />
         <Analytics />
