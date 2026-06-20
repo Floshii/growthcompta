@@ -33,52 +33,42 @@ export default function CountdownStrip() {
   ]
 
   return (
-    <section className="bg-ink border-t border-white/10 py-10 md:py-12">
-      <div className="max-w-[1280px] mx-auto px-5 md:px-8">
-        <div className="flex flex-col md:flex-row items-center md:items-end gap-6 md:gap-16">
-
-          <div className="flex-shrink-0">
-            <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted-2 mb-4 flex items-center gap-2">
-              <span
-                className="inline-block rounded-full"
-                style={{
-                  width: 6,
-                  height: 6,
-                  background: 'var(--color-accent)',
-                  animation: 'pulse-dot 2s ease-in-out infinite',
-                }}
-              />
-              Échéance · 1er septembre 2026
-            </p>
-            <div className="flex items-end gap-4">
-              {units.map((u, i) => (
-                <div key={u.label} className="flex items-end gap-4">
-                  <div>
-                    <p
-                      className="font-display font-bold text-white leading-none"
-                      style={{ fontSize: 'clamp(40px, 4.5vw, 60px)', letterSpacing: '-0.04em' }}
-                    >
-                      {u.value !== undefined ? String(u.value).padStart(2, '0') : '—'}
-                    </p>
-                    <p className="font-mono text-[11px] text-muted-2 mt-2">{u.label}</p>
-                  </div>
-                  {i < units.length - 1 && (
-                    <p
-                      className="font-display font-bold text-muted-2"
-                      style={{ fontSize: 28, paddingBottom: 22 }}
-                    >
-                      :
-                    </p>
-                  )}
-                </div>
-              ))}
+    <section className="bg-ink border-t border-white/10 py-12 md:py-16">
+      <div className="max-w-[1280px] mx-auto px-5 md:px-8 text-center">
+        <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted-2 mb-6 inline-flex items-center gap-2 justify-center">
+          <span
+            className="inline-block rounded-full"
+            style={{
+              width: 6,
+              height: 6,
+              background: 'var(--color-accent)',
+              animation: 'pulse-dot 2s ease-in-out infinite',
+            }}
+          />
+          Échéance · 1er septembre 2026
+        </p>
+        <div className="flex items-end justify-center gap-4">
+          {units.map((u, i) => (
+            <div key={u.label} className="flex items-end gap-4">
+              <div>
+                <p
+                  className="font-display font-bold text-white leading-none"
+                  style={{ fontSize: 'clamp(48px, 6vw, 80px)', letterSpacing: '-0.04em' }}
+                >
+                  {u.value !== undefined ? String(u.value).padStart(2, '0') : '—'}
+                </p>
+                <p className="font-mono text-[11px] text-muted-2 mt-2 text-center">{u.label}</p>
+              </div>
+              {i < units.length - 1 && (
+                <p
+                  className="font-display font-bold text-muted-2"
+                  style={{ fontSize: 'clamp(32px, 4vw, 52px)', paddingBottom: 28 }}
+                >
+                  :
+                </p>
+              )}
             </div>
-          </div>
-
-          <p className="text-[15px] leading-relaxed md:ml-auto max-w-[380px] text-center md:text-right" style={{ color: '#d6d4cf' }}>
-            La réception des factures électroniques devient obligatoire le 1er septembre 2026.
-            Préparer le flux maintenant, c&apos;est éviter la bascule dans l&apos;urgence.
-          </p>
+          ))}
         </div>
       </div>
     </section>

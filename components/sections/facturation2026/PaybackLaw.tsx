@@ -162,50 +162,6 @@ export default function PaybackLaw() {
           </div>
         </div>
 
-        {/* Three levels of maturity */}
-        <div>
-          <p className="font-mono text-[11px] uppercase tracking-[0.12em] text-muted mb-6">
-            Trois niveaux de maturité
-          </p>
-          <div
-            className="rounded-2xl overflow-hidden grid grid-cols-1 md:grid-cols-3"
-            style={{ gap: '1px', background: 'var(--color-line)', border: '1px solid var(--color-line)' }}
-          >
-            {levels.map((l) => (
-              <div key={l.n} className="bg-white" style={{ padding: '32px 28px' }}>
-                <p
-                  className="font-mono uppercase mb-2"
-                  style={{ fontSize: 11, letterSpacing: '0.12em', color: 'var(--color-accent)' }}
-                >
-                  Niveau {l.n}
-                </p>
-                <h3
-                  className="font-display font-semibold text-ink mb-4"
-                  style={{ fontSize: 18, letterSpacing: '-0.02em' }}
-                >
-                  {l.title}
-                </h3>
-                <div className="flex flex-col gap-2.5">
-                  {l.questions.map((q, i) => (
-                    <p
-                      key={i}
-                      className="flex gap-2 items-start text-[14px] leading-snug"
-                      style={{ color: 'var(--color-muted)' }}
-                    >
-                      <span className="text-accent flex-shrink-0 mt-0.5">→</span>
-                      {q}
-                    </p>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-          <p className="font-mono text-[12px] text-muted mt-4 leading-relaxed">
-            Un cabinet qui maîtrise ces trois niveaux peut croître aussi vite que son marché le lui permet.
-            Un cabinet qui ne les mesure pas croît par accident — et plafonne par accident.
-          </p>
-        </div>
-
       </div>
     </section>
   )

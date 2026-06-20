@@ -175,8 +175,8 @@ export default function Offer() {
           <div className="flex flex-col gap-5">
 
             {/* Result box */}
-            <div className="rounded-2xl border border-line bg-paper p-6">
-              <p className="font-mono text-[11px] uppercase tracking-[0.12em] text-muted mb-4">Résultat attendu</p>
+            <div className="rounded-2xl bg-ink p-6">
+              <p className="font-mono text-[11px] uppercase tracking-[0.12em] text-muted-2 mb-4">Résultat attendu</p>
               <p
                 className="font-display font-bold text-accent"
                 style={{ fontSize: 64, letterSpacing: '-0.04em', lineHeight: 0.9, marginBottom: 12 }}
@@ -184,13 +184,13 @@ export default function Offer() {
                 +20–30
                 <span style={{ fontSize: '0.42em', marginLeft: '0.1em', color: 'var(--color-accent)' }}>%</span>
               </p>
-              <p className="text-[14px] text-ink-2 leading-relaxed mb-4">
+              <p className="text-[14px] leading-relaxed mb-4" style={{ color: '#d6d4cf' }}>
                 de productivité, soit du temps rendu pour les tâches à forte valeur ajoutée plutôt que la saisie.
               </p>
-              <p className="text-[13px] text-ink-2 leading-relaxed border-t border-line pt-4">
-                <strong className="text-ink">Cabinet de 10 collaborateurs&nbsp;:</strong> 2&nbsp;h par semaine et par collaborateur de ressaisie supprimées, soit près de 80&nbsp;h par mois rendues à l&apos;équipe. L&apos;équivalent de plus d&apos;un demi-collaborateur à temps plein.
+              <p className="text-[13px] leading-relaxed pt-4" style={{ color: '#d6d4cf', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
+                <strong className="text-white">Cabinet de 10 collaborateurs&nbsp;:</strong> 2&nbsp;h par semaine et par collaborateur de ressaisie supprimées, soit près de 80&nbsp;h par mois rendues à l&apos;équipe. L&apos;équivalent de plus d&apos;un demi-collaborateur à temps plein.
               </p>
-              <p className="font-mono text-[11px] text-muted mt-3">
+              <p className="font-mono text-[11px] text-muted-2 mt-3">
                 Ordre de grandeur observé sur ce type d&apos;automatisation. Le gain réel est chiffré pendant l&apos;audit.
               </p>
             </div>

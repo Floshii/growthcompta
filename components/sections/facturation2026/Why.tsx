@@ -49,7 +49,7 @@ export default function Why() {
               color: 'var(--color-ink)',
             }}
           >
-            Un interlocuteur qui parle{' '}
+            Un interlocuteur qui parle intégration,{' '}
             <span
               className="not-italic"
               style={{
