@@ -89,13 +89,13 @@ export default function Hero() {
       <div className="max-w-[1280px] mx-auto px-5 md:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
           <div>
-            <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted mb-6 inline-flex items-center gap-2">
-              <span className="inline-block w-1.5 h-1.5 rounded-full bg-accent" />
+            <p className="animate-fade-up font-mono text-[11px] uppercase tracking-[0.14em] text-muted mb-6 inline-flex items-center gap-2" style={{ animationDelay: '0ms' }}>
+              <span className="inline-block w-1.5 h-1.5 rounded-full bg-accent" style={{ animation: 'pulse-dot 2.4s ease-in-out infinite' }} />
               Automatisation · conformité 2026
             </p>
             <h1
-              className="font-display font-bold text-ink m-0"
-              style={{ fontSize: 'clamp(36px, 4.8vw, 62px)', letterSpacing: '-0.04em', lineHeight: 1.0 }}
+              className="animate-fade-up font-display font-bold text-ink m-0"
+              style={{ fontSize: 'clamp(36px, 4.8vw, 62px)', letterSpacing: '-0.04em', lineHeight: 1.0, animationDelay: '80ms' }}
             >
               Automatisez la facture électronique. Libérez{' '}
               <span
@@ -110,17 +110,17 @@ export default function Hero() {
               de capacité d&apos;ici septembre 2026.
             </h1>
 
-            <p className="text-[16px] md:text-[17.5px] leading-[1.58] text-ink-2 mt-6 mb-2">
+            <p className="animate-fade-up text-[16px] md:text-[17.5px] leading-[1.58] text-ink-2 mt-6 mb-2" style={{ animationDelay: '160ms' }}>
               Pour les cabinets de 5 à 50 collaborateurs qui veulent être conformes et plus productifs sans changer d&apos;outil.
             </p>
-            <p className="text-[15px] leading-[1.55] text-muted mb-6">
+            <p className="animate-fade-up text-[15px] leading-[1.55] text-muted mb-6" style={{ animationDelay: '220ms' }}>
               On branche vos flux sur une plateforme agréée, on supprime la ressaisie, on forme votre équipe.
             </p>
-            <p className="text-[15px] font-medium text-ink mb-8">
-              <strong>À partir de 1&nbsp;490&nbsp;€, ou remboursé.</strong> Diagnostic gratuit.
+            <p className="animate-fade-up text-[15px] font-medium text-ink mb-8" style={{ animationDelay: '280ms' }}>
+              <strong>À partir de 1&nbsp;490&nbsp;€.</strong> Diagnostic gratuit.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-3 mb-6">
+            <div className="animate-fade-up flex flex-col sm:flex-row gap-3 mb-6" style={{ animationDelay: '340ms' }}>
               <a
                 href={calendlyUrl}
                 target="_blank"
@@ -132,11 +132,10 @@ export default function Hero() {
               </a>
             </div>
 
-            <div className="rounded-2xl border border-line bg-paper p-5">
+            <div className="animate-fade-up rounded-2xl border border-line bg-paper p-5" style={{ animationDelay: '400ms' }}>
               <p className="text-[13px] font-semibold text-ink mb-1">Garantie de mise en service</p>
               <p className="text-[13px] text-ink-2 leading-relaxed">
-                Flux non opérationnel sous 30 jours ouvrés après le kick-off ? On continue sans facturer.
-                Rien en place de notre fait après 60 jours ouvrés ? Remboursement intégral.
+                Si le flux défini ensemble n&apos;est pas opérationnel sous 30 jours ouvrés après le kick-off, on continue sans facturer. Toujours rien en place de notre fait après 60 jours ouvrés ? On rembourse l&apos;intégralité des honoraires de mise en place.
               </p>
             </div>
           </div>

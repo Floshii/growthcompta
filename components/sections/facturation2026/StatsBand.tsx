@@ -43,7 +43,7 @@ export default function StatsBand() {
         <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/10">
           {stats.map((s) => (
             <div key={s.idx} className="py-8 md:py-4 md:px-10 first:md:pl-0 last:md:pr-0">
-              <p className="font-mono text-[11px] text-muted-2 mb-3">{s.idx}</p>
+              <p className="font-mono text-[11px] text-accent mb-3">{s.idx}</p>
               <p
                 className="font-display font-bold text-white"
                 style={{ fontSize: 'clamp(36px, 4vw, 56px)', letterSpacing: '-0.04em', lineHeight: 1 }}

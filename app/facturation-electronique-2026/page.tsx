@@ -23,10 +23,10 @@ export default function FacturationElectronique2026Page() {
     <>
       <Hero />
       <StatsBand />
-      <PaybackLaw />
       <Offer />
       <FirstStep />
       <Accelerators />
+      <PaybackLaw />
       <Why />
       <FAQ />
       <CTAFinal />
