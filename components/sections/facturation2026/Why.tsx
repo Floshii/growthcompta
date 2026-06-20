@@ -25,37 +25,74 @@ export default function Why() {
   return (
     <section className="py-16 md:py-[88px] bg-paper" id="pourquoi">
       <div className="max-w-[1280px] mx-auto px-5 md:px-8">
-        <div className="mb-10">
-          <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted mb-4 inline-flex items-center gap-2">
-            <span className="inline-block w-1.5 h-1.5 rounded-full bg-accent" />
-            Pourquoi GrowthCompta
-          </p>
-          <h2
-            className="font-display font-bold text-ink m-0"
-            style={{ fontSize: 'clamp(28px, 3.4vw, 48px)', letterSpacing: '-0.04em', lineHeight: 1.05 }}
-          >
-            L&apos;angle que personne
-            <br />
-            d&apos;autre ne tient.
-          </h2>
-        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr_1fr_1fr] gap-5 items-start">
-          <p className="md:col-span-1 text-[17px] text-ink-2 leading-relaxed md:pr-4">
+        <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted mb-4 inline-flex items-center gap-2">
+          <span className="inline-block w-1.5 h-1.5 rounded-full bg-accent" />
+          Pourquoi GrowthCompta
+        </p>
+        <h2
+          className="font-display font-bold text-ink mb-10"
+          style={{ fontSize: 'clamp(40px, 4.4vw, 64px)', letterSpacing: '-0.035em', lineHeight: 0.96 }}
+        >
+          L&apos;angle que personne
+          <br />
+          d&apos;autre ne tient.
+        </h2>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-[18px]">
+          <p
+            className="col-span-1 md:col-span-2 font-serif italic mb-2"
+            style={{
+              fontSize: 'clamp(28px, 3.2vw, 44px)',
+              lineHeight: 1.2,
+              letterSpacing: '-0.01em',
+              color: 'var(--color-ink)',
+            }}
+          >
             Un interlocuteur qui parle{' '}
-            <span className="font-semibold text-ink">marge récupérable</span> et{' '}
-            <span className="font-semibold text-ink">coût d&apos;acquisition</span> dans la même conversation.
+            <span
+              className="not-italic"
+              style={{
+                background: 'linear-gradient(180deg, transparent 68%, var(--color-accent) 68%)',
+                padding: '0 3px',
+              }}
+            >
+              marge récupérable
+            </span>{' '}
+            et{' '}
+            <span
+              className="not-italic"
+              style={{
+                background: 'linear-gradient(180deg, transparent 68%, var(--color-accent) 68%)',
+                padding: '0 3px',
+              }}
+            >
+              coût d&apos;acquisition
+            </span>{' '}
+            dans la même conversation.
           </p>
+
           {cards.map((c) => (
-            <div key={c.n} className="rounded-2xl border border-line bg-white p-5">
-              <p className="font-mono text-[11px] text-muted mb-3">{c.n}</p>
+            <div
+              key={c.n}
+              className="rounded-2xl border border-line bg-white flex flex-col gap-3"
+              style={{ padding: 32 }}
+            >
+              <p
+                className="font-mono uppercase"
+                style={{ fontSize: 11, letterSpacing: '0.12em', color: 'var(--color-accent)' }}
+              >
+                {c.n}
+              </p>
               <h3
-                className="font-display font-semibold text-ink mb-2"
-                style={{ fontSize: 17, letterSpacing: '-0.025em' }}
+                className="font-display font-semibold text-ink"
+                style={{ fontSize: 22, letterSpacing: '-0.02em' }}
               >
                 {c.t}
               </h3>
-              <p className="text-[14px] text-ink-2 leading-relaxed">{c.d}</p>
+              <p className="text-[14.5px] leading-relaxed" style={{ color: 'var(--color-muted)' }}>
+                {c.d}
+              </p>
             </div>
           ))}
         </div>

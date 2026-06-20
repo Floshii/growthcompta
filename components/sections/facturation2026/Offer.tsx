@@ -68,7 +68,7 @@ export default function Offer() {
             </p>
             <h2
               className="font-display font-bold text-ink"
-              style={{ fontSize: 'clamp(28px, 3.5vw, 50px)', letterSpacing: '-0.04em', lineHeight: 1.05 }}
+              style={{ fontSize: 'clamp(40px, 4.4vw, 64px)', letterSpacing: '-0.035em', lineHeight: 0.96 }}
             >
               Trois frictions aujourd&apos;hui.
               <br />
@@ -91,16 +91,35 @@ export default function Offer() {
           </div>
         </div>
 
-        {/* 3 problems */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-14">
+        {/* 3 problems — 1px gap trick */}
+        <div
+          className="rounded-2xl overflow-hidden mb-14 grid grid-cols-1 md:grid-cols-3"
+          style={{ gap: '1px', background: 'var(--color-line)', border: '1px solid var(--color-line)' }}
+        >
           {problems.map((p) => (
-            <div key={p.n} className="rounded-2xl border border-line bg-paper p-6 flex flex-col gap-3">
-              <p className="font-mono text-[11px] uppercase tracking-[0.1em] text-muted">{p.n}</p>
-              <h3 className="text-[16px] font-semibold text-ink leading-snug">{p.title}</h3>
-              <p className="text-[13.5px] text-ink-2 leading-relaxed flex-1">{p.body}</p>
-              <div className="mt-auto pt-3 border-t border-line">
-                <p className="font-mono text-[11px] text-accent">{p.cost}</p>
-              </div>
+            <div
+              key={p.n}
+              className="bg-white flex flex-col"
+              style={{ padding: '34px', minHeight: '240px', gap: 14 }}
+            >
+              <p
+                className="font-mono uppercase"
+                style={{ fontSize: 11, letterSpacing: '0.1em', color: 'var(--color-muted)' }}
+              >
+                {p.n}
+              </p>
+              <h3
+                className="font-semibold"
+                style={{ fontSize: 23, letterSpacing: '-0.02em', lineHeight: 1.12, color: 'var(--color-ink)' }}
+              >
+                {p.title}
+              </h3>
+              <p className="flex-1" style={{ fontSize: 14.5, color: 'var(--color-muted)' }}>
+                {p.body}
+              </p>
+              <p className="font-mono" style={{ fontSize: 11, color: 'var(--color-accent-deep)' }}>
+                {p.cost}
+              </p>
             </div>
           ))}
         </div>
@@ -113,16 +132,37 @@ export default function Offer() {
             <p className="font-mono text-[11px] uppercase tracking-[0.12em] text-muted mb-6">Ce que vous recevez · 4 livrables</p>
             <div className="rounded-2xl border border-line bg-white overflow-hidden mb-6">
               {livrables.map((l, i) => (
-                <div key={l.n} className={`flex gap-4 px-6 py-5 ${i < livrables.length - 1 ? 'border-b border-line' : ''}`}>
-                  <span className="font-mono text-[12px] text-accent mt-0.5 flex-shrink-0 w-6">{l.n}</span>
-                  <div>
-                    <p className="text-[14px] font-semibold text-ink mb-1 flex items-center gap-2">
+                <div
+                  key={l.n}
+                  className={i < livrables.length - 1 ? 'border-b border-line' : ''}
+                  style={{ display: 'grid', gridTemplateColumns: '64px 1fr' }}
+                >
+                  <div
+                    className="font-mono text-[13px] text-accent"
+                    style={{ padding: '26px 0 0 24px' }}
+                  >
+                    {l.n}
+                  </div>
+                  <div className="py-6 pr-6">
+                    <p className="font-semibold text-ink mb-1.5 flex items-center gap-2" style={{ fontSize: 20 }}>
                       {l.title}
                       {l.bonus && (
-                        <span className="font-mono text-[10px] bg-accent/10 text-accent px-2 py-0.5 rounded-full">Bonus inclus</span>
+                        <span
+                          className="font-mono uppercase text-white"
+                          style={{
+                            fontSize: 10.5,
+                            background: 'var(--color-accent)',
+                            padding: '3px 9px',
+                            borderRadius: '99px',
+                          }}
+                        >
+                          Bonus inclus
+                        </span>
                       )}
                     </p>
-                    <p className="text-[13px] text-ink-2 leading-relaxed">{l.desc}</p>
+                    <p className="text-[14.5px] leading-relaxed" style={{ color: 'var(--color-muted)' }}>
+                      {l.desc}
+                    </p>
                   </div>
                 </div>
               ))}
@@ -133,14 +173,16 @@ export default function Offer() {
 
           {/* Right: result box + price box */}
           <div className="flex flex-col gap-5">
+
             {/* Result box */}
-            <div className="rounded-2xl border border-accent/20 bg-paper p-6">
+            <div className="rounded-2xl border border-line bg-paper p-6">
               <p className="font-mono text-[11px] uppercase tracking-[0.12em] text-muted mb-4">Résultat attendu</p>
               <p
-                className="font-display font-bold text-accent leading-none mb-3"
-                style={{ fontSize: 52, letterSpacing: '-0.04em' }}
+                className="font-display font-bold text-accent"
+                style={{ fontSize: 64, letterSpacing: '-0.04em', lineHeight: 0.9, marginBottom: 12 }}
               >
-                +20–30<span style={{ fontSize: 28 }}>%</span>
+                +20–30
+                <span style={{ fontSize: '0.42em', marginLeft: '0.1em', color: 'var(--color-accent)' }}>%</span>
               </p>
               <p className="text-[14px] text-ink-2 leading-relaxed mb-4">
                 de productivité, soit du temps rendu pour les tâches à forte valeur ajoutée plutôt que la saisie.
@@ -164,7 +206,29 @@ export default function Offer() {
                 >
                   1&nbsp;490<span className="text-[20px] font-normal text-ink-2 ml-1.5">€</span>
                 </p>
-                <p className="text-[12px] text-ink-2 mt-2">
+
+                {/* pb-free */}
+                <div
+                  className="flex items-center rounded-[10px] mt-3"
+                  style={{
+                    gap: 10,
+                    padding: '12px 16px',
+                    background: 'var(--color-accent-soft)',
+                  }}
+                >
+                  <span
+                    className="inline-block rounded-full flex-shrink-0"
+                    style={{ width: 7, height: 7, background: 'var(--color-accent)' }}
+                  />
+                  <p
+                    className="font-medium"
+                    style={{ fontSize: 13.5, color: 'var(--color-accent-deep)' }}
+                  >
+                    Diagnostic gratuit inclus
+                  </p>
+                </div>
+
+                <p className="text-[12px] text-ink-2 mt-3">
                   Réglé en une fois, à la livraison du flux automatisé. Périmètre chiffré après l&apos;audit.
                 </p>
               </div>
@@ -178,7 +242,6 @@ export default function Offer() {
                 ))}
               </div>
               <div className="px-6 py-4 bg-paper">
-                <p className="font-mono text-[11px] text-muted mb-4">Audit de diagnostic gratuit en amont</p>
                 <a
                   href={calendlyUrl}
                   target="_blank"

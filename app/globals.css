@@ -11,6 +11,7 @@
   --color-paper-2: #ece6d8;
   --color-accent: #e85d2b;
   --color-accent-deep: #c54a1d;
+  --color-accent-soft: #fbe6db;
 
   --font-display: var(--font-bricolage), "Bricolage Grotesque", system-ui, sans-serif;
   --font-sans: var(--font-geist), "Geist", system-ui, sans-serif;

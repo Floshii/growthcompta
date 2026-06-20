@@ -17,11 +17,11 @@ function EqCard({
       <p className="font-mono text-[11px] uppercase tracking-[0.12em] text-accent mb-2">{tag}</p>
       <p className="text-[16px] font-semibold text-ink mb-6">{name}</p>
       <div className="flex flex-col items-center gap-3">
-        <p className="text-[14px] text-ink leading-snug text-center font-medium px-4">{num}</p>
-        <div className="w-full h-px bg-ink/20 relative">
+        <p className="text-[16px] text-ink leading-snug text-center font-medium px-4 py-3">{num}</p>
+        <div className="w-full relative" style={{ height: 2, background: 'var(--color-ink)' }}>
           <span className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white px-2 font-mono text-[10px] text-muted">÷</span>
         </div>
-        <p className="text-[14px] text-ink-2 leading-snug text-center px-4">{den}</p>
+        <p className="text-[16px] text-ink-2 leading-snug text-center px-4 py-3">{den}</p>
       </div>
     </div>
   )
@@ -39,17 +39,20 @@ export default function PaybackLaw() {
             </p>
             <h2
               className="font-display font-bold text-ink mb-5"
-              style={{ fontSize: 'clamp(26px, 3vw, 44px)', letterSpacing: '-0.04em', lineHeight: 1.05 }}
+              style={{ fontSize: 'clamp(40px, 4.4vw, 64px)', letterSpacing: '-0.035em', lineHeight: 0.96 }}
             >
               Comment faire croître votre cabinet.
             </h2>
-            <p className="text-[16px] font-medium text-ink mb-4 leading-snug">
+            <p
+              className="font-serif italic mb-4"
+              style={{ fontSize: 26, lineHeight: 1.3, color: 'var(--color-ink)' }}
+            >
               Chaque euro investi dans un client ou un collaborateur doit se rembourser vite.
             </p>
-            <p className="text-[15px] text-ink-2 leading-relaxed mb-4">
+            <p className="text-[18px] text-ink-2 leading-relaxed mb-4">
               Sinon votre cabinet plafonne. Vous travaillez plus, vous gagnez autant. La loi du payback mesure cette vitesse de remboursement sur vos deux moteurs&nbsp;: vos clients et vos équipes.
             </p>
-            <p className="text-[15px] text-ink-2 leading-relaxed mb-8">
+            <p className="text-[18px] text-ink-2 leading-relaxed mb-8">
               L&apos;automatisation agit d&apos;abord sur le second levier. Elle réduit le temps perdu, raccourcit le payback de chaque collaborateur et libère la capacité que vous réinvestissez ensuite.
             </p>
             <Link

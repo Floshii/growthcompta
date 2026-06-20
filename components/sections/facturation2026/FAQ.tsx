@@ -46,7 +46,8 @@ export default function FAQ() {
   return (
     <section className="py-16 md:py-[88px]" id="faq">
       <div className="max-w-[1280px] mx-auto px-5 md:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-[300px_1fr] gap-12 md:gap-16">
+        <div className="grid grid-cols-1 md:grid-cols-[320px_1fr] gap-12 md:gap-16">
+
           <div>
             <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted mb-4 inline-flex items-center gap-2">
               <span className="inline-block w-1.5 h-1.5 rounded-full bg-accent" />
@@ -54,7 +55,7 @@ export default function FAQ() {
             </p>
             <h2
               className="font-display font-bold text-ink mb-5"
-              style={{ fontSize: 'clamp(26px, 3vw, 44px)', letterSpacing: '-0.04em', lineHeight: 1.05 }}
+              style={{ fontSize: 'clamp(28px, 3.2vw, 48px)', letterSpacing: '-0.035em', lineHeight: 1 }}
             >
               Les questions{' '}
               <span
@@ -84,23 +85,52 @@ export default function FAQ() {
 
           <div className="flex flex-col divide-y divide-line">
             {items.map((it, i) => (
-              <div key={i} className="py-4">
+              <div key={i} className="py-5">
                 <button
                   className="w-full flex items-start justify-between gap-4 text-left"
                   onClick={() => setOpen(open === i ? null : i)}
                   aria-expanded={open === i}
                 >
-                  <span className="text-[15px] font-medium text-ink leading-snug">{it.q}</span>
                   <span
-                    className="flex-shrink-0 w-6 h-6 rounded-full border border-line flex items-center justify-center text-ink-2 text-lg leading-none transition-transform duration-200"
-                    style={{ transform: open === i ? 'rotate(45deg)' : 'none' }}
+                    className="font-display font-medium"
+                    style={{
+                      fontSize: 21,
+                      letterSpacing: '-0.02em',
+                      lineHeight: 1.2,
+                      color: 'var(--color-ink)',
+                    }}
+                  >
+                    {it.q}
+                  </span>
+                  <span
+                    className="flex-shrink-0 grid place-items-center"
+                    style={{
+                      width: 32,
+                      height: 32,
+                      borderRadius: '99px',
+                      border: open === i ? '1px solid var(--color-accent)' : '1px solid var(--color-line)',
+                      background: open === i ? 'var(--color-accent)' : 'transparent',
+                      color: open === i ? 'white' : 'var(--color-ink-2)',
+                      fontSize: 18,
+                      lineHeight: 1,
+                      transform: open === i ? 'rotate(45deg)' : 'none',
+                      transition: 'background 0.2s, border-color 0.2s, transform 0.25s',
+                    }}
                   >
                     +
                   </span>
                 </button>
-                {open === i && (
-                  <p className="text-[14.5px] text-ink-2 leading-relaxed mt-3 pr-10">{it.a}</p>
-                )}
+                <div
+                  className="overflow-hidden"
+                  style={{
+                    maxHeight: open === i ? '320px' : '0',
+                    opacity: open === i ? 1 : 0,
+                    marginTop: open === i ? '14px' : '0',
+                    transition: 'max-height 0.35s cubic-bezier(.4,0,.2,1), opacity 0.25s, margin-top 0.25s',
+                  }}
+                >
+                  <p className="text-[15.5px] text-ink-2 leading-relaxed pr-10">{it.a}</p>
+                </div>
               </div>
             ))}
           </div>

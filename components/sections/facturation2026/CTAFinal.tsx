@@ -29,7 +29,7 @@ export default function CTAFinal() {
 
         <h2
           className="font-display font-bold text-white m-0 mb-10"
-          style={{ fontSize: 'clamp(34px, 5vw, 76px)', letterSpacing: '-0.04em', lineHeight: 1 }}
+          style={{ fontSize: 'clamp(48px, 6.4vw, 104px)', letterSpacing: '-0.04em', lineHeight: 0.95 }}
         >
           On chiffre votre
           <br />
@@ -39,10 +39,10 @@ export default function CTAFinal() {
         <div className="flex flex-col sm:flex-row justify-center gap-8 mb-10">
           {points.map((p) => (
             <div key={p.v}>
-              <p className="font-display font-bold text-[32px] text-white" style={{ letterSpacing: '-0.03em' }}>
+              <p className="font-display font-bold text-white" style={{ fontSize: 30, letterSpacing: '-0.025em' }}>
                 {p.v}
               </p>
-              <p className="font-mono text-[12px] text-muted-2 mt-1">{p.l}</p>
+              <p className="font-mono uppercase tracking-[0.1em] text-muted-2 mt-1" style={{ fontSize: 11 }}>{p.l}</p>
             </div>
           ))}
         </div>

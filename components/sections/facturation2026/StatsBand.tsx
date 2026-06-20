@@ -23,34 +23,70 @@ export default function StatsBand() {
     {
       idx: '/01',
       num: days !== null ? `J‑${days}` : '—',
+      unit: null as string | null,
       lbl: "avant l'obligation de réception · 1er septembre 2026",
     },
     {
       idx: '/02',
       num: '151',
+      unit: null as string | null,
       lbl: 'plateformes (PDP) agréées · une seule à raccorder pour votre cabinet',
     },
     {
       idx: '/03',
-      num: '20–30 %',
+      num: '20–30',
+      unit: '%' as string | null,
       lbl: "de capacité libérée par cabinet sur ce type d'automatisation",
     },
   ]
 
   return (
-    <section className="bg-ink py-14 md:py-16">
-      <div className="max-w-[1280px] mx-auto px-5 md:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/10">
-          {stats.map((s) => (
-            <div key={s.idx} className="py-8 md:py-4 md:px-10 first:md:pl-0 last:md:pr-0">
-              <p className="font-mono text-[11px] text-accent mb-3">{s.idx}</p>
+    <section className="bg-ink">
+      <div className="max-w-[1280px] mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3">
+          {stats.map((s, i) => (
+            <div
+              key={s.idx}
+              className="relative overflow-hidden"
+              style={{
+                padding: '56px 30px',
+                borderTop: '1px solid rgba(255,255,255,0.1)',
+                borderBottom: '1px solid rgba(255,255,255,0.1)',
+                borderRight: i < stats.length - 1 ? '1px solid rgba(255,255,255,0.1)' : 'none',
+              }}
+            >
+              <p
+                className="font-mono absolute"
+                style={{ top: 18, right: 18, fontSize: 11, color: 'var(--color-accent)' }}
+              >
+                {s.idx}
+              </p>
               <p
                 className="font-display font-bold text-white"
-                style={{ fontSize: 'clamp(36px, 4vw, 56px)', letterSpacing: '-0.04em', lineHeight: 1 }}
+                style={{
+                  fontSize: 'clamp(52px, 5.4vw, 84px)',
+                  letterSpacing: '-0.04em',
+                  lineHeight: 0.9,
+                }}
               >
                 {s.num}
+                {s.unit && (
+                  <span style={{ color: 'var(--color-accent)', fontSize: '0.42em', marginLeft: '0.1em' }}>
+                    {s.unit}
+                  </span>
+                )}
               </p>
-              <p className="font-mono text-[12px] text-muted-2 mt-3 leading-snug max-w-[260px]">{s.lbl}</p>
+              <p
+                className="font-mono uppercase leading-snug max-w-[260px]"
+                style={{
+                  fontSize: 11,
+                  letterSpacing: '0.12em',
+                  color: 'var(--color-muted-2)',
+                  marginTop: 14,
+                }}
+              >
+                {s.lbl}
+              </p>
             </div>
           ))}
         </div>
