@@ -56,7 +56,7 @@ export default function Offer() {
   const calendlyUrl = process.env.NEXT_PUBLIC_CALENDLY_URL ?? '/cabinet-growth-score'
 
   return (
-    <section className="py-16 md:py-[88px]" id="offre">
+    <section className="py-16 md:py-[88px] bg-paper" id="offre">
       <div className="max-w-[1280px] mx-auto px-5 md:px-8">
 
         {/* Section header */}
@@ -228,9 +228,6 @@ export default function Offer() {
                   </p>
                 </div>
 
-                <p className="text-[12px] text-ink-2 mt-3">
-                  Réglé en une fois, à la livraison du flux automatisé. Périmètre chiffré après l&apos;audit.
-                </p>
               </div>
               <div className="px-6 py-4 border-b border-line">
                 <p className="font-mono text-[10px] uppercase tracking-[0.1em] text-muted mb-3">Ordres de grandeur · selon le cabinet</p>

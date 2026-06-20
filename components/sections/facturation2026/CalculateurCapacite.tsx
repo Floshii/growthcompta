@@ -11,30 +11,23 @@ function fmt(n: number) {
 export default function CalculateurCapacite() {
   const [collabs, setCollabs] = useState('')
   const [hSaisie, setHSaisie] = useState('')
-  const [factures, setFactures] = useState('')
-  const [outils, setOutils] = useState('3')
   const calendlyUrl = process.env.NEXT_PUBLIC_CALENDLY_URL ?? '/cabinet-growth-score'
 
   const result = useMemo(() => {
     const nb = parseFloat(collabs)
     const h = parseFloat(hSaisie)
-    const f = parseFloat(factures)
-    const o = parseInt(outils, 10)
-    if (!nb || !h || !f || nb <= 0 || h <= 0 || f <= 0) return null
+    if (!nb || !h || nb <= 0 || h <= 0) return null
 
     const hMoisParCollab = h * 4.33
     const hTotal = hMoisParCollab * nb
-    const volBonus = f > 500 ? 0.15 : f > 200 ? 0.08 : 0
-    const outilOverhead = Math.max(0, o - 2) * 0.10
-    const hAjuste = hTotal * (1 + volBonus + outilOverhead)
-    const hSupprimables = Math.round(hAjuste * 0.70)
+    const hSupprimables = Math.round(hTotal * 0.70)
     const etpLibere = hSupprimables / 151
     const valeur = Math.round(etpLibere * 4200)
 
     return { hSupprimables, etpLibere, valeur }
-  }, [collabs, hSaisie, factures, outils])
+  }, [collabs, hSaisie])
 
-  const hasInputs = collabs && hSaisie && factures
+  const hasInputs = collabs && hSaisie
 
   function handleCTA() {
     if (result) {
@@ -50,7 +43,7 @@ export default function CalculateurCapacite() {
   }
 
   return (
-    <div className="rounded-2xl border border-line bg-paper p-6 md:p-7 mt-6">
+    <div className="rounded-2xl border border-line bg-white p-6 md:p-7 mt-6">
       <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted mb-2 inline-flex items-center gap-2">
         <span className="inline-block w-1.5 h-1.5 rounded-full bg-accent" />
         calculateur · capacité libérée
@@ -61,11 +54,11 @@ export default function CalculateurCapacite() {
       >
         Estimez votre gisement en 2 minutes
       </h3>
-      <p className="text-[13.5px] text-ink-2 mb-6">
-        En 3 minutes, calculez combien d&apos;heures par mois votre cabinet pourrait récupérer grâce à l&apos;automatisation.
+      <p className="text-[13.5px] text-ink-2 mb-5">
+        Entrez vos chiffres, obtenez une estimation du temps récupérable.
       </p>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+      <div className="grid grid-cols-2 gap-4 mb-5">
         <label className="flex flex-col gap-1.5">
           <span className="font-mono text-[11px] text-muted uppercase tracking-[0.1em]">Collaborateurs en prod</span>
           <input
@@ -79,7 +72,7 @@ export default function CalculateurCapacite() {
           />
         </label>
         <label className="flex flex-col gap-1.5">
-          <span className="font-mono text-[11px] text-muted uppercase tracking-[0.1em]">Heures de saisie / semaine / collab</span>
+          <span className="font-mono text-[11px] text-muted uppercase tracking-[0.1em]">Heures saisie / sem. / collab</span>
           <input
             type="number"
             min="0.5"
@@ -91,71 +84,40 @@ export default function CalculateurCapacite() {
             className="border border-line rounded-xl px-4 py-2.5 text-[15px] text-ink bg-white focus:outline-none focus:border-accent transition-colors"
           />
         </label>
-        <label className="flex flex-col gap-1.5">
-          <span className="font-mono text-[11px] text-muted uppercase tracking-[0.1em]">Factures émises / mois</span>
-          <input
-            type="number"
-            min="1"
-            placeholder="ex. 300"
-            value={factures}
-            onChange={(e) => setFactures(e.target.value)}
-            className="border border-line rounded-xl px-4 py-2.5 text-[15px] text-ink bg-white focus:outline-none focus:border-accent transition-colors"
-          />
-        </label>
-        <label className="flex flex-col gap-1.5">
-          <span className="font-mono text-[11px] text-muted uppercase tracking-[0.1em]">Outils dans la stack</span>
-          <select
-            value={outils}
-            onChange={(e) => setOutils(e.target.value)}
-            className="border border-line rounded-xl px-4 py-2.5 text-[15px] text-ink bg-white focus:outline-none focus:border-accent transition-colors appearance-none cursor-pointer"
-          >
-            <option value="2">2 outils</option>
-            <option value="3">3 outils</option>
-            <option value="4">4 outils</option>
-            <option value="5">5 outils ou plus</option>
-          </select>
-        </label>
       </div>
 
       {hasInputs && result && (
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6 p-5 rounded-xl bg-white border border-line">
-          <div>
-            <p className="font-mono text-[11px] text-muted mb-1">/01 · h/mois récupérables</p>
-            <p
-              className="font-display font-bold text-ink"
-              style={{ fontSize: 32, letterSpacing: '-0.04em' }}
-            >
-              {fmt(result.hSupprimables)}
-              <span className="text-[16px] ml-1 font-normal text-ink-2">h</span>
-            </p>
+        <>
+          <div
+            className="rounded-xl overflow-hidden mb-4"
+            style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1px', background: 'var(--color-line)', border: '1px solid var(--color-line)' }}
+          >
+            {[
+              { idx: '/01', label: 'h/mois récup.', value: fmt(result.hSupprimables), unit: 'h', accent: false },
+              { idx: '/02', label: 'ETP libéré', value: result.etpLibere.toFixed(1).replace('.', ','), unit: 'ETP', accent: false },
+              { idx: '/03', label: 'valeur €/mois', value: fmt(result.valeur), unit: '€', accent: true },
+            ].map((r) => (
+              <div key={r.idx} className="bg-white px-4 py-4">
+                <p className="font-mono text-[10px] text-muted mb-2 leading-tight">{r.idx} · {r.label}</p>
+                <p
+                  className="font-display font-bold leading-none"
+                  style={{ fontSize: 26, letterSpacing: '-0.04em', color: r.accent ? 'var(--color-accent)' : 'var(--color-ink)' }}
+                >
+                  {r.value}
+                  <span
+                    className="font-normal"
+                    style={{ fontSize: 13, marginLeft: 3, color: r.accent ? 'var(--color-accent)' : 'var(--color-muted)' }}
+                  >
+                    {r.unit}
+                  </span>
+                </p>
+              </div>
+            ))}
           </div>
-          <div>
-            <p className="font-mono text-[11px] text-muted mb-1">/02 · ETP libéré</p>
-            <p
-              className="font-display font-bold text-ink"
-              style={{ fontSize: 32, letterSpacing: '-0.04em' }}
-            >
-              {result.etpLibere.toFixed(1).replace('.', ',')}
-              <span className="text-[16px] ml-1 font-normal text-ink-2">ETP</span>
-            </p>
-          </div>
-          <div>
-            <p className="font-mono text-[11px] text-muted mb-1">/03 · valeur € potentielle</p>
-            <p
-              className="font-display font-bold text-accent"
-              style={{ fontSize: 32, letterSpacing: '-0.04em' }}
-            >
-              {fmt(result.valeur)}
-              <span className="text-[16px] ml-1 font-normal text-accent">€</span>
-            </p>
-          </div>
-        </div>
-      )}
-
-      {hasInputs && result && (
-        <p className="text-[12px] text-muted mb-5 leading-relaxed">
-          Ordre de grandeur basé sur les mesures terrain. Chiffre exact estimé pendant l&apos;audit sur votre stack réelle (Pennylane, ACD, Cegid, MyUnisoft…).
-        </p>
+          <p className="text-[11.5px] text-muted mb-4 leading-relaxed">
+            Ordre de grandeur basé sur les mesures terrain. Chiffre exact estimé pendant l&apos;audit sur votre stack réelle.
+          </p>
+        </>
       )}
 
       <a
@@ -165,9 +127,7 @@ export default function CalculateurCapacite() {
         onClick={handleCTA}
         className="inline-flex items-center gap-2 bg-accent text-white font-medium text-[14px] px-[18px] py-[11px] rounded-full hover:bg-accent-deep transition-colors group"
       >
-        {result
-          ? 'Vérifier et affiner ces chiffres sur votre stack réelle'
-          : FE_CTA_LABEL}
+        {result ? 'Vérifier ces chiffres sur votre stack réelle' : FE_CTA_LABEL}
         <span className="inline-block transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
       </a>
     </div>

@@ -16,12 +16,10 @@ function EqCard({
     <div className="rounded-2xl border border-line bg-white p-6">
       <p className="font-mono text-[11px] uppercase tracking-[0.12em] text-accent mb-2">{tag}</p>
       <p className="text-[16px] font-semibold text-ink mb-6">{name}</p>
-      <div className="flex flex-col items-center gap-3">
-        <p className="text-[16px] text-ink leading-snug text-center font-medium px-4 py-3">{num}</p>
-        <div className="w-full relative" style={{ height: 2, background: 'var(--color-ink)' }}>
-          <span className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white px-2 font-mono text-[10px] text-muted">÷</span>
-        </div>
-        <p className="text-[16px] text-ink-2 leading-snug text-center px-4 py-3">{den}</p>
+      <div className="flex flex-col items-center">
+        <p className="text-[16px] text-ink font-medium text-center w-full" style={{ padding: '12px 4px' }}>{num}</p>
+        <div className="w-full" style={{ height: 2, background: 'var(--color-ink)' }} />
+        <p className="text-[16px] text-ink-2 text-center w-full" style={{ padding: '12px 4px' }}>{den}</p>
       </div>
     </div>
   )
@@ -29,7 +27,7 @@ function EqCard({
 
 export default function PaybackLaw() {
   return (
-    <section className="py-16 md:py-[88px] bg-paper">
+    <section className="py-16 md:py-[88px] bg-white">
       <div className="max-w-[1280px] mx-auto px-5 md:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-start">
           <div>

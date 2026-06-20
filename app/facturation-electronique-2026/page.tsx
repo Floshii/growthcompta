@@ -28,9 +28,9 @@ export default function FacturationElectronique2026Page() {
       <Accelerators />
       <PaybackLaw />
       <Why />
+      <CountdownStrip />
       <FAQ />
       <CTAFinal />
-      <CountdownStrip />
     </>
   )
 }

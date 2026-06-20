@@ -1,8 +1,6 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { trackEvent } from '@/lib/analytics'
-import { FE_CTA_LABEL } from './constants'
 
 function useCountdown() {
   const [state, setState] = useState<{ days: number; hours: number; minutes: number } | null>(null)
@@ -27,58 +25,60 @@ function useCountdown() {
 
 export default function CountdownStrip() {
   const countdown = useCountdown()
-  const calendlyUrl = process.env.NEXT_PUBLIC_CALENDLY_URL ?? '/cabinet-growth-score'
 
   const units = [
     { label: 'jours', value: countdown?.days },
     { label: 'heures', value: countdown?.hours },
-    { label: 'minutes', value: countdown?.minutes },
+    { label: 'min', value: countdown?.minutes },
   ]
 
   return (
-    <section className="bg-ink py-12 md:py-14">
+    <section className="bg-ink border-t border-white/10 py-10 md:py-12">
       <div className="max-w-[1280px] mx-auto px-5 md:px-8">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-          <div>
+        <div className="flex flex-col md:flex-row items-center md:items-end gap-6 md:gap-16">
+
+          <div className="flex-shrink-0">
             <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted-2 mb-4 flex items-center gap-2">
-              <span className="inline-block w-1.5 h-1.5 rounded-full bg-accent" />
+              <span
+                className="inline-block rounded-full"
+                style={{
+                  width: 6,
+                  height: 6,
+                  background: 'var(--color-accent)',
+                  animation: 'pulse-dot 2s ease-in-out infinite',
+                }}
+              />
               Échéance · 1er septembre 2026
             </p>
-            <div className="flex items-end gap-5">
+            <div className="flex items-end gap-4">
               {units.map((u, i) => (
-                <div key={u.label} className="flex items-end gap-5">
+                <div key={u.label} className="flex items-end gap-4">
                   <div>
                     <p
                       className="font-display font-bold text-white leading-none"
-                      style={{ fontSize: 'clamp(36px, 4vw, 52px)', letterSpacing: '-0.04em' }}
+                      style={{ fontSize: 'clamp(40px, 4.5vw, 60px)', letterSpacing: '-0.04em' }}
                     >
                       {u.value !== undefined ? String(u.value).padStart(2, '0') : '—'}
                     </p>
-                    <p className="font-mono text-[11px] text-muted-2 mt-1.5">{u.label}</p>
+                    <p className="font-mono text-[11px] text-muted-2 mt-2">{u.label}</p>
                   </div>
                   {i < units.length - 1 && (
-                    <p className="font-display font-bold text-muted pb-6" style={{ fontSize: 32 }}>:</p>
+                    <p
+                      className="font-display font-bold text-muted-2"
+                      style={{ fontSize: 28, paddingBottom: 22 }}
+                    >
+                      :
+                    </p>
                   )}
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="text-center md:text-right">
-            <p className="text-[15px] text-[#d6d4cf] mb-5 max-w-[340px] leading-relaxed">
-              Chaque dossier migré sans repricing est du CA perdu pour 3 ans.
-            </p>
-            <a
-              href={calendlyUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => trackEvent('cta_click', { source: 'countdown_strip', page: 'facturation-electronique-2026' })}
-              className="inline-flex items-center gap-2.5 bg-accent text-white font-medium text-[14px] px-[20px] py-[12px] rounded-full hover:bg-accent-deep transition-colors group"
-            >
-              {FE_CTA_LABEL}
-              <span className="inline-block transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
-            </a>
-          </div>
+          <p className="text-[15px] leading-relaxed md:ml-auto max-w-[380px] text-center md:text-right" style={{ color: '#d6d4cf' }}>
+            La réception des factures électroniques devient obligatoire le 1er septembre 2026.
+            Préparer le flux maintenant, c&apos;est éviter la bascule dans l&apos;urgence.
+          </p>
         </div>
       </div>
     </section>
