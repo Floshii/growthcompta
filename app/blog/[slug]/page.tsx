@@ -8,11 +8,12 @@ import Badge from '@/components/ui/Badge'
 import TLDRBox from '@/components/blog/TLDRBox'
 import Callout from '@/components/blog/Callout'
 import KeyInsight from '@/components/blog/KeyInsight'
+import PaybackCalculatorInline from '@/components/blog/PaybackCalculatorInline'
 import { getAllArticleSlugs, getArticleBySlug } from '@/lib/mdx'
 import { formatDate } from '@/lib/utils'
 import type { Metadata } from 'next'
 
-const mdxComponents = { TLDRBox, Callout, KeyInsight }
+const mdxComponents = { TLDRBox, Callout, KeyInsight, PaybackCalculatorInline }
 
 interface PageProps {
   params: Promise<{ slug: string }>
