@@ -12,6 +12,7 @@ const cols = {
     { href: '/services/brand-positioning', label: 'Brand & positioning' },
   ],
   Cabinet: [
+    { href: '/acquisition', label: 'Système acquisition' },
     { href: '/blog', label: 'Blog' },
     { href: '/#method', label: 'Méthode' },
     { href: '/tarifs', label: 'Tarifs' },
