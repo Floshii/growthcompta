@@ -6,6 +6,7 @@ import Footer from '@/components/layout/Footer'
 import GoogleAnalytics from '@/components/analytics/GoogleAnalytics'
 import MetaPixel from '@/components/analytics/MetaPixel'
 import GeoReferral from '@/components/analytics/GeoReferral'
+import LemlistTracking from '@/components/analytics/LemlistTracking'
 import './globals.css'
 
 const bricolage = Bricolage_Grotesque({
@@ -74,6 +75,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <GoogleAnalytics />
         <MetaPixel />
         <GeoReferral />
+        <LemlistTracking />
       </body>
     </html>
   )
