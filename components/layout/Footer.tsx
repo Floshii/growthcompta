@@ -72,7 +72,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-[11px] text-muted-2 tracking-[0.08em]">
-          <span>© 2026 GROWTHCOMPTA SAS · 902 374 819 RCS PARIS</span>
+          <span>© 2026 GROWTHCOMPTA · SIREN 830 812 913</span>
           <div className="flex gap-6">
             <Link href="/mentions-legales" className="hover:text-accent transition-colors">MENTIONS LÉGALES</Link>
             <Link href="/cgv" className="hover:text-accent transition-colors">CGV</Link>
