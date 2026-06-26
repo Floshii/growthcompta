@@ -8,8 +8,8 @@ export const faqItems = [
     a: 'Non. Pennylane reste votre outil de production. Le portail gère tout ce qui se passe avant : collecte des pièces, accès, habilitations, structuration du dossier. Quand vous ouvrez Pennylane, tout est déjà là.',
   },
   {
-    q: 'On est sur ACD / Cegid, pas Pennylane ou Tiime. Ça fonctionne ?',
-    a: "L'offre Fondateurs est construite spécifiquement pour les cabinets Pennylane et Tiime. Si vous êtes sur un autre outil (ACD, Cegid...), contactez-nous — on évalue la faisabilité sur l'appel.",
+    q: 'On est sur ACD / Cegid, pas Pennylane. Ça fonctionne ?',
+    a: "L'offre Fondateurs est construite spécifiquement pour les cabinets Pennylane. Si vous êtes sur un autre outil, contactez-nous — on évalue la faisabilité sur l'appel.",
   },
   {
     q: 'Combien de temps pour être opérationnel ?',
