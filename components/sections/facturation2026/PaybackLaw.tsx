@@ -101,11 +101,18 @@ export default function PaybackLaw() {
 
             <Link
               href={FE_PAYBACK_ARTICLE}
-              className="inline-flex items-center gap-2 text-[14px] font-medium text-accent hover:text-accent-deep transition-colors group"
+              className="inline-flex items-center gap-2 text-[14px] font-medium text-accent hover:text-accent-deep transition-colors group mb-6"
             >
               Lire l&apos;article complet sur la loi du payback
               <span className="inline-block transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
             </Link>
+
+            <p className="text-[14px] leading-relaxed" style={{ color: 'var(--color-muted)' }}>
+              Personne n&apos;optimise le Coût service 30J — le temps de collecte et de relances qui plombe chaque nouveau dossier avant qu&apos;il ne devienne rentable.{' '}
+              <Link href="/onboarding-client" className="text-accent hover:text-accent-deep transition-colors font-medium">
+                Voir comment le réduire avec un onboarding structuré ↗
+              </Link>
+            </p>
           </div>
 
           {/* Right: formulas */}
