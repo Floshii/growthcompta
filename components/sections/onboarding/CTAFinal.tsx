@@ -1,4 +1,4 @@
-import { OB_CTA_LABEL } from './constants'
+import { OB_CTA_LABEL, OB_CALENDLY_URL } from './constants'
 
 const points = [
   { v: '30 min', l: 'de démo live' },
@@ -7,7 +7,7 @@ const points = [
 ]
 
 export default function CTAFinal() {
-  const calendlyUrl = process.env.NEXT_PUBLIC_CALENDLY_URL ?? '/cabinet-growth-score'
+  const calendlyUrl = OB_CALENDLY_URL
 
   return (
     <section className="py-20 md:py-[112px] bg-ink text-white relative overflow-hidden">

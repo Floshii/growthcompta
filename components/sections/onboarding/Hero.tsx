@@ -1,4 +1,4 @@
-import { OB_CTA_LABEL } from './constants'
+import { OB_CTA_LABEL, OB_CALENDLY_URL } from './constants'
 
 function PortalMock() {
   const steps = [
@@ -81,7 +81,7 @@ function PortalMock() {
 }
 
 export default function Hero() {
-  const calendlyUrl = process.env.NEXT_PUBLIC_CALENDLY_URL ?? '/cabinet-growth-score'
+  const calendlyUrl = OB_CALENDLY_URL
 
   return (
     <section className="py-16 md:py-[88px]">
@@ -110,7 +110,7 @@ export default function Hero() {
             </h1>
 
             <p className="text-[16px] md:text-[17.5px] leading-[1.58] text-ink-2 mt-6 mb-2">
-              Pour les cabinets sur Pennylane qui perdent 4 à 6 semaines et des dizaines d&apos;emails avant de toucher le premier euro sur un nouveau dossier.
+              Pour les cabinets modernes (Tiime, Pennylane) qui perdent 4 à 6 semaines et des dizaines d&apos;emails avant de toucher le premier euro sur un nouveau dossier.
             </p>
             <p className="text-[15px] leading-[1.55] text-muted mb-8">
               On installe un portail aux couleurs de votre cabinet. Votre client dépose tout en une fois. Votre équipe récupère un dossier complet, structuré, prêt à produire.

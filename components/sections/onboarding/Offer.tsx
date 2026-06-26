@@ -1,4 +1,4 @@
-import { OB_CTA_LABEL } from './constants'
+import { OB_CTA_LABEL, OB_CALENDLY_URL } from './constants'
 
 const includes = [
   'Configuration du portail : branding, domaine, workflows par type de structure, intégration Pennylane',
@@ -7,7 +7,7 @@ const includes = [
 ]
 
 export default function Offer() {
-  const calendlyUrl = process.env.NEXT_PUBLIC_CALENDLY_URL ?? '/cabinet-growth-score'
+  const calendlyUrl = OB_CALENDLY_URL
 
   return (
     <section className="py-16 md:py-[88px] bg-paper" id="offre">

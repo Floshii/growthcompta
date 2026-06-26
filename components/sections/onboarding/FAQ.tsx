@@ -2,11 +2,11 @@
 
 import { useState } from 'react'
 import { trackEvent } from '@/lib/analytics'
-import { OB_CTA_LABEL, faqItems } from './constants'
+import { OB_CTA_LABEL, OB_CALENDLY_URL, faqItems } from './constants'
 
 export default function FAQ() {
   const [open, setOpen] = useState<number | null>(null)
-  const calendlyUrl = process.env.NEXT_PUBLIC_CALENDLY_URL ?? '/cabinet-growth-score'
+  const calendlyUrl = OB_CALENDLY_URL
 
   return (
     <section className="py-16 md:py-[88px]" id="faq">

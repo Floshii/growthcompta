@@ -24,7 +24,7 @@ const livrables = [
 
 export default function Deliverables() {
   return (
-    <section className="py-16 md:py-[88px] bg-paper">
+    <section className="py-16 md:py-[88px] bg-paper" id="deliverables">
       <div className="max-w-[1280px] mx-auto px-5 md:px-8">
 
         <div className="mb-12 max-w-[680px]">
